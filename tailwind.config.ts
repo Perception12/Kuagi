@@ -12,7 +12,7 @@ const config: Config = {
             colors: {
                 primary: "#2491DF",
                 secondary: "#EBF7FF",
-                text_clr: "#001E33",
+                clr_text: "#001E33",
                 clr_lightgrey: "#F9FAFB",
                 clr_grey: "#98A2B3",
                 clr_red: "#E26E6A",
