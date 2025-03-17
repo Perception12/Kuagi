@@ -50,6 +50,7 @@ const Nav: React.FC = () => {
   ];
 
   return (
+    // Nav bar
     <nav className="w-full mx-auto">
       <div className="container mx-auto py-3 flex justify-between items-center">
         <Sheet>
@@ -82,9 +83,10 @@ const Nav: React.FC = () => {
         <div>
           <Image src={Logo} alt="logo" width={150} className="hidden lg:flex" />
         </div>
-
+        {/* Navigation Menu */}
         <NavigationMenu className="hidden lg:flex">
           <NavigationMenuList>
+            {/* Check if navigatio menu has dropdown and display accordingly */}
             {menus.map((menu, index) =>
               menu.components ? (
                 <NavigationMenuItem key={index}>
