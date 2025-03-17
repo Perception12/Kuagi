@@ -51,7 +51,7 @@ const Nav: React.FC = () => {
 
   return (
     // Nav bar
-    <nav className="w-full mx-auto">
+    <nav className="w-full mx-auto h-20 flex items-center">
       <div className="container mx-auto py-3 flex justify-between items-center">
         <Sheet>
           <SheetTrigger asChild>
