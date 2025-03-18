@@ -5,6 +5,7 @@ import K from "@/assets/partners_k.png";
 import NJFP from "@/assets/partners_njfp.png";
 import NTC from "@/assets/partners_ntc.png";
 import Image from "next/image";
+import SubHeading from "./SubHeading";
 
 const partners_data = [
   {
@@ -32,8 +33,8 @@ const partners_data = [
 const Partners = () => {
   return (
     <div className="mt-12 flex flex-col gap-6 items-center justify-center p-4">
-      <h2 className="text-primary text-3xl font-bold">Our Partners</h2>
-      <div className="flex items-center justify-center gap-4">
+      <SubHeading>Our Partners</SubHeading>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
         {partners_data.map((item, index) => (
           <Image src={item.img} alt={item.alt} key={index} />
         ))}

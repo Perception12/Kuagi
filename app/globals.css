@@ -118,6 +118,7 @@
   --color-lightyellow: #F3A218;
   --color-green: #00CD8E;
   --color-lightgreen: #EBFFF9;
+  --color-lightblue: #F7FCFF;
 }
 @layer base {
   * {

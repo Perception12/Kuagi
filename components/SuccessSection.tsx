@@ -8,6 +8,7 @@ import IconStudents from "@/assets/icons/ic_students.png";
 import IconWeb from "@/assets/icons/ic_web.png";
 import SuccessImage from "@/assets/img_success.png"; // Add your center image
 import SuccessCard from "./SuccessCard";
+import SubHeading from "./SubHeading";
 
 const successData = [
   {
@@ -50,13 +51,11 @@ const successData = [
 
 const SuccessSection = () => {
   return (
-    <section className="mt-12">
-      <h2 className="text-primary text-2xl md:text-3xl text-center font-bold w-full">
-        Our Success Story
-      </h2>
+    <section className="mt-12 flex flex-col items-center justify-center w-full">
+      <SubHeading>Our Success Story</SubHeading>
 
       {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-2 mt-10 items-center justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-8 gap-2 mt-10 items-center justify-center w-full">
         {successData.slice(0, 2).map((item, index) => (
           <div
             key={index}

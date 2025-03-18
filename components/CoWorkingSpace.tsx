@@ -4,6 +4,7 @@ import SectionCard from "./SectionCard";
 import SuccessSection from "./SuccessSection";
 import ClassCTA from "./ClassCTA";
 import Partners from "./Partners";
+import Testimonials from "./Testimonials";
 
 const CoWorkingSpace = () => {
   return (
@@ -27,6 +28,7 @@ const CoWorkingSpace = () => {
       <SuccessSection />
       <ClassCTA />
       <Partners />
+      <Testimonials />
     </div>
   );
 };

@@ -3,12 +3,13 @@ import { Button } from "./ui/button";
 import CTALeft from "@/assets/cta_left.png";
 import CTARight from "@/assets/cta_right.png";
 import Image from "next/image";
+import SubHeading from "./SubHeading";
 
 const ClassCTA = () => {
   return (
     <div className="mt-12 bg-primary rounded-3xl p-8 py-16 text-white relative overflow-x-hidden">
       <div className="relative w-full items-center  gap-4 justify-center flex flex-col z-10">
-        <h2 className="font-bold text-3xl">Explore Our Classes</h2>
+        <SubHeading className="text-white">Explore Our Classes</SubHeading>
         <p className="max-w-[485px] text-center">
           Stay ahead in the rapidly evolving tech landscape, and open the doors
           to exciting career opportunities.
