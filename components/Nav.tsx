@@ -90,7 +90,7 @@ const Nav: React.FC = () => {
             {menus.map((menu, index) =>
               menu.components ? (
                 <NavigationMenuItem key={index}>
-                  <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>{menu.name}</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                       {menu.components?.map((component) => (

@@ -17,8 +17,8 @@ const HeroOptions: React.FC<HeroOptionsProps> = ({
   return (
     <div className="flex flex-col items-center justify-center cursor-pointer">
       <div className="flex gap-2 items-center justify-center">
-        <Image src={icon} alt="icon" width={icon_width} />
-        <p className="text-lg font-semibold">{title}</p>
+        <Image src={icon} alt="icon" width={icon_width} className="hidden md:flex"/>
+        <p className="text-sm md:text-base lg:text-lg font-semibold">{title}</p>
       </div>
 
       <div className={`w-full h-[2px] ${isActive && "bg-primary"} rounded-full mt-2`}></div>
