@@ -16,7 +16,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
   buttonText,
 }) => {
   return (
-    <div className="w-full bg-lightgrey p-4 md:px-20 flex items-center justify-around gap-8 flex-col lg:flex-row">
+    <div className="w-full bg-lightgrey p-4 md:px-24 flex items-center justify-around gap-8 lg:gap-0 flex-col lg:flex-row">
         
       <div className="flex-1 flex">
         <Image src={image} alt="who we are Image" className="object-cover rounded-2xl" />

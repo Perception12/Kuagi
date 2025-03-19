@@ -2,8 +2,14 @@ import Image from "next/image";
 import HeroImage from "@/assets/hero_1.jpeg";
 import HeroOptions from "../components/HeroOptions";
 import { heroOptionsData } from "@/data";
+import React, { SetStateAction, Dispatch } from "react";
 
-const Hero = () => {
+interface HeroProps {
+  section: number;
+  setSection: Dispatch<SetStateAction<number>>;
+}
+
+const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
   return (
     <section className="relative bg-muted py-32 flex flex-col items-center justify-center h-[calc(90vh-5rem)]">
       {/* Background Image and Overlay */}
@@ -44,7 +50,9 @@ const Hero = () => {
               icon={option.icon}
               title={option.title}
               icon_width={option.icon_width}
-              isActive={option.isActive}
+              isActive={section == option.optionNumber}
+              optionNumber={option.optionNumber}
+              setSection={setSection}
             />
           ))}
         </div>

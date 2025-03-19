@@ -11,7 +11,7 @@ import Reachout from "@/components/Reachout";
 
 const CoWorkingSpace = () => {
   return (
-    <div className="mt-20 w-full">
+    <section className="mt-20 w-full">
       <SectionCard
         image={WhoWeAre}
         buttonText="Become a Kuagite"
@@ -35,7 +35,7 @@ const CoWorkingSpace = () => {
       <FAQ />
       <EventSection />
       <Reachout />
-    </div>
+    </section>
   );
 };
 

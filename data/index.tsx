@@ -19,25 +19,31 @@ import InstagramIcon from "@/assets/icons/ic_instagram.png";
 import TwitterIcon from "@/assets/icons/ic_twitter.png";
 import LinkedInIcon from "@/assets/icons/ic_linkedin.png";
 import FacebookIcon from "@/assets/icons/ic_facebook.png";
+import EventImage1 from "@/assets/img_event1.png";
+import EventImage2 from "@/assets/img_event2.png";
+import EventImage3 from "@/assets/img_event3.png";
+import EventImage4 from "@/assets/img_event4.png";
+import UpcomingEvent1 from "@/assets/upcoming_event.png";
+import PastEvent from "@/assets/past_event1.png";
 
 export const heroOptionsData = [
   {
     icon: ChairIcon,
     title: "Co-Working Space",
     icon_width: 22.5,
-    isActive: true,
+    optionNumber: 1,
   },
   {
     icon: FeminineIcon,
     title: "Women 4Tech",
     icon_width: 15,
-    isActive: false,
+    optionNumber: 2,
   },
   {
     icon: EventIcon,
     title: "Events",
     icon_width: 18,
-    isActive: false,
+    optionNumber: 3,
   },
 ];
 
@@ -297,5 +303,53 @@ export const footerData = {
     },
   ],
 
-  copyright: "© 2024 Kuagi. All rights reserved."
+  copyright: "© 2024 Kuagi. All rights reserved.",
+};
+
+export const women4TechData = [
+  {
+    image: EventImage1,
+    description:
+      "Some of the ladies on the Twitter space panel speaking about the good impact technology has done in the environment and how impactful it can be gaining a Tech skill",
+  },
+  {
+    image: EventImage2,
+    description:
+      "A co-working space that is designed to stimulate productivity and collaboration. From a personal workstation to private meeting rooms, the shared amenities encompassing high speed WI-FI and coffee",
+  },
+  {
+    image: EventImage3,
+    description:
+      "A co-working space that is designed to stimulate productivity and collaboration. From a personal workstation to private meeting rooms, the shared amenities encompassing high speed WI-FI and coffee",
+  },
+  {
+    image: EventImage4,
+    description:
+      "A co-working space that is designed to stimulate productivity and collaboration. From a personal workstation to private meeting rooms, the shared amenities encompassing high speed WI-FI and coffee",
+  },
+];
+
+export const eventData = {
+  upcoming: [
+    {
+      image: UpcomingEvent1,
+      title: "Tech ladies Unite 2.0",
+      description:
+        'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster...',
+      eventId: 1,
+    },
+    {
+      image: UpcomingEvent1,
+      title: "Tech ladies Unite 2.0",
+      description:
+        'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster...',
+      eventId: 2,
+    },
+  ],
+  past: [
+    { image: PastEvent },
+    { image: PastEvent },
+    { image: PastEvent },
+    { image: PastEvent },
+  ],
 };
