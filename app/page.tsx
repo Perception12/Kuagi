@@ -1,7 +1,7 @@
 "use client"
 
-import CoWorkingSpace from "@/components/CoWorkingSpace";
-import Hero from "@/components/Hero";
+import CoWorkingSpace from "@/app/sections/CoWorkingSpace";
+import Hero from "@/app/Hero";
 
 export default function Home() {
   return (

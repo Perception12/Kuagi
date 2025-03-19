@@ -1,10 +1,13 @@
 import React from "react";
 import WhoWeAre from "@/assets/img_who_we_are.png";
-import SectionCard from "./SectionCard";
-import SuccessSection from "./SuccessSection";
-import ClassCTA from "./ClassCTA";
-import Partners from "./Partners";
-import Testimonials from "./Testimonials";
+import SectionCard from "@/components/SectionCard";
+import SuccessSection from "@/components/SuccessSection";
+import ClassCTA from "@/components/ClassCTA";
+import Partners from "@/components/Partners";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import EventSection from "@/components/EventSection";
+import Reachout from "@/components/Reachout";
 
 const CoWorkingSpace = () => {
   return (
@@ -29,6 +32,9 @@ const CoWorkingSpace = () => {
       <ClassCTA />
       <Partners />
       <Testimonials />
+      <FAQ />
+      <EventSection />
+      <Reachout />
     </div>
   );
 };

@@ -13,41 +13,10 @@ import {
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import ListItem from "./ListItem";
+import ListItem from "../components/ListItem";
+import { menus } from "@/data";
 
 const Nav: React.FC = () => {
-  const menus = [
-    {
-      name: "Kuagi Acad",
-      link: "#",
-      components: [
-        {
-          title: "Alert Dialog",
-          href: "/docs/primitives/alert-dialog",
-          description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-        },
-        {
-          title: "Hover Card",
-          href: "/docs/primitives/hover-card",
-          description:
-            "For sighted users to preview content available behind a link.",
-        },
-      ],
-    },
-    {
-      name: "Kuagi Business Hub",
-      link: "#",
-    },
-    {
-      name: "Kuagi Innovative Hub",
-      link: "#",
-    },
-    {
-      name: "Contact us",
-      link: "#",
-    },
-  ];
 
   return (
     // Nav bar

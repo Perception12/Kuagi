@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
 import SubHeading from "./SubHeading";
-import Profile from "@/assets/profile.png";
 import Image, { StaticImageData } from "next/image";
 import {
   Carousel,
@@ -9,32 +9,56 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { type CarouselApi } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
+import { PaginationDots } from "./ui/pagination-dots";
+import { testimonial_data } from "@/data";
 
-const testimonial_data = [
-  {
-    profile: Profile,
-    name: "Ryan Olaonipekun",
-    testimony:
-      "My time using the kuagi resources Co-working space has been nothing but productive, from the level\
-             of hospitality to a very conducive atmosphere. \
-             This is a recommended spot for your remote jobs. Keep it up Kuagi Resources ✊🏽",
-  },
-  {
-    profile: Profile,
-    name: "Jane Doe",
-    testimony:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-];
+
 
 const Testimonials = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   return (
     <section className="mt-12 flex flex-col items-center justify-center gap-6 md:p-8 md:px-16">
       <SubHeading>Testimonials</SubHeading>
 
-      <div className="bg-lightblue rounded-3xl">
-        <Carousel>
+      <div className="flex flex-col gap-8 md:hidden">
+        {testimonial_data.map((item, index) => (
+          <TestimonialCard
+            profile={item.profile}
+            name={item.name}
+            testimony={item.testimony}
+            key={index}
+          />
+        ))}
+      </div>
+
+      <div className="bg-lightblue rounded-3xl relative hidden md:block">
+        <Carousel
+          setApi={setApi}
+          plugins={[
+            Autoplay({
+              delay: 4000,
+            }),
+          ]}
+        >
           <CarouselContent>
             {testimonial_data.map((item, index) => (
               <CarouselItem key={index}>
@@ -47,10 +71,11 @@ const Testimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="text-primary" />
+          <CarouselNext className="text-primary" />
         </Carousel>
       </div>
+      <PaginationDots className="hidden md:block" totalSteps={count} currentStep={current} />
     </section>
   );
 };
@@ -67,13 +92,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   testimony,
 }) => {
   return (
-    <div className="flex gap-4 p-8 px-16 items-center justify-center">
+    <div className="flex gap-4 md:p-8 md:px-16 items-center justify-center">
       <div className="rounded-3xl">
         <Image src={profile} alt={name} />
       </div>
       <div className="flex flex-col gap-4 justify-around max-w-[500px]">
-        <p>{testimony}</p>
-        <SubHeading>{name}</SubHeading>
+        <p className="text-sm md:text-base">{testimony}</p>
+        <h2 className="text-base md:text-2xl text-primary font-semibold">{name}</h2>
       </div>
     </div>
   );

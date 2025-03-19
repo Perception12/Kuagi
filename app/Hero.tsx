@@ -1,32 +1,9 @@
 import Image from "next/image";
 import HeroImage from "@/assets/hero_1.jpeg";
-import HeroOptions from "./HeroOptions";
-import ChairIcon from "@/assets/icons/ic_chair.png";
-import EventIcon from "@/assets/icons/ic_event.png";
-import FeminineIcon from "@/assets/icons/ic_woman.png";
+import HeroOptions from "../components/HeroOptions";
+import { heroOptionsData } from "@/data";
 
 const Hero = () => {
-  const optionsData = [
-    {
-      icon: ChairIcon,
-      title: "Co-Working Space",
-      icon_width: 22.5,
-      isActive: true,
-    },
-    {
-      icon: FeminineIcon,
-      title: "Women 4Tech",
-      icon_width: 15,
-      isActive: false,
-    },
-    {
-      icon: EventIcon,
-      title: "Events",
-      icon_width: 18,
-      isActive: false,
-    },
-  ];
-
   return (
     <section className="relative bg-muted py-32 flex flex-col items-center justify-center h-[calc(90vh-5rem)]">
       {/* Background Image and Overlay */}
@@ -61,7 +38,7 @@ const Hero = () => {
       {/* Page Options - Positioned to Overlap Image and Background */}
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-3/5">
         <div className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-8 gap-8">
-          {optionsData.map((option, index) => (
+          {heroOptionsData.map((option, index) => (
             <HeroOptions
               key={index}
               icon={option.icon}

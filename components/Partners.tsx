@@ -1,34 +1,9 @@
 import React from "react";
-import GDG from "@/assets/partners_gdg.png";
-import HAM from "@/assets/partners_ham.png";
-import K from "@/assets/partners_k.png";
-import NJFP from "@/assets/partners_njfp.png";
-import NTC from "@/assets/partners_ntc.png";
 import Image from "next/image";
 import SubHeading from "./SubHeading";
+import { partners_data } from "@/data";
 
-const partners_data = [
-  {
-    img: GDG,
-    alt: "Google developers group",
-  },
-  {
-    img: HAM,
-    alt: "Ham Foundation",
-  },
-  {
-    img: K,
-    alt: "k",
-  },
-  {
-    img: NJFP,
-    alt: "Nigeria Jubilee Fellows Program",
-  },
-  {
-    img: NTC,
-    alt: "Nupe tech community",
-  },
-];
+
 
 const Partners = () => {
   return (
