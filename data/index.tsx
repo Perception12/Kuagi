@@ -14,6 +14,11 @@ import ChairIcon from "@/assets/icons/ic_chair.png";
 import EventIcon from "@/assets/icons/ic_event.png";
 import FeminineIcon from "@/assets/icons/ic_woman.png";
 import LocationImage from "@/assets/img_location.png";
+import Logo from "@/assets/logo.png";
+import InstagramIcon from "@/assets/icons/ic_instagram.png";
+import TwitterIcon from "@/assets/icons/ic_twitter.png";
+import LinkedInIcon from "@/assets/icons/ic_linkedin.png";
+import FacebookIcon from "@/assets/icons/ic_facebook.png";
 
 export const heroOptionsData = [
   {
@@ -196,4 +201,101 @@ export const locationData = {
   maplink:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4680.611636668824!2d4.583387075688324!3d8.509639996900965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10364da3007db973%3A0x815b55986b8ba110!2s28%20Sango%20Rd%2C%20Oko%20Erin%20240102%2C%20Kwara%2C%20Nigeria!5e1!3m2!1sen!2sus!4v1742404141228!5m2!1sen!2sus",
   image: LocationImage,
+};
+
+export const footerData = {
+  logo: Logo,
+  description:
+    "Be the first to receive all the recent updates, articles, and valuable materials.",
+  sections: [
+    {
+      header: "Links",
+      items: [
+        {
+          text: "Home",
+          link: "/",
+        },
+        {
+          text: "About Us",
+          link: "/",
+        },
+        {
+          text: "Service",
+          link: "/",
+        },
+        {
+          text: "Contact",
+          link: "/",
+        },
+      ],
+    },
+
+    {
+      header: "Our Service",
+      items: [
+        {
+          text: "Home",
+          link: "/",
+        },
+        {
+          text: "About Us",
+          link: "/",
+        },
+        {
+          text: "Service",
+          link: "/",
+        },
+        {
+          text: "Contact",
+          link: "/",
+        },
+      ],
+    },
+  ],
+
+  contact: {
+    header: "Contact Us",
+    address: "No 28 Muritala Muhammed,Sango Road, Ilorin,Kwara State, Nigeria.",
+    phone: "+234 816 073 0725",
+    email: "Kuagiresources@gmail.com",
+    socials: [
+      {
+        icon: InstagramIcon,
+        link: "/",
+      },
+
+      {
+        icon: LinkedInIcon,
+        link: "/",
+      },
+      {
+        icon: FacebookIcon,
+        link: "/",
+      },
+      {
+        icon: TwitterIcon,
+        link: "/",
+      },
+    ],
+  },
+  policies: [
+    {
+      name: "Terms of Service",
+      link: "/",
+    },
+    {
+      name: "Privacy Policy",
+      link: "/",
+    },
+    {
+      name: "Security",
+      link: "/",
+    },
+    {
+      name: "Sitemap",
+      link: "/",
+    },
+  ],
+
+  copyright: "© 2024 Kuagi. All rights reserved."
 };

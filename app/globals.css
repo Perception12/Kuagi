@@ -119,6 +119,9 @@
   --color-green: #00CD8E;
   --color-lightgreen: #EBFFF9;
   --color-lightblue: #F7FCFF;
+  --color-cta: #034592;
+  --color-cta-800: rgba(3, 69, 146, 0.8);
+  --color-footer: #475367;
 }
 @layer base {
   * {
