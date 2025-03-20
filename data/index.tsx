@@ -28,6 +28,16 @@ import PastEvent from "@/assets/past_event1.png";
 import ProgramImage1 from "@/assets/img_program1.png";
 import ProgramImage2 from "@/assets/img_program2.png";
 import ProgramImage3 from "@/assets/img_program3.png";
+import PowerIcon from "@/assets/icons/ic_power.png";
+import WiFiIcon from "@/assets/icons/ic_wifi.png";
+import TvIcon from "@/assets/icons/ic_televisio.png";
+import MeetupIcon from "@/assets/icons/ic_space.png";
+import BookIcon from "@/assets/icons/ic_book.png";
+import ProductDesignIllustration from "@/assets/img_product_design.png";
+import ProductManagementIllustration from "@/assets/img_product_management.png";
+import CybersecurityIllustration from "@/assets/img_privacy.png";
+import GraphicDesignIllustration from "@/assets/img_graphic_design.png";
+import { StaticImageData } from "next/image";
 
 export const heroOptionsData = [
   {
@@ -62,7 +72,7 @@ export const menus = [
       },
       {
         title: "Price Plans",
-        href: "/price-plans",
+        href: "/price",
         description: "Explore Price Plans",
       },
       {
@@ -461,5 +471,889 @@ export const programData = [
       'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
     date: "Feb 09",
     read_minute: "6 min read",
+  },
+];
+
+export const priceHeroData = [
+  {
+    icon: PowerIcon,
+    description: "24 hrs Power Supply",
+  },
+  {
+    icon: WiFiIcon,
+    description: "Fast Internet",
+  },
+  {
+    icon: TvIcon,
+    description: "Meetup space",
+  },
+  {
+    icon: MeetupIcon,
+    description: "Meetup Space",
+  },
+  {
+    icon: BookIcon,
+    description: "Access To Library",
+  },
+];
+
+export type PricePlan = {
+  name: string;
+  subscriptions: {
+    name: string;
+    price: string;
+    benefits: string[];
+  }[];
+};
+
+export type PricePlansData = {
+  title: string;
+  plans: PricePlan[];
+}[];
+
+export const pricePlansData = [
+  {
+    title: "Shared Space",
+    plans: [
+      {
+        name: "No Internet Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦500",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦2,500",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦9,000",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Standard Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦1,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦5,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦25,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Premium Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦1,500",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦8,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦40,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    title: "Private Desk",
+    plans: [
+      {
+        name: "No Internet Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦1,500",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦10,000",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦40,000",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Standard Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦2,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦12,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦50,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Premium Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦2,500",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦16,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦60,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    title: "Meetup",
+    plans: [
+      {
+        name: "No Internet Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦1,000",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦6,000",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦25,000",
+            benefits: [
+              "Subscribers can request internet Access when the need arises",
+              "Discounted price of ₦300/GB valid through the Coworking space subscription period",
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Standard Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦2,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦12,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦55,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 0.75MBPS",
+              "Shared Hot Desk",
+            ],
+          },
+        ],
+      },
+
+      {
+        name: "Premium Plan",
+        subscriptions: [
+          {
+            name: "Daily",
+            price: "₦3,500",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Weekly",
+            price: "₦22,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+          {
+            name: "Monthly",
+            price: "₦90,000",
+            benefits: [
+              "Unlimited bandwidth internet access",
+              "Wifi speed at 1.5MBPS",
+              "Access to Stationary",
+              "Shared Hot Desk",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+
+export type CourseData = {
+  topic: string;
+  duration: string;
+  classTime: string;
+  price: string;
+  availability: boolean;
+  image: StaticImageData | string;
+  description: string;
+  classType: string;
+  benefits: string[];
+  installment: string;
+  curriculum: string[];
+};
+
+export const onlineCourseData = [
+  {
+    topic: "Product Design (UI/UX)",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦100,000",
+    availability: true,
+    image: ProductDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Cybersecurity",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦250,000",
+    availability: false,
+    image: CybersecurityIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Product Management",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: ProductManagementIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Graphic Design",
+    duration: "12 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: GraphicDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Product Design (UI/UX)",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦100,000",
+    availability: true,
+    image: ProductDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Cybersecurity",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦250,000",
+    availability: false,
+    image: CybersecurityIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Product Management",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: ProductManagementIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Graphic Design",
+    duration: "12 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: GraphicDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+];
+
+
+
+export const physicalCourseData = [
+  {
+    topic: "Product Design (UI/UX)",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦100,000",
+    availability: true,
+    image: ProductDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Physical Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Cybersecurity",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦250,000",
+    availability: false,
+    image: CybersecurityIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Product Management",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: ProductManagementIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Physical Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Graphic Design",
+    duration: "12 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: GraphicDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Physical Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Product Design (UI/UX)",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦100,000",
+    availability: true,
+    image: ProductDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Cybersecurity",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦250,000",
+    availability: false,
+    image: CybersecurityIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Product Management",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: ProductManagementIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Graphic Design",
+    duration: "12 weeks",
+    classTime: "2-3 times a week",
+    price: "₦60,000",
+    availability: true,
+    image: GraphicDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
   },
 ];
