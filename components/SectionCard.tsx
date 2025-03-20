@@ -1,6 +1,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "./ui/button";
+import SubHeading from "./SubHeading";
 
 interface SectionCardProps {
   title: string;
@@ -22,7 +23,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
         <Image src={image} alt="who we are Image" className="object-cover rounded-2xl" />
       </div>
       <div className="flex-1 flex flex-col gap-4">
-        <h2 className="text-2xl lg:text-3xl font-bold text-primary">{title}</h2>
+        <SubHeading className="text-start">{title}</SubHeading>
         {children}
         <Button className="w-fit">{buttonText}</Button>
       </div>

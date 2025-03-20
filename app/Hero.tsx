@@ -28,15 +28,13 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
       <div className="relative z-10 container">
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           <div className="flex flex-col items-center gap-6 text-center">
-            <div>
-              <p className="text-white lg:text-xl">
-                Aimed at building digital literacy in women.
-              </p>
+            <p className="text-white lg:text-xl">
+              Aimed at building digital literacy in women.
+            </p>
 
-              <h1 className="mb-6 text-2xl font-bold text-white lg:text-5xl">
-                Bridging the gender tech gap
-              </h1>
-            </div>
+            <h1 className="mb-6 text-2xl font-bold text-white lg:text-5xl bricolage-grotesque">
+              Bridging the gender tech gap
+            </h1>
           </div>
         </div>
       </div>

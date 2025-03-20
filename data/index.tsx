@@ -25,6 +25,9 @@ import EventImage3 from "@/assets/img_event3.png";
 import EventImage4 from "@/assets/img_event4.png";
 import UpcomingEvent1 from "@/assets/upcoming_event.png";
 import PastEvent from "@/assets/past_event1.png";
+import ProgramImage1 from "@/assets/img_program1.png";
+import ProgramImage2 from "@/assets/img_program2.png";
+import ProgramImage3 from "@/assets/img_program3.png";
 
 export const heroOptionsData = [
   {
@@ -53,16 +56,24 @@ export const menus = [
     link: "#",
     components: [
       {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
-        description:
-          "A modal dialog that interrupts the user with important content and expects a response.",
+        title: "Program Options",
+        href: "/programs",
+        description: "Explore Program Options",
       },
       {
-        title: "Hover Card",
-        href: "/docs/primitives/hover-card",
-        description:
-          "For sighted users to preview content available behind a link.",
+        title: "Price Plans",
+        href: "/price-plans",
+        description: "Explore Price Plans",
+      },
+      {
+        title: "Online Courses",
+        href: "/courses/online",
+        description: "Explore Online Courses",
+      },
+      {
+        title: "Physical Courses",
+        href: "/courses/physical",
+        description: "Explore Physical Courses",
       },
     ],
   },
@@ -353,3 +364,102 @@ export const eventData = {
     { image: PastEvent },
   ],
 };
+
+export const programData = [
+  {
+    image: ProgramImage1,
+    title: "Day 2, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Jan 27",
+    read_minute: "5 min read",
+  },
+  {
+    image: ProgramImage2,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 03",
+    read_minute: "4 min read",
+  },
+  {
+    image: ProgramImage3,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 09",
+    read_minute: "6 min read",
+  },
+  {
+    image: ProgramImage1,
+    title: "Day 2, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Jan 27",
+    read_minute: "5 min read",
+  },
+  {
+    image: ProgramImage2,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 03",
+    read_minute: "4 min read",
+  },
+  {
+    image: ProgramImage3,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 09",
+    read_minute: "6 min read",
+  },
+  {
+    image: ProgramImage1,
+    title: "Day 2, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Jan 27",
+    read_minute: "5 min read",
+  },
+  {
+    image: ProgramImage2,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 03",
+    read_minute: "4 min read",
+  },
+  {
+    image: ProgramImage3,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 09",
+    read_minute: "6 min read",
+  },
+  {
+    image: ProgramImage1,
+    title: "Day 2, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Jan 27",
+    read_minute: "5 min read",
+  },
+  {
+    image: ProgramImage2,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 03",
+    read_minute: "4 min read",
+  },
+  {
+    image: ProgramImage3,
+    title: "Day 1, Intensive Workshop on GoogleWorkspace",
+    content:
+      'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster',
+    date: "Feb 09",
+    read_minute: "6 min read",
+  },
+];
