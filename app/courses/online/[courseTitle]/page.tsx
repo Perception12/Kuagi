@@ -58,9 +58,9 @@ const Page = () => {
               </h3>
               <div className="flex flex-col gap-2 text-mediumgrey">
                 {courseData?.benefits.map((benefit, index) => (
-                  <span key={index} className="flex gap-2">
-                    <Image src={CheckIcon} alt="check icon" />
-                    {benefit}
+                  <span key={index} className="flex gap-2 items-start w-full">
+                    <Image src={CheckIcon} alt="check icon" width={18} className="shrink-0" />
+                    <p>{benefit}</p>
                   </span>
                 ))}
               </div>

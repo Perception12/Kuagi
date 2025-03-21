@@ -89,7 +89,7 @@ export const menus = [
   },
   {
     name: "Kuagi Business Hub",
-    link: "#",
+    link: "/business-hub",
   },
   {
     name: "Kuagi Innovative Hub",
@@ -825,7 +825,6 @@ export const pricePlansData = [
   },
 ];
 
-
 export type CourseData = {
   topic: string;
   duration: string;
@@ -1098,8 +1097,6 @@ export const onlineCourseData = [
   },
 ];
 
-
-
 export const physicalCourseData = [
   {
     topic: "Product Design (UI/UX)",
@@ -1355,5 +1352,121 @@ export const physicalCourseData = [
       "MFA",
       "Incident response tools",
     ],
+  },
+];
+
+export type SeminarData = {
+  name: string;
+  duration: string;
+  classTimes: string;
+  classType: string;
+  installment: string;
+  tuition: string;
+  description: string;
+  benefits: string[];
+  objectives: string[];
+  expectations: {
+    attendancePolicy: string;
+    assignments: string;
+    projectDescription: string;
+    projects: string[];
+    courseEvaluation: string;
+    lateWork: string;
+    grading: string;
+  };
+};
+
+export const seminarData = [
+  {
+    name: "Starter Package",
+    duration: "12 Weeks",
+    classTimes: "3 Times a Week",
+    classType: "Physical and Live Virtual Training",
+    installment: "70% on Admission, 30% After one Month",
+    tuition: "₦50,000",
+    description:
+      "This package is for entrepreneurs with low or little knowledge on handling business. By the end of the package, participants should be able to:",
+    benefits: [
+      "Understand the concept of business",
+      "Develop Strategies to promote online presence",
+      "Place business on Google MyBusiness",
+      "Manage and Control Google MyBusiness",
+      "Create and Manage MyBusiness Site",
+      "Explore Google Maps",
+      "Use Drive for Cloud Storage",
+      "Access and analyze the performance on your social platform",
+    ],
+    objectives: [
+      "Increase efficiency of business practices.",
+      "At the end of the class owners should be able to identify areas that will benefit from digitalization and implement the right technologies to improve them.",
+      "Reduce costs of the business to maximize income.",
+      "Improve customer satisfaction by leveraging technology.",
+    ],
+    expectations: {
+      attendancePolicy:
+        "You are expected to attend and participate in all classes given according to the time schedule.",
+      assignments:
+        "The only way to learn is by putting into practice what you learn. The facilitator will have assignments at the end of each class throughout the course. These assignments are to reinforce what code or theory is taught during the class. Most of these assignments are less intensive than the projects and focus more on execution rather than creativity and design. For each assignment, you will have at least 20 hours to complete unless otherwise noted.",
+      projectDescription:
+        "There will be 2 major projects assigned after the conclusion of each topic. The alloted time for the completion of assigned project as well as other requirements will be detailed in the project description via WhatsApp.",
+      projects: [
+        "Place your business on Google my business and Google maps.",
+        "Your product photography and mobile edit.",
+        "Create a Business flier on Canva",
+        "Create a google site for your business.",
+      ],
+      courseEvaluation:
+        "Participants are expected to provide feedback on the quality of instruction in this course by completing online evaluations through email. Evaluations are typically open during the last two or three days of the class, but students will be given specific times when they are open.",
+      lateWork:
+        "All work is due on or before the due date. Extensions for deadlines will only be given on a case-by-case basis. Minor inconveniences such as family vacation or minor illness are not valid reasons for extensions. Unless excused, work submitted within 20 hours after the due date will automatically be deducted by 30% of the maximum points allowed. No work will be accepted for a grade past 20 hours.",
+      grading:
+        "Participants are evaluated on the basis of their timely and effective completion of assignments and projects.",
+    },
+  },
+
+  {
+    name: "Advance Package",
+    duration: "12 Weeks",
+    classTimes: "3 Times a Week",
+    classType: "Physical and Live Virtual Training",
+    installment: "70% on Admission, 30% After one Month",
+    tuition: "₦50,000",
+    description:
+      "This package includes the tools from the starter package and more. By the end of the package, participants should be able to:",
+    benefits: [
+      "Learn all the tools from Starter Package",
+      "Build E-Commerce Platform",
+      "Create Online and physical strategies business improvement",
+      "Create Social ad’s (Facebook, IG, Twitter, WhatsApp)",
+      "Build a Personal Website or Web Application",
+      "Canva -Graphics platform",
+      "Smartphone Photography & Mobile Image Editing",
+    ],
+    objectives: [
+      "Increase efficiency of business practices.",
+      "At the end of the class owners should be able to identify areas that will benefit from digitalization and implement the right technologies to improve them.",
+      "Reduce costs of the business to maximize income.",
+      "Improve customer satisfaction by leveraging technology.",
+    ],
+    expectations: {
+      attendancePolicy:
+        "You are expected to attend and participate in all classes given according to the time schedule.",
+      assignments:
+        "The only way to learn is by putting into practice what you learn. The facilitator will have assignments at the end of each class throughout the course. These assignments are to reinforce what code or theory is taught during the class. Most of these assignments are less intensive than the projects and focus more on execution rather than creativity and design. For each assignment, you will have at least 20 hours to complete unless otherwise noted.",
+      projectDescription:
+        "There will be 2 major projects assigned after the conclusion of each topic. The alloted time for the completion of assigned project as well as other requirements will be detailed in the project description via WhatsApp.",
+      projects: [
+        "Place your business on Google my business and Google maps.",
+        "Your product photography and mobile edit.",
+        "Create a Business flier on Canva",
+        "Create a google site for your business.",
+      ],
+      courseEvaluation:
+        "Participants are expected to provide feedback on the quality of instruction in this course by completing online evaluations through email. Evaluations are typically open during the last two or three days of the class, but students will be given specific times when they are open.",
+      lateWork:
+        "All work is due on or before the due date. Extensions for deadlines will only be given on a case-by-case basis. Minor inconveniences such as family vacation or minor illness are not valid reasons for extensions. Unless excused, work submitted within 20 hours after the due date will automatically be deducted by 30% of the maximum points allowed. No work will be accepted for a grade past 20 hours.",
+      grading:
+        "Participants are evaluated on the basis of their timely and effective completion of assignments and projects.",
+    },
   },
 ];

@@ -121,6 +121,7 @@
   --color-lightyellow: #FEF6E7;
   --color-green: #00CD8E;
   --color-lightgreen: #EBFFF9;
+  --color-verylightgreen: #F6FFFC;
   --color-lightblue: #F7FCFF;
   --color-cta: #034592;
   --color-cta-800: rgba(3, 69, 146, 0.8);
@@ -142,4 +143,30 @@
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
+}
+
+.perspective {
+  perspective: 1200px; /* Increase depth for smoother curvature */
+}
+
+.curved-container {
+  display: flex;
+  transform-style: preserve-3d;
+}
+
+.curved-item {
+  transform: rotateY(var(--rotateY, 30deg)) translateZ(-250px); /* Move elements forward */
+  transition: transform 0.8s ease-in-out; /* Slower, smoother animation */
+}
+
+.curved-container .curved-item:nth-child(1) {
+  --rotateY: 30deg; /* Increase angle for better curvature */
+}
+
+.curved-container .curved-item:nth-child(2) {
+  --rotateY: 0deg; /* Center image remains flat */
+}
+
+.curved-container .curved-item:nth-child(3) {
+  --rotateY: -30deg;
 }
