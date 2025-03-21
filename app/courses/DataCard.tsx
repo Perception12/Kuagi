@@ -1,9 +1,16 @@
+"use client";
 import React from "react";
 import type { CourseData } from "@/data";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
-const DataCard: React.FC<{ data: CourseData }> = ({ data }) => {
+const DataCard: React.FC<{ data: CourseData; courseType: string }> = ({
+  data,
+  courseType,
+}) => {
+  const navigator = useRouter();
+
   return (
     <div className="flex flex-col gap-8 p-8 border border-darkergrey lg:w-[380px] rounded-3xl">
       {/* Image */}
@@ -35,7 +42,12 @@ const DataCard: React.FC<{ data: CourseData }> = ({ data }) => {
       </div>
 
       <div className="flex justify-between items-center gap-4 mt-auto">
-        <Button className="bg-white border border-darkergrey text-darkergrey hover:text-white rounded-full">
+        <Button
+          onClick={() =>
+            navigator.push(`${courseType}/${encodeURIComponent(data.topic)}`)
+          }
+          className="bg-white border border-darkergrey text-darkergrey hover:text-white rounded-full"
+        >
           Learn More
         </Button>
         <h3 className="font-semibold text-xl">{data.price}</h3>

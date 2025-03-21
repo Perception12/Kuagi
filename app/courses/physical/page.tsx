@@ -21,7 +21,7 @@ const page = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
         {physicalCourseData.map((data, index) => (
-          <DataCard data={data} key={index} />
+          <DataCard data={data} key={index} courseType="physical" />
         ))}
       </div>
 
