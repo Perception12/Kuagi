@@ -13,7 +13,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 const CoWorkingSpace = () => {
   return (
     <section className="mt-20 w-full">
-      <ScrollReveal>
         <SectionCard
           image={WhoWeAre}
           buttonText="Become a Kuagite"
@@ -29,7 +28,6 @@ const CoWorkingSpace = () => {
             pursue their passion together.
           </p>
         </SectionCard>
-      </ScrollReveal>
 
       <ScrollReveal>
         <SuccessSection />
