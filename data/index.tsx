@@ -38,6 +38,12 @@ import ProductManagementIllustration from "@/assets/img_product_management.png";
 import CybersecurityIllustration from "@/assets/img_privacy.png";
 import GraphicDesignIllustration from "@/assets/img_graphic_design.png";
 import { StaticImageData } from "next/image";
+import IconWebDev from "@/assets/icons/ic_webdev.png";
+import IconUiUx from "@/assets/icons/ic_uiux.png";
+import IconSoftware from "@/assets/icons/ic_software.png";
+import IconPen from "@/assets/icons/ic_pen.png";
+import IconShop from "@/assets/icons/ic_shop.png";
+import IconMobile from "@/assets/icons/ic_mobile.png";
 
 export const heroOptionsData = [
   {
@@ -92,8 +98,8 @@ export const menus = [
     link: "/business-hub",
   },
   {
-    name: "Kuagi Innovative Hub",
-    link: "#",
+    name: "Kuagi Innovatif Hub",
+    link: "/innovatif-hub",
   },
   {
     name: "Contact us",
@@ -1468,5 +1474,102 @@ export const seminarData = [
       grading:
         "Participants are evaluated on the basis of their timely and effective completion of assignments and projects.",
     },
+  },
+];
+
+export type InnovativeSolution = {
+  title: string;
+  description: string;
+};
+
+export const innovativeSolutions = {
+  name: "Innovative ICT Solutions",
+
+  services: [
+    {
+      title: "At Kuagi Innovatif Hub",
+      description:
+        "We are commited to provide innovative ICT solutions to our customers.",
+    },
+
+    {
+      title: "As a vibrant provider in the industry",
+      description:
+        "We specialize in delivering modern technologies and services that help our clients stay connected and competitive in today’s fast paced digital landscape",
+    },
+
+    {
+      title: "Whether its helping start-ups & businesses",
+      description:
+        "whether it is helping business and start-ups to enhance their systems or providing secure and scalable network infrastructure, we have the skills and resources to deliver exceptional results. ",
+    },
+  ],
+};
+
+export type InnovativeService = {
+  icon: StaticImageData | string;
+  title: string;
+  description: string;
+};
+export const innovativeServices = [
+  {
+    icon: IconWebDev,
+    title: "Web Development",
+    description:
+      "You are covered on oustanding responsive website that follows a fast go-to market strategy and is ready to be tested by yours truly ",
+  },
+  {
+    icon: IconUiUx,
+    title: "UI/UX Design",
+    description:
+      "Grow revenue and business value with a well thought out user experience and interface that increases conversion",
+  },
+  {
+    icon: IconSoftware,
+    title: "Software Development",
+    description:
+      "Our team covers the full software development cycle and  create custom development solutions that reflect clients needs to the highest degree",
+  },
+
+  {
+    icon: IconPen,
+    title: "Brand Identity",
+    description:
+      "Unique and memorable branding solutions that effectively communicate your brand’s message and identity ",
+  },
+  {
+    icon: IconShop,
+    title: "E-commerce Solutions",
+    description:
+      "Dynamic and responsive e-commerce platform designed to boost sales and streamline users interaction ",
+  },
+  {
+    icon: IconMobile,
+    title: "Mobile App Development",
+    description:
+      "Innovative and user-centric mobile application designs that enhance functionality and engagement  ",
+  },
+];
+
+export const workingProcess = [
+  {
+    title: "Research",
+    description:
+      "Understand the project’s goals, target’s goal, target audience, and technical requirements.",
+  },
+  {
+    title: "Design & Prototype",
+    description:
+      "Create a visually appealing and user-friendly design concept.",
+  },
+  {
+    title: "Development",
+    description:
+      "Build a functional and stable solutions meeting the project requirements ",
+  },
+  {
+    title: "Testing",
+    description:
+      "Ensure the solution meets the project requirements and is free of defects. ",
   },
 ];
