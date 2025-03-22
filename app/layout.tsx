@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css"
+import "./globals.css";
 import Nav from "@/app/Nav";
 import CTA from "./CTA";
 import Footer from "./Footer";
@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} container w-full !mx-auto px-4 lg:px-8`}>
+      <body
+        className={`${inter.variable} container w-full !mx-auto px-4 lg:px-8`}
+      >
         <Nav />
         {children}
         <CTA />

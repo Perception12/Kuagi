@@ -44,6 +44,25 @@ import IconSoftware from "@/assets/icons/ic_software.png";
 import IconPen from "@/assets/icons/ic_pen.png";
 import IconShop from "@/assets/icons/ic_shop.png";
 import IconMobile from "@/assets/icons/ic_mobile.png";
+import Hero1 from "@/assets/hero_1.png";
+import Hero2 from "@/assets/hero_2.jpeg";
+import Hero3 from "@/assets/hero_3.png";
+
+export const heroData = [
+  {
+    image: Hero1,
+  },
+  {
+    image: Hero2,
+    heading: "Bridging the gender tech gap",
+    subheading: "Aimed at bulding digital literacy in women"
+  },
+  {
+    image: Hero3,
+    heading: "Crafted to enhance your productivity",
+    subheading: "Provide solutions to your everyday challenge."
+  },
+];
 
 export const heroOptionsData = [
   {

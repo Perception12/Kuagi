@@ -1,7 +1,6 @@
 import Image from "next/image";
-import HeroImage from "@/assets/hero_1.jpeg";
 import HeroOptions from "../components/HeroOptions";
-import { heroOptionsData } from "@/data";
+import { heroOptionsData, heroData } from "@/data";
 import React, { SetStateAction, Dispatch } from "react";
 
 interface HeroProps {
@@ -16,12 +15,14 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
       <div className="absolute inset-0">
         <Image
           alt="background"
-          src={HeroImage}
+          src={heroData[section - 1].image}
           layout="fill"
           objectFit="cover"
-          className="w-full h-full"
+          className=""
         />
-        <div className="absolute inset-0 bg-primary opacity-75"></div>
+        {heroData[section - 1].heading && (
+          <div className="absolute inset-0 bg-primary opacity-75"></div>
+        )}
       </div>
 
       {/* Content */}
@@ -29,11 +30,11 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           <div className="flex flex-col items-center gap-6 text-center">
             <p className="text-white lg:text-xl">
-              Aimed at building digital literacy in women.
+              {heroData[section - 1]?.subheading}
             </p>
 
             <h1 className="mb-6 text-2xl font-bold text-white lg:text-5xl bricolage-grotesque">
-              Bridging the gender tech gap
+              {heroData[section - 1]?.subheading}
             </h1>
           </div>
         </div>
