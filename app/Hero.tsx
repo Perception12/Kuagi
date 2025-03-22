@@ -16,7 +16,9 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
         <Image
           alt="background"
           src={heroData[section - 1].image}
-          className="pbject-cover"
+          layout="fill"
+          objectFit="cover"
+          className="object-cover"
         />
 
         <div className="absolute inset-0 bg-primary opacity-75"></div>
