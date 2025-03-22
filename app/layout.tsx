@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/app/Nav";
 import CTA from "./CTA";
 import Footer from "./Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,8 +28,11 @@ export default function RootLayout({
       >
         <Nav />
         {children}
-        <CTA />
-        <Footer />
+
+        <ScrollReveal>
+          <CTA />
+          <Footer />
+        </ScrollReveal>
       </body>
     </html>
   );

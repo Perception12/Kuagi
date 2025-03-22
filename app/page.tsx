@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <div>
       <Hero section={section} setSection={setSection} />
+
       {section == 1 && <CoWorkingSpace />}
       {section == 2 && <Women4Tech />}
       {section == 3 && <EventsPage />}

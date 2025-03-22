@@ -2,6 +2,7 @@ import React from "react";
 import { women4TechData } from "@/data";
 import Image from "next/image";
 import Reachout from "@/components/Reachout";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Women4Tech = () => {
   return (
@@ -9,18 +10,22 @@ const Women4Tech = () => {
       {/* Event Section */}
       <div className="grid lg:grid-cols-2 gap-24 justify-center items-center">
         {women4TechData.map((item, index) => (
-          <div key={index} className="flex flex-col gap-6">
-            <Image
-              src={item.image}
-              alt="event image"
-              className="w-full object-cover rounded-t-3xl"
-            />
-            <p>{item.description}</p>
-          </div>
+          <ScrollReveal key={index}>
+            <div className="flex flex-col gap-6">
+              <Image
+                src={item.image}
+                alt="event image"
+                className="w-full object-cover rounded-t-3xl"
+              />
+              <p>{item.description}</p>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
 
-      <Reachout />
+      <ScrollReveal>
+        <Reachout />
+      </ScrollReveal>
     </div>
   );
 };

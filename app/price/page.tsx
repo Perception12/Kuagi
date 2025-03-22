@@ -3,14 +3,21 @@ import Hero from "./Hero";
 import Price from "./Price";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const page = () => {
   return (
     <div>
       <Hero />
-      <Price />
-      <Testimonials />
-      <FAQ />
+      <ScrollReveal>
+        <Price />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FAQ />
+      </ScrollReveal>
     </div>
   );
 };

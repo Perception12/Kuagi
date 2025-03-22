@@ -51,6 +51,8 @@ import Hero3 from "@/assets/hero_3.png";
 export const heroData = [
   {
     image: Hero1,
+    heading: "Aimed at enhancing collaboration",
+    subheading: "work and collaborate with our space"
   },
   {
     image: Hero2,

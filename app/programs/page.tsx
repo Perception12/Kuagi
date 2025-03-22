@@ -5,6 +5,7 @@ import "../globals.css";
 
 import { programData } from "@/data";
 import Reachout from "@/components/Reachout";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const page = () => {
   return (
@@ -22,30 +23,34 @@ const page = () => {
       {/* Programs */}
       <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {programData.map((program, index) => (
-          <div key={index} className="rounded-3xl border">
-            <Image
-              src={program.image}
-              alt={program.title}
-              className="w-full rounded-t-3xl"
-            />
-            <div className="p-4 flex flex-col gap-6">
-              <h2 className="font-bold text-2xl">{program.title}</h2>
-              <p>
-                {program.content.length > 100
-                  ? `${program.content.slice(0, 150)}...`
-                  : program.content}
-              </p>
+          <ScrollReveal key={index}>
+            <div className="rounded-3xl border">
+              <Image
+                src={program.image}
+                alt={program.title}
+                className="w-full rounded-t-3xl"
+              />
+              <div className="p-4 flex flex-col gap-6">
+                <h2 className="font-bold text-2xl">{program.title}</h2>
+                <p>
+                  {program.content.length > 100
+                    ? `${program.content.slice(0, 150)}...`
+                    : program.content}
+                </p>
 
-              <p className="text-sm text-footer">
-                {program.date} | {program.read_minute}
-              </p>
+                <p className="text-sm text-footer">
+                  {program.date} | {program.read_minute}
+                </p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
 
       {/* Reachout */}
-      <Reachout />
+      <ScrollReveal>
+        <Reachout />
+      </ScrollReveal>
     </div>
   );
 };
