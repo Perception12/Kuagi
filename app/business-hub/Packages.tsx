@@ -11,13 +11,13 @@ const Packages = () => {
         <SubHeading>Seminar Packages</SubHeading>
       </ScrollReveal>
 
-      <div className="flex flex-col lg:flex-row items-stretch justify-center gap-8">
-        {seminarData.map((data, index) => (
-          <ScrollReveal key={index}>
-            <PackageCard data={data} />
-          </ScrollReveal>
-        ))}
-      </div>
+      <ScrollReveal>
+        <div className="flex flex-col lg:flex-row items-stretch justify-center gap-8">
+          {seminarData.map((data, index) => (
+            <PackageCard key={index} data={data} />
+          ))}
+        </div>
+      </ScrollReveal>
     </section>
   );
 };
