@@ -19,20 +19,19 @@ const WorkingProcess = () => {
             services={innovativeSolutions.services}
           />
         </div>
+
         <div className="flex-2 grid md:grid-cols-2 gap-8">
           {workingProcess.map((process, index) => (
-            <ScrollReveal key={index}>
-              <div
-                key={index}
-                className={`flex flex-col items-center justify-center gap-4 p-4 bg-lightblue text-darkergrey`}
-              >
-                <SubHeading className="self-start lg:text-5xl">
-                  0{index + 1}
-                </SubHeading>
-                <h2 className="text-xl font-bold">{process.title}</h2>
-                <p className="text-center">{process.description}</p>
-              </div>
-            </ScrollReveal>
+            <div
+              key={index}
+              className={`flex flex-col items-center justify-center gap-4 p-4 bg-lightblue text-darkergrey`}
+            >
+              <SubHeading className="self-start lg:text-5xl">
+                0{index + 1}
+              </SubHeading>
+              <h2 className="text-xl font-bold">{process.title}</h2>
+              <p className="text-center">{process.description}</p>
+            </div>
           ))}
         </div>
       </div>

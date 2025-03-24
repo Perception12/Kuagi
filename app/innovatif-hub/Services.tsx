@@ -13,10 +13,10 @@ const Services = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {innovativeServices.map((service, index) => (
-          <ScrollReveal className="flex flex-col items-center justify-center gap-4 min-h-[280px] p-4" key={index}>
+          <ScrollReveal className="h-full" key={index}>
             <div
               key={index}
-              className={`flex flex-col items-center justify-center gap-4 min-h-[280px] p-4 ${
+              className={`flex flex-col items-center justify-center h-full gap-4 min-h-[280px] p-4 ${
                 index % 2 === 0
                   ? "bg-primary text-white"
                   : " bg-lightblue text-darkergrey"
