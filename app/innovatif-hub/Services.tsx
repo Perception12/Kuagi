@@ -13,7 +13,7 @@ const Services = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {innovativeServices.map((service, index) => (
-          <ScrollReveal key={index}>
+          <ScrollReveal className="flex flex-col items-center justify-center gap-4 min-h-[280px] p-4" key={index}>
             <div
               key={index}
               className={`flex flex-col items-center justify-center gap-4 min-h-[280px] p-4 ${
