@@ -34,7 +34,7 @@ const Price = () => {
         ))}
       </div>
 
-      <div className="flex flex-col items-center lg:flex-row gap-4 justify-around">
+      <div className="flex flex-col lg:flex-row gap-4 justify-around items-stretch">
         {priceData && priceData[dataIndex]?.plans.map((data, index) => (
             <PlanCard key={index} data={data} planId = {index} />
         ))}
