@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const WorkingProcess = () => {
   return (
-    <section className="flex flex-col items-center lg:px-16 justify-center gap-8 mt-16">
+    <section className="container mx-auto p-8 lg:px-16 flex flex-col items-center justify-center gap-8 mt-20">
       <ScrollReveal>
         <SubHeading>Our Working Process</SubHeading>
       </ScrollReveal>

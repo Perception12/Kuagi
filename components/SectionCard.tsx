@@ -18,25 +18,27 @@ const SectionCard: React.FC<SectionCardProps> = ({
   buttonText,
 }) => {
   return (
-    <div className="w-full bg-lightgrey p-4 md:px-24 flex items-center justify-around gap-8 lg:gap-0 flex-col lg:flex-row">
-      <div className="flex-1 flex">
-        <ScrollReveal>
-          <Image
-            src={image}
-            alt="who we are Image"
-            className="object-cover rounded-2xl"
-          />
-        </ScrollReveal>
-      </div>
-      <div className="flex-1 flex flex-col gap-4">
-        <ScrollReveal>
-          <SubHeading className="text-start">{title}</SubHeading>
-          {children}
-        </ScrollReveal>
+    <div className="w-full bg-lightgrey flex items-center justify-center">
+      <div className="container flex p-8 md:p-16 gap-8 flex-col lg:flex-row items-center">
+        <div className="flex-1 flex">
+          <ScrollReveal>
+            <Image
+              src={image}
+              alt="who we are Image"
+              className="object-cover w-full rounded-2xl"
+            />
+          </ScrollReveal>
+        </div>
+        <div className="flex-1 flex flex-col gap-4">
+          <ScrollReveal>
+            <SubHeading className="text-start">{title}</SubHeading>
+            {children}
+          </ScrollReveal>
 
-        <ScrollReveal>
-          <Button className="w-fit">{buttonText}</Button>
-        </ScrollReveal>
+          <ScrollReveal>
+            <Button className="w-fit">{buttonText}</Button>
+          </ScrollReveal>
+        </div>
       </div>
     </div>
   );

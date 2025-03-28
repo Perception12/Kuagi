@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const Packages = () => {
   return (
-    <section className="mt-16 flex flex-col gap-6 bg-verylightgreen pt-8 lg:p-8">
+    <section className="container mx-auto mt-16 flex flex-col gap-6 bg-verylightgreen p-8 lg:p-16">
       <ScrollReveal>
         <SubHeading>Seminar Packages</SubHeading>
       </ScrollReveal>

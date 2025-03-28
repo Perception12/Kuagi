@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const Services = () => {
   return (
-    <section className="mt-16 flex flex-col gap-6">
+    <section className="container mx-auto p-8 lg:px-16 mt-20 flex flex-col gap-6">
       <ScrollReveal>
         <SubHeading>Our Services</SubHeading>
       </ScrollReveal>

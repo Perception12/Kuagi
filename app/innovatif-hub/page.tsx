@@ -14,8 +14,8 @@ const page = () => {
       <Hero />
 
       <ScrollReveal>
-        <section className="flex flex-col items-center justify-center md:flex-row gap-8 mt-16">
-          <div className="flex-1 lg:pl-16">
+        <section className="container mx-auto p-8 lg:px-16 flex flex-col items-center w-full md:flex-row gap-8 mt-16">
+          <div className="flex-1">
             <InnovatifCard
               title={innovativeSolutions.name}
               services={innovativeSolutions.services}

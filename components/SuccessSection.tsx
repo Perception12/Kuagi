@@ -8,7 +8,7 @@ import { successData } from "@/data";
 
 const SuccessSection = () => {
   return (
-    <section className="mt-12 flex flex-col items-center justify-center w-full">
+    <section className="mt-20 flex flex-col items-center justify-center w-full">
       <SubHeading>Our Success Story</SubHeading>
 
       {/* Grid Container */}

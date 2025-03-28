@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section className="relative bg-lightblue pb-32 pt-8 md:py-32 flex flex-col md:h-[calc(90vh-5rem)]">
       {/* Content */}
-      <div className="relative container flex flex-start justify-between p-8 md:px-16 lg:px-24">
+      <div className="relative container mx-auto flex flex-start justify-between p-8 md:px-16">
         <div className="flex flex-col items-start gap-6 flex-2">
           <SubHeading className="text-start lg:text-6xl !text-darkergrey">
             Flexible <br /> Work Environment

@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} container w-full !mx-auto px-4 lg:px-8`}
+        className={`${inter.variable} w-full`}
       >
         <Nav />
         {children}

@@ -6,7 +6,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <section className="relative flex bg-lightblue pt-16 md:h-[calc(100vh-5rem)]">
-      <div className="flex relative items-center lg:items-start justify-center h-full lg:px-24 flex-col gap-4 flex-2">
+      <div className="flex relative items-center lg:items-start justify-center h-full p-8 lg:px-32 flex-col gap-4 flex-2">
         <SubHeading className="text-center lg:text-start max-w-[800px] lg:text-3xl xl:text-5xl">
           Your partner in digital transformation, revolutionizing IT solutions
           for a connected world

@@ -21,11 +21,11 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
           className="object-fill"
         />
 
-        <div className="absolute inset-0 bg-primary opacity-75"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container">
+      <div className="relative z-10 container p-8">
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           <div className="flex flex-col items-center gap-6 text-center">
             <p className="text-white lg:text-xl">
@@ -40,8 +40,8 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
       </div>
 
       {/* Page Options - Positioned to Overlap Image and Background */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-3/5">
-        <div className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-8 gap-8">
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-fit">
+        <div className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-4 lg:px-12 gap-8">
           {heroOptionsData.map((option, index) => (
             <HeroOptions
               key={index}

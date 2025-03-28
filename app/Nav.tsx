@@ -24,7 +24,7 @@ const Nav: React.FC = () => {
   return (
     <nav className="w-full mx-auto h-20 flex items-center">
       {/* Mobile Nav */}
-      <div className="container mx-auto py-3 flex justify-between items-center">
+      <div className="container mx-auto py-3 flex justify-between items-center px-8 lg:px-16">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
@@ -80,7 +80,7 @@ const Nav: React.FC = () => {
                   <NavigationMenuLink asChild>
                     <Link
                       href={menu.link}
-                      className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-lightblue hover:text-primary
+                      className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold transition-colors hover:bg-lightblue hover:text-primary
                         ${pathname == menu.link && "text-primary"}
                         `}
                       prefetch={false}

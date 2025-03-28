@@ -36,7 +36,7 @@ const Testimonials = () => {
   }, [api]);
 
   return (
-    <section className="mt-12 flex flex-col items-center justify-center gap-6 md:p-8 md:px-16">
+    <section className=" container mx-auto mt-20 flex flex-col items-center justify-center gap-6 p-8 lg:px-16">
       <SubHeading>Testimonials</SubHeading>
 
       <div className="flex flex-col gap-8 md:hidden">

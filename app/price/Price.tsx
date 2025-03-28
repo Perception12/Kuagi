@@ -20,24 +20,28 @@ const Price = () => {
     <section className="mt-48 md:mt-24 flex flex-col gap-6">
       <SubHeading>Price Plans</SubHeading>
 
-      <div className="bg-lightgrey flex items-center justify-around w-full p-4">
-        {priceData && priceData.map((data, index) => (
-          <div
-            key={index}
-            onClick={() => setDataIndex(index)}
-            className={`px-4 md:px-8 py-4 text-sm md:text-base bg-white text-mediumgrey rounded-full cursor-pointer lg:w-[250px] text-center ${
-              dataIndex == index && "text-primary border border-primary"
-            }`}
-          >
-            {data.title}
-          </div>
-        ))}
+      <div className="bg-lightgrey w-full">
+        <div className="container mx-auto px-8 lg:px-16 flex items-center justify-around w-full p-4">
+          {priceData &&
+            priceData.map((data, index) => (
+              <div
+                key={index}
+                onClick={() => setDataIndex(index)}
+                className={`px-4 md:px-8 py-4 text-sm md:text-base bg-white text-mediumgrey rounded-full cursor-pointer lg:w-[250px] text-center ${
+                  dataIndex == index && "text-primary border border-primary"
+                }`}
+              >
+                {data.title}
+              </div>
+            ))}
+        </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-4 justify-around items-stretch">
-        {priceData && priceData[dataIndex]?.plans.map((data, index) => (
-            <PlanCard key={index} data={data} planId = {index} />
-        ))}
+      <div className="container mx-auto px-8 lg:px-16 flex flex-col lg:flex-row gap-4 justify-around items-stretch">
+        {priceData &&
+          priceData[dataIndex]?.plans.map((data, index) => (
+            <PlanCard key={index} data={data} planId={index} />
+          ))}
       </div>
     </section>
   );
