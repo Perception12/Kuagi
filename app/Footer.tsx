@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col gap-6 mt-12 p-8 lg:p-16 text-footer text-sm lg:text-base">
+    <div className="container mx-auto flex flex-col gap-6 mt-12 p-8 lg:p-16 text-footer text-sm lg:text-base">
       {/* Informations */}
       <div className="flex flex-col lg:flex-row items-start justify-around gap-6">
         <div className="flex-2 flex flex-col gap-4">

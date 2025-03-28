@@ -24,19 +24,18 @@ const Page = () => {
   }, [params.package]);
 
   return (
-    <main className="pt-8 md:py-32 bg-lightblue">
+    <main className="py-8 md:py-32 bg-lightblue">
       {data ? (
         <div className="flex flex-col items-center justify-center gap-8">
           <SubHeading className="text-center max-w-[850px] lg:text-5xl">
             {data.name}
           </SubHeading>
-
           <p className="max-w-[600px] text-center text-mediumgrey">
             The Kuagi Business Hub is to offer a sustainable solution that
             supports and empower business owners/Startups in Kwara State.
           </p>
 
-          <div className="flex flex-col-reverse lg:flex-row lg:items-start gap-16 p-4 lg:p-16 lg:text-lg">
+          <div className=" container mx-auto p-8 lg:p-16 flex flex-col-reverse lg:flex-row lg:items-start gap-16 lg:text-lg">
             <div className="bg-white p-4 lg:p-12 flex-4 flex flex-col gap-6 rounded-2xl">
               <div className="flex flex-col gap-2">
                 <h2 className="text-2xl lg:text-3xl text-primary font-semibold">
