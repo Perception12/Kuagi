@@ -47,16 +47,17 @@ const EventsPage = () => {
           <ScrollReveal>
             <div className="grid w-full md:grid-cols-2 p-4 lg:px-24 justify-center items-center gap-6">
               {eventData.past.map((item, index) => (
-                <div
-                  className=" w-full flex items-center justify-center"
-                  key={index}
-                >
-                  <Image
-                    src={item.image}
-                    alt="past event"
-                    className="object-cover max-w[500px]"
-                  />
-                </div>
+                    <div key={index} className="group relative w-full h-full">
+                    <Image
+                      src={item.image}
+                      alt="past event"
+                      className="object-cover max-w[500px]"
+                    />
+                    <div className="absolute inset-0 bg-primary flex items-center justify-center text-white p-4 opacity-0 group-hover:opacity-90 transition-opacity duration-300">
+                      <p className="text-center">{item.description}</p>
+                    </div>
+                    </div>
+  
               ))}
             </div>
           </ScrollReveal>

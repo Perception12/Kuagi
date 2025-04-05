@@ -52,17 +52,17 @@ export const heroData = [
   {
     image: Hero1,
     heading: "Co-Creative Space",
-    subheading: "A Co-working space for you and your team"
+    subheading: "A Co-working space for you and your team",
   },
   {
     image: Hero2,
     heading: "Bridging the gender tech gap",
-    subheading: "Aimed at bulding digital literacy in women"
+    subheading: "Aimed at bulding digital literacy in women",
   },
   {
     image: Hero3,
     heading: "Crafted to enhance your productivity",
-    subheading: "Provide solutions to your everyday challenge."
+    subheading: "Provide solutions to your everyday challenge.",
   },
 ];
 
@@ -395,10 +395,21 @@ export const eventData = {
     },
   ],
   past: [
-    { image: PastEvent },
-    { image: PastEvent },
-    { image: PastEvent },
-    { image: PastEvent },
+    {
+      image: PastEvent,
+      description:
+        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+    },
+    {
+      image: PastEvent,
+      description:
+        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+    },
+    {
+      image: PastEvent,
+      description:
+        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+    },
   ],
 };
 
