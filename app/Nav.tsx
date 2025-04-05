@@ -76,11 +76,11 @@ const Nav: React.FC = () => {
               menu.components ? (
                 <NavSelect menu={menu} key={index} />
               ) : (
-                <NavigationMenuItem key={index}>
+                <NavigationMenuItem key={index} className="focus:bg-none hover:bg-none" >
                   <NavigationMenuLink asChild>
                     <Link
                       href={menu.link}
-                      className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold transition-colors hover:bg-lightblue hover:text-primary
+                      className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold transition-colors hover:text-primary
                         ${pathname == menu.link && "text-primary"}
                         `}
                       prefetch={false}
