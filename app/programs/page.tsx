@@ -11,7 +11,7 @@ const page = () => {
   return (
     <>
       <section className="container mx-auto mt-6 lg:mt-12 flex flex-col gap-6 px-8 lg:px-16">
-        <div className="flex flex-col gap-4 mb-6">
+        <div className="flex flex-col gap-4 py-20  ">
           <SubHeading className="text-start lg:text-6xl">
             Explore Program Options
           </SubHeading>
@@ -21,6 +21,7 @@ const page = () => {
             through comprehensive and cutting-edge education programs.
           </p>
         </div>
+
         {/* Programs */}
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {programData.map((program, index) => (

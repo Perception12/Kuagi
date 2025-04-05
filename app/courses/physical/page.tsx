@@ -11,7 +11,7 @@ const page = () => {
     <>
       <section className="container mx-auto px-8 lg:px-16 mt-6 lg:mt-12 flex flex-col gap-6">
         <ScrollReveal>
-          <div className="flex flex-col gap-4 mb-6">
+          <div className="flex flex-col gap-4 py-20">
             <SubHeading className="text-start lg:text-6xl">
               Physical Courses
             </SubHeading>

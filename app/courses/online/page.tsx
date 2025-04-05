@@ -10,7 +10,7 @@ const page = () => {
   return (
     <>
       <section className="container mx-auto px-8 lg:px-16 mt-6 lg:mt-12 flex flex-col gap-6">
-        <div className="flex flex-col gap-4 mb-6">
+        <div className="flex flex-col gap-4 py-20">
           <ScrollReveal>
             <SubHeading className="text-start lg:text-6xl">
               Online Courses

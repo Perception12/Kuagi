@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
 
       {/* Page Options - Positioned to Overlap Image and Background */}
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-fit">
-        <div className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-4 lg:px-12 gap-8">
+        <div className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-4 lg:px-20 gap-8 lg:gap-16">
           {heroOptionsData.map((option, index) => (
             <HeroOptions
               key={index}
