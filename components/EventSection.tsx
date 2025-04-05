@@ -6,7 +6,7 @@ import EventImage from "@/assets/img_event.png";
 
 const EventSection = () => {
   return (
-    <section className="mt-20 container mx-auto p-8 lg:px-16 flex flex-col gap-8">
+    <section className="my-50 container mx-auto p-8 lg:px-16 flex flex-col gap-8">
       <SubHeading>Events</SubHeading>
 
       <div className="w-full p-4 md:px-20 flex items-center justify-around gap-8 flex-col lg:flex-row">

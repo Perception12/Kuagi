@@ -21,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
           className="object-fill"
         />
 
-        <div className="absolute inset-0 bg-black opacity-70"></div>
+        <div className="absolute inset-0 bg-primary opacity-75"></div>
       </div>
 
       {/* Content */}
@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
               {heroData[section - 1].subheading}
             </p>
 
-            <h1 className="mb-6 text-2xl font-bold text-white lg:text-5xl bricolage-grotesque">
+            <h1 className="mb-6 text-3xl font-bold text-white lg:text-6xl bricolage-grotesque-bold">
               {heroData[section - 1].heading}
             </h1>
           </div>

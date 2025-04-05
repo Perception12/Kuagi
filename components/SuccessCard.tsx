@@ -17,7 +17,7 @@ const SuccessCard: React.FC<SuccessCardProps> = ({
 }) => {
   return (
     <Card
-      className={`flex flex-col items-center p-6 shadow-none ${className} w-[200px]`}
+      className={`flex flex-col items-center p-6 shadow-none ${className} w-[260px]`}
     >
       <div className="bg-secondary rounded-full w-[50px] h-[50px] flex items-center justify-center">
         <Image src={icon} alt={description} width={20} className="object-cover" />

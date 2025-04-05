@@ -10,7 +10,7 @@ import {
 
 const FAQ = () => {
   return (
-    <div className="container mx-auto mt-16 flex flex-col gap-6 px-8 lg:px-16 items-center justify-center">
+    <div className="container mx-auto my-40 flex flex-col gap-6 px-8 lg:px-16 items-center justify-center">
       <SubHeading>Some of Our Frequently Asked Questions</SubHeading>
       <Accordion
         type="single"

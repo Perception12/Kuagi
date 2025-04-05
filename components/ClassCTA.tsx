@@ -7,9 +7,9 @@ import SubHeading from "./SubHeading";
 
 const ClassCTA = () => {
   return (
-    <div className="mt-20 bg-primary p-8 py-24 text-white relative overflow-x-hidden h-[400px] flex items-center justify-center lg:px-24">
-      <div className="relative w-full items-center  gap-4 justify-center flex flex-col z-10">
-        <SubHeading className="text-white">Explore Our Classes</SubHeading>
+    <div className="mt-20 mx-5 rounded-3xl bg-primary p-8 py-24 text-white relative overflow-hidden max-h-[400px] flex items-center justify-center lg:px-24">
+      <div className="relative w-full items-center  gap-6 justify-center flex flex-col z-10">
+        <SubHeading className="text-white text-4xl lg:!text-5xl bricolage-grotesque-bold">Explore Our Classes</SubHeading>
         <p className="max-w-[485px] text-center">
           Stay ahead in the rapidly evolving tech landscape, and open the doors
           to exciting career opportunities.

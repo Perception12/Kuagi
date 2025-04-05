@@ -8,15 +8,15 @@ import { successData } from "@/data";
 
 const SuccessSection = () => {
   return (
-    <section className="mt-20 flex flex-col items-center justify-center w-full">
+    <section className="my-40 flex flex-col items-center justify-center w-full">
       <SubHeading>Our Success Story</SubHeading>
 
       {/* Grid Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-8 gap-2 mt-10 items-center justify-center w-full">
-        {successData.slice(0, 2).map((item, index) => (
+      <div className="parent mt-10 items-center justify-center w-full">
+        {successData.map((item, index) => (
           <div
             key={index}
-            className={`flex items-center justify-center ${item.className}`}
+            className={`flex items-center justify-center ${item.className} div${index+1}`}
           >
             <SuccessCard
               description={item.description}
@@ -27,7 +27,7 @@ const SuccessSection = () => {
         ))}
 
         {/* Center Image */}
-        <div className="w-full items-center hidden lg:flex row-span-2 justify-center col-start-4 col-span-2">
+        <div className="w-full items-center hidden lg:flex row-span-2 justify-center div7">
           <Image
             src={SuccessImage}
             alt="Success Story"
@@ -36,19 +36,6 @@ const SuccessSection = () => {
             height={200}
           />
         </div>
-
-        {successData.slice(2).map((item, index) => (
-          <div
-            key={index}
-            className={`flex items-center justify-center ${item.className}`}
-          >
-            <SuccessCard
-              description={item.description}
-              icon={item.icon}
-              numbers={item.numbers}
-            />
-          </div>
-        ))}
       </div>
     </section>
   );
