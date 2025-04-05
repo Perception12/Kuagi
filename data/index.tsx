@@ -410,6 +410,11 @@ export const eventData = {
       description:
         "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
     },
+    {
+      image: PastEvent,
+      description:
+        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+    },
   ],
 };
 
