@@ -15,7 +15,7 @@ const CTA = () => {
         />
       </div>
       <div className="flex flex-col gap-6 h-full w-full bg-gradient-to-b from-cta-800 to-cta z-5 p-4 items-center justify-center">
-        <SubHeading className="text-white text-5xl">
+        <SubHeading className="text-white text-4xl lg:text-5xl">
           Ready to join our dynamic community?
         </SubHeading>
 

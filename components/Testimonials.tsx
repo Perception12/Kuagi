@@ -92,12 +92,12 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   testimony,
 }) => {
   return (
-    <div className="flex gap-4 md:p-8 md:px-16 items-center justify-center">
+    <div className="flex flex-col lg:flex-row gap-4 md:p-8 md:px-16 items-center justify-center">
       <div className="rounded-3xl">
-        <Image src={profile} alt={name} />
+        <Image src={profile} alt={name} className="w-24 lg:w-full" />
       </div>
-      <div className="flex flex-col gap-4 justify-around max-w-[500px]">
-        <p className="text-sm md:text-base">{testimony}</p>
+      <div className="flex flex-col gap-4 justify-around items-center lg:items-start max-w-[500px]">
+        <p className="text-sm md:text-base text-center lg:text-start">{testimony}</p>
         <h2 className="text-base md:text-2xl text-primary font-semibold">{name}</h2>
       </div>
     </div>

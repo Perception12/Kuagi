@@ -19,17 +19,17 @@ const EventsPage = () => {
           <div className="bg-lightblue flex flex-col gap-6 p-4 lg:px-24">
             {eventData.upcoming.map((item, index) => (
               <ScrollReveal key={index}>
-                <div className="flex gap-4" key={index}>
+                <div className="flex flex-col lg:flex-row gap-4" key={index}>
                   <Image
                     src={item.image}
                     alt={item.title}
                     className="object-cover max-w[700px]"
                   />
-                  <div className="flex flex-col gap-4 p-8 py-16 items-start">
+                  <div className="flex flex-col gap-4 p-8 lg:py-16 items-center lg:items-start">
                     <SubHeading className="!text-darkergrey">
                       {item.title}
                     </SubHeading>
-                    <p className="max-w-sm">{item.description}</p>
+                    <p className="max-w-sm text-center lg:text-start">{item.description}</p>
                     <Button>Book a ticket</Button>
                   </div>
                 </div>
