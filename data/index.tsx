@@ -4,7 +4,7 @@ import IconTrained from "@/assets/icons/ic_trained.png";
 import IconBusiness from "@/assets/icons/ic_business.png";
 import IconStudents from "@/assets/icons/ic_students.png";
 import IconWeb from "@/assets/icons/ic_web.png";
-import Profile from "@/assets/profile.png";
+import Profile from "@/assets/testimonial_avatar.png";
 import GDG from "@/assets/partners_gdg.png";
 import HAM from "@/assets/partners_ham.png";
 import K from "@/assets/partners_k.png";
@@ -140,6 +140,9 @@ export const testimonial_data = [
   {
     profile: Profile,
     name: "Ryan Olaonipekun",
+    youtube_embed_link:
+      "https://www.youtube.com/embed/TWPvb-StCQA?si=iLkjkkd7YuvRDdPb",
+    role: "Member",
     testimony:
       "My time using the kuagi resources Co-working space has been nothing but productive, from the level\
              of hospitality to a very conducive atmosphere. \
@@ -147,17 +150,23 @@ export const testimonial_data = [
   },
   {
     profile: Profile,
-    name: "Jane Doe",
+    name: "Amazing Grace",
+    youtube_embed_link:
+      "https://www.youtube.com/embed/TWPvb-StCQA?si=iLkjkkd7YuvRDdPb",
+    role: "Member",
     testimony:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Learnt a lot here. They were patient to introduce Google to me since I am old school 😀. \
+It's a nice place to be.",
   },
   {
     profile: Profile,
     name: "Will Smith",
+    youtube_embed_link:
+      "https://www.youtube.com/embed/TWPvb-StCQA?si=iLkjkkd7YuvRDdPb",
+    role: "Member",
     testimony:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Learnt a lot here. They were patient to introduce Google to me since I am old school 😀. \
+It's a nice place to be.",
   },
 ];
 
