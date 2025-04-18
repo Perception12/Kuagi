@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/app/Nav";
-import CTA from "./CTA";
 import Footer from "./Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -23,14 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} w-full`}
-      >
+      <body className={`${inter.variable} w-full`}>
         <Nav />
         {children}
 
         <ScrollReveal>
-          <CTA />
           <Footer />
         </ScrollReveal>
       </body>

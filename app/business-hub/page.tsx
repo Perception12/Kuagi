@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Packages from "./Packages";
 import FAQ from "@/components/FAQ";
 import ScrollReveal from "@/components/ScrollReveal";
+import CTA from "../CTA";
 
 const page = () => {
   return (
@@ -12,6 +13,10 @@ const page = () => {
 
       <ScrollReveal>
         <FAQ />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <CTA />
       </ScrollReveal>
     </div>
   );

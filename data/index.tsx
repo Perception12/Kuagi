@@ -47,6 +47,12 @@ import IconMobile from "@/assets/icons/ic_mobile.png";
 import Hero1 from "@/assets/hero_1.png";
 import Hero2 from "@/assets/hero_2.jpeg";
 import Hero3 from "@/assets/hero_3.png";
+import Women4TechImage1 from "@/assets/women4Tech1.png";
+import Women4TechImage2 from "@/assets/women4Tech2.png";
+import Women4TechImage3 from "@/assets/women4Tech3.png";
+import Women4TechImage4 from "@/assets/women4Tech4.png";
+import Women4TechImage5 from "@/assets/women4Tech5.png";
+import Women4TechImage6 from "@/assets/women4Tech6.png";
 
 export const heroData = [
   {
@@ -1609,4 +1615,13 @@ export const workingProcess = [
     description:
       "Ensure the solution meets the project requirements and is free of defects. ",
   },
+];
+
+export const women4TechImages = [
+  Women4TechImage1,
+  Women4TechImage2,
+  Women4TechImage3,
+  Women4TechImage4,
+  Women4TechImage5,
+  Women4TechImage6,
 ];

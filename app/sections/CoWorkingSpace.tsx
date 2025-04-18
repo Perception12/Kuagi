@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 import EventSection from "@/components/EventSection";
 import Reachout from "@/components/Reachout";
 import ScrollReveal from "@/components/ScrollReveal";
+import CTA from "../CTA";
 
 const CoWorkingSpace = () => {
   return (
@@ -40,6 +41,10 @@ const CoWorkingSpace = () => {
 
       <ScrollReveal>
         <Reachout />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <CTA />
       </ScrollReveal>
     </section>
   );
