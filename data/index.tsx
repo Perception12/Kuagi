@@ -82,12 +82,14 @@ export const heroOptionsData = [
   {
     icon: FeminineIcon,
     title: "Women 4Tech",
+    link: "women4tech",
     icon_width: 15,
     optionNumber: 2,
   },
   {
     icon: EventIcon,
     title: "Events",
+    link: "events",
     icon_width: 18,
     optionNumber: 3,
   },

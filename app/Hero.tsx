@@ -8,7 +8,7 @@ interface HeroProps {
   setSection: Dispatch<SetStateAction<number>>;
 }
 
-const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
+const Hero: React.FC<HeroProps> = ({ section}) => {
   return (
     <section className="relative bg-muted py-32 flex flex-col items-center justify-center h-[calc(90vh-5rem)]">
       {/* Background Image and Overlay */}
@@ -47,10 +47,11 @@ const Hero: React.FC<HeroProps> = ({ section, setSection }) => {
               key={index}
               icon={option.icon}
               title={option.title}
+              link={option?.link}
               icon_width={option.icon_width}
               isActive={section == option.optionNumber}
-              optionNumber={option.optionNumber}
-              setSection={setSection}
+              // optionNumber={option.optionNumber}
+              // setSection={setSection}
             />
           ))}
         </div>

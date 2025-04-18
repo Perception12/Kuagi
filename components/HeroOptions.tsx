@@ -1,13 +1,17 @@
-import React, { Dispatch, SetStateAction } from "react";
+"use client"
+import React from 'react';
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
+// import  { Dispatch, SetStateAction } from "react";
 
 interface HeroOptionsProps {
   icon: StaticImageData;
   title: string;
   icon_width?: number;
   isActive?: boolean;
-  optionNumber: number;
-  setSection?: Dispatch<SetStateAction<number>>;
+  link?: string;
+  // optionNumber: number;
+  // setSection?: Dispatch<SetStateAction<number>>;
 }
 
 const HeroOptions: React.FC<HeroOptionsProps> = ({
@@ -15,13 +19,17 @@ const HeroOptions: React.FC<HeroOptionsProps> = ({
   title,
   icon_width,
   isActive = false,
-  optionNumber,
-  setSection,
+  link,
+  // optionNumber,
+  // setSection,
 }) => {
+
+  const navigator = useRouter();
+
   return (
     <div
       className="flex flex-col items-center justify-center cursor-pointer"
-      onClick={() => setSection && setSection(optionNumber)}
+      onClick={() => link && navigator.push(link)}
     >
       <div className="flex gap-2 items-center justify-center">
         <Image
