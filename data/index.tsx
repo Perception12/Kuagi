@@ -89,7 +89,7 @@ export const heroOptionsData = [
   {
     icon: EventIcon,
     title: "Events",
-    link: "events",
+    link: "our-events",
     icon_width: 18,
     optionNumber: 3,
   },
@@ -406,22 +406,22 @@ export const eventData = {
     {
       image: PastEvent,
       description:
-        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
     },
     {
       image: PastEvent,
       description:
-        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
     },
     {
       image: PastEvent,
       description:
-        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
     },
     {
       image: PastEvent,
       description:
-        "In amet labore minim ipsum fugiat ullamco. Commodo ut est minim nulla exercitation fugiat est esse. Lorem mollit qui officia eu do ipsum velit ad nisi commodo elit. Anim officia ut ipsum pariatur qui aute.",
+        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
     },
   ],
 };
