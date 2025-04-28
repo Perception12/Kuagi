@@ -14,7 +14,10 @@ const ClassCTA = () => {
           Stay ahead in the rapidly evolving tech landscape, and open the doors
           to exciting career opportunities.
         </p>
-        <Button className="text-primary bg-white hover:text-white">view class plan</Button>
+        <div className="flex gap-12 items-center justify-center">
+        <Button className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal">Physical Classes</Button>
+        <Button className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal">Online Classes</Button>
+        </div>
       </div>
 
       <div className="absolute hidden lg:block bottom-0 left-0">

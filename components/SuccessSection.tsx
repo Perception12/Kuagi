@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import SuccessImage from "@/assets/img_success.png"; // Add your center image
+import SuccessImage from "@/assets/success_img.png"; // Add your center image
 import SuccessCard from "./SuccessCard";
 import SubHeading from "./SubHeading";
 import { successData } from "@/data";

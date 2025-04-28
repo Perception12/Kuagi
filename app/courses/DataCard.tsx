@@ -12,7 +12,7 @@ const DataCard: React.FC<{ data: CourseData; courseType: string }> = ({
   const navigator = useRouter();
 
   return (
-    <div className="flex flex-col gap-8 p-8 border lg:w-[380px] rounded-3xl">
+    <div className="flex flex-col gap-8 p-8 border border-darkergrey lg:w-[380px] rounded-3xl">
       {/* Image */}
       <div className="relative flex items-center justify-center">
         <Image
@@ -46,7 +46,7 @@ const DataCard: React.FC<{ data: CourseData; courseType: string }> = ({
           onClick={() =>
             navigator.push(`${courseType}/${encodeURIComponent(data.topic)}`)
           }
-          className="bg-white border text-darkergrey hover:text-white rounded-full"
+          className="bg-white border border-darkergrey text-darkergrey hover:text-white rounded-full"
         >
           Learn More
         </Button>

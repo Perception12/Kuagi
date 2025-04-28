@@ -22,7 +22,7 @@ const CTA = () => {
         </SubHeading>
 
         <p className="text-center max-w-[1000px]">Be part of a supportive community that fosters growth, mentorship, and leadership opportunities in the tech industry. Together, we can close the gender gap and create a more inclusive future!</p>
-
+        
         <Button className="py-6 px-12" >Become a Member</Button>
       </div>
     </div>

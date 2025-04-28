@@ -6,14 +6,14 @@ import IconStudents from "@/assets/icons/ic_students.png";
 import IconWeb from "@/assets/icons/ic_web.png";
 import Profile from "@/assets/testimonial_avatar.png";
 import GDG from "@/assets/partners_gdg.png";
-import HAM from "@/assets/partners_ham.png";
+import HAM from "@/assets/ham_foundation.png";
 import K from "@/assets/partners_k.png";
 import NJFP from "@/assets/partners_njfp.png";
 import NTC from "@/assets/partners_ntc.png";
 import ChairIcon from "@/assets/icons/ic_chair.png";
 import EventIcon from "@/assets/icons/ic_event.png";
 import FeminineIcon from "@/assets/icons/ic_woman.png";
-import LocationImage from "@/assets/img_location.png";
+import LocationImage from "@/assets/location_img.png";
 import Logo from "@/assets/logo.png";
 import InstagramIcon from "@/assets/icons/ic_instagram.png";
 import TwitterIcon from "@/assets/icons/ic_twitter.png";
@@ -24,19 +24,26 @@ import EventImage2 from "@/assets/img_event2.png";
 import EventImage3 from "@/assets/img_event3.png";
 import EventImage4 from "@/assets/img_event4.png";
 import UpcomingEvent1 from "@/assets/upcoming_event.png";
-import PastEvent from "@/assets/past_event1.png";
+import PastEvent1 from "@/assets/past_event1.png";
+import PastEvent2 from "@/assets/past_event2.png";
+import PastEvent3 from "@/assets/past_event3.png";
+import PastEvent4 from "@/assets/past_event4.png";
 import ProgramImage1 from "@/assets/img_program1.png";
 import ProgramImage2 from "@/assets/img_program2.png";
 import ProgramImage3 from "@/assets/img_program3.png";
 import PowerIcon from "@/assets/icons/ic_power.png";
 import WiFiIcon from "@/assets/icons/ic_wifi.png";
-import TvIcon from "@/assets/icons/ic_televisio.png";
+import CoffeeIcon from "@/assets/icons/ic_coffee.png"
 import MeetupIcon from "@/assets/icons/ic_space.png";
 import BookIcon from "@/assets/icons/ic_book.png";
 import ProductDesignIllustration from "@/assets/img_product_design.png";
 import ProductManagementIllustration from "@/assets/img_product_management.png";
 import CybersecurityIllustration from "@/assets/img_privacy.png";
 import GraphicDesignIllustration from "@/assets/img_graphic_design.png";
+import MotionDesignIllustration from "@/assets/img_motion_design.png";
+import DataAnalysisIllustration from "@/assets/img_data_analysis.png";
+import TechnicalWritingIllustration from "@/assets/img_technical_writing.png";
+import FrontendIllustration from "@/assets/img_frontend_coding.png";
 import { StaticImageData } from "next/image";
 import IconWebDev from "@/assets/icons/ic_webdev.png";
 import IconUiUx from "@/assets/icons/ic_uiux.png";
@@ -173,37 +180,37 @@ It's a nice place to be.",
 export const successData = [
   {
     icon: IconLaptop,
-    numbers: "200+",
+    numbers: "150+",
     description: "Job Created",
     className: "lg:col-start-4 lg:col-span-2",
   },
   {
     icon: IconAward,
-    numbers: "150+",
+    numbers: "87",
     description: "Project Awarded",
     className: "lg:col-start-2 lg:col-end-4",
   },
   {
     icon: IconBusiness,
-    numbers: "100+",
-    description: "Business Empowered",
+    numbers: "1379",
+    description: "Startups & Business Empowered",
     className: "lg:col-start-6 lg:col-end-8",
   },
   {
     icon: IconTrained,
-    numbers: "150+",
-    description: "Women Trained",
+    numbers: "169",
+    description: "Hub Subscribers",
     className: "lg:col-start-2 lg:col-end-4",
   },
   {
     icon: IconWeb,
-    numbers: "76+",
-    description: "Websites Created",
+    numbers: "4239",
+    description: "Access to Skill Empowerment",
     className: "lg:col-start-6 lg:col-end-8",
   },
   {
     icon: IconStudents,
-    numbers: "300+",
+    numbers: "467+",
     description: "Students Trained",
     className: "lg:col-start-4 lg:col-span-2",
   },
@@ -234,19 +241,19 @@ export const partners_data = [
 
 export const FAQData = [
   {
-    question: "Can I book a Space?",
+    question: "How can I book a space in the Hub?",
     answer:
-      "Yes, you can visit the hub. Kindly send an email to kuagiresorces@gmail.com requesting a visit and stating the purpose of your visit.",
+      "You can book a space in the hub via this website by kindly navigating to the co working space screen to make payments  with the option that best suits your preference.",
   },
   {
-    question: " What time are the opening hours in the Hub?",
+    question: " What types of training do you provide?",
     answer:
-      "Our Space is open from 8am to 5pm from Mondays to Saturdays excluding Sundays. If a subscriber books a 24/7 access plan can have access to the space anytime.",
+      "we offer training in data analysis, UI/UX, Software development, Graphics designs, Cybersecurity. Check the Kuagi Acad page fore more details.",
   },
   {
-    question: "Who can use the Co working Space in the Hub?",
+    question: "Do i have to be a member to attend the training programs?",
     answer:
-      "The Co working Spaces are open to freelancers, remote workers, startups, small businesses, and larger organizations looking for a flexible office space.",
+      "No, training programs are open to both members and non-members.",
   },
   {
     question: "Can I host meetings or events?",
@@ -283,21 +290,30 @@ export const footerData = {
       header: "Links",
       items: [
         {
-          text: "Home",
+          text: "Physical Class",
           link: "/",
         },
         {
-          text: "About Us",
+          text: "Online Class",
           link: "/",
         },
         {
-          text: "Service",
-          link: "/",
+          text: "Kuagi Business Hub",
+          link: "/business-hum",
         },
         {
-          text: "Contact",
-          link: "/",
+          text: "Kuagi Innovatif Hub",
+          link: "/innovatif-hub",
         },
+        {
+          text: "Kuagi Women4Tech",
+          link: "/women4tech",
+        },
+        {
+          text: "Events & Programs",
+          link: "/our-events",
+        },
+       
       ],
     },
 
@@ -305,19 +321,23 @@ export const footerData = {
       header: "Our Service",
       items: [
         {
-          text: "Home",
+          text: "Startup Incubation",
           link: "/",
         },
         {
-          text: "About Us",
+          text: "IT Consultancy",
           link: "/",
         },
         {
-          text: "Service",
+          text: "Hub & Co-Working Space",
           link: "/",
         },
         {
-          text: "Contact",
+          text: "Partnership & Collaboration",
+          link: "/",
+        },
+        {
+          text: "Tech Training",
           link: "/",
         },
       ],
@@ -403,34 +423,27 @@ export const eventData = {
         'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster...',
       eventId: 1,
     },
-    {
-      image: UpcomingEvent1,
-      title: "Tech ladies Unite 2.0",
-      description:
-        'The workshop titled "Enhancing Creative Thinking in the Workplace" aimed to equip participants with the necessary tools and techniques to foster...',
-      eventId: 2,
-    },
   ],
   past: [
     {
-      image: PastEvent,
+      image: PastEvent1,
       description:
         "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
     },
     {
-      image: PastEvent,
+      image: PastEvent2,
       description:
-        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
+        "A picture from the front-end development graduation captures a proud and inspiring moment as students gather with their teacher, celebrating the culmination of weeks of hard work.",
     },
     {
-      image: PastEvent,
+      image: PastEvent3,
       description:
-        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
+        "A picture of some of the representatives from the hub at the DevFest. Gathered against a backdrop of DevFest, their smiles and confident postures reflect their excitement and readiness to contribute to the tech dialogue.",
     },
     {
-      image: PastEvent,
+      image: PastEvent4,
       description:
-        "A picture from the previous Tech Ladies 1.0 event that captures a moment of vibrant interaction, showcasing women actively engaged in learning and collaboration.",
+        "The Product Design class during graduation captures  moment of joy and achievement. The graduates, around their tutor, all smiles and radiating confidence as they celebrate their hard work and accomplishments.",
     },
   ],
 };
@@ -536,24 +549,24 @@ export const programData = [
 
 export const priceHeroData = [
   {
-    icon: PowerIcon,
-    description: "24 hrs Power Supply",
+    icon: MeetupIcon,
+    description: "Mon-Fri (8am-5pm) Sat (9am-5pm)",
   },
   {
     icon: WiFiIcon,
-    description: "Fast Internet",
+    description: "5G Network Area",
   },
   {
-    icon: TvIcon,
-    description: "Meetup space",
+    icon: CoffeeIcon,
+    description: "Cofee/Tea for productibvity",
   },
   {
-    icon: MeetupIcon,
-    description: "Meetup Space",
+    icon: PowerIcon,
+    description: "Uninterrupted Power Supply",
   },
   {
     icon: BookIcon,
-    description: "Access To Library",
+    description: "Access to Library & Comunity",
   },
 ];
 
@@ -576,11 +589,11 @@ export const pricePlansData = [
     title: "Shared Space",
     plans: [
       {
-        name: "No Internet Plan",
+        name: "Standard Plan",
         subscriptions: [
           {
             name: "Daily",
-            price: "₦500",
+            price: "₦1,500",
             benefits: [
               "Subscribers can request internet Access when the need arises",
               "Discounted price of ₦300/GB valid through the Coworking space subscription period",
@@ -606,7 +619,7 @@ export const pricePlansData = [
       },
 
       {
-        name: "Standard Plan",
+        name: "Premium Plan",
         subscriptions: [
           {
             name: "Daily",
@@ -619,7 +632,7 @@ export const pricePlansData = [
           },
           {
             name: "Weekly",
-            price: "₦5,000",
+            price: "₦8,000",
             benefits: [
               "Unlimited bandwidth internet access",
               "Wifi speed at 0.75MBPS",
@@ -639,7 +652,7 @@ export const pricePlansData = [
       },
 
       {
-        name: "Premium Plan",
+        name: "Super Pro",
         subscriptions: [
           {
             name: "Daily",
@@ -663,7 +676,7 @@ export const pricePlansData = [
           },
           {
             name: "Monthly",
-            price: "₦40,000",
+            price: "₦20,000",
             benefits: [
               "Unlimited bandwidth internet access",
               "Wifi speed at 1.5MBPS",
@@ -677,10 +690,10 @@ export const pricePlansData = [
   },
 
   {
-    title: "Private Desk",
+    title: "Virtual Office",
     plans: [
       {
-        name: "No Internet Plan",
+        name: "Standard Plan",
         subscriptions: [
           {
             name: "Daily",
@@ -710,7 +723,7 @@ export const pricePlansData = [
       },
 
       {
-        name: "Standard Plan",
+        name: "Premium Plan",
         subscriptions: [
           {
             name: "Daily",
@@ -743,7 +756,7 @@ export const pricePlansData = [
       },
 
       {
-        name: "Premium Plan",
+        name: "Super Pro",
         subscriptions: [
           {
             name: "Daily",
@@ -784,7 +797,7 @@ export const pricePlansData = [
     title: "Meetup",
     plans: [
       {
-        name: "No Internet Plan",
+        name: "Standard Plan",
         subscriptions: [
           {
             name: "Daily",
@@ -814,7 +827,7 @@ export const pricePlansData = [
       },
 
       {
-        name: "Standard Plan",
+        name: "Premium Plan",
         subscriptions: [
           {
             name: "Daily",
@@ -847,7 +860,7 @@ export const pricePlansData = [
       },
 
       {
-        name: "Premium Plan",
+        name: "Super Pro",
         subscriptions: [
           {
             name: "Daily",
@@ -1029,108 +1042,108 @@ export const onlineCourseData = [
   },
 
   {
-    topic: "Product Design (UI/UX)",
+    topic: "Motion Design",
+    duration: "16 weeks",
+    classTime: "2-3 times a week",
+    price: "₦100,000",
+    availability: false,
+    image: MotionDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Data Analysis",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦50,000",
+    availability: false,
+    image: DataAnalysisIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Technical Writing",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦50,000",
+    availability: true,
+    image: TechnicalWritingIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Frontend Coding",
     duration: "2 weeks",
     classTime: "2-3 times a week",
     price: "₦100,000",
     availability: true,
-    image: ProductDesignIllustration,
-    description:
-      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Live Virtual Training",
-    benefits: [
-      "Between 17-40 years of age",
-      "10 - 12 weeks programme",
-      "Access to a laptop or desktop",
-      "No previous Cybersecurity experience required",
-      "Certificate",
-    ],
-    installment: "70% on Admission, 30% after one month",
-    curriculum: [
-      "Firewalls",
-      "Antivirus software",
-      "Intrusion detection systems",
-      "VPNs",
-      "Password managers",
-      "Encryption tools",
-      "SIEM tools",
-      "Penetration testing tools",
-      "MFA",
-      "Incident response tools",
-    ],
-  },
-
-  {
-    topic: "Cybersecurity",
-    duration: "2 weeks",
-    classTime: "2-3 times a week",
-    price: "₦250,000",
-    availability: false,
-    image: CybersecurityIllustration,
-    description:
-      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Live Virtual Training",
-    benefits: [
-      "Between 17-40 years of age",
-      "10 - 12 weeks programme",
-      "Access to a laptop or desktop",
-      "No previous Cybersecurity experience required",
-      "Certificate",
-    ],
-    installment: "70% on Admission, 30% after one month",
-    curriculum: [
-      "Firewalls",
-      "Antivirus software",
-      "Intrusion detection systems",
-      "VPNs",
-      "Password managers",
-      "Encryption tools",
-      "SIEM tools",
-      "Penetration testing tools",
-      "MFA",
-      "Incident response tools",
-    ],
-  },
-
-  {
-    topic: "Product Management",
-    duration: "2 weeks",
-    classTime: "2-3 times a week",
-    price: "₦60,000",
-    availability: true,
-    image: ProductManagementIllustration,
-    description:
-      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Live Virtual Training",
-    benefits: [
-      "Between 17-40 years of age",
-      "10 - 12 weeks programme",
-      "Access to a laptop or desktop",
-      "No previous Cybersecurity experience required",
-      "Certificate",
-    ],
-    installment: "70% on Admission, 30% after one month",
-    curriculum: [
-      "Firewalls",
-      "Antivirus software",
-      "Intrusion detection systems",
-      "VPNs",
-      "Password managers",
-      "Encryption tools",
-      "SIEM tools",
-      "Penetration testing tools",
-      "MFA",
-      "Incident response tools",
-    ],
-  },
-
-  {
-    topic: "Graphic Design",
-    duration: "12 weeks",
-    classTime: "2-3 times a week",
-    price: "₦60,000",
-    availability: true,
-    image: GraphicDesignIllustration,
+    image: FrontendIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
     classType: "Live Virtual Training",
@@ -1167,7 +1180,7 @@ export const physicalCourseData = [
     image: ProductDesignIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Physical Training",
+    classType: "Live Virtual Training",
     benefits: [
       "Between 17-40 years of age",
       "10 - 12 weeks programme",
@@ -1231,7 +1244,7 @@ export const physicalCourseData = [
     image: ProductManagementIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Physical Training",
+    classType: "Live Virtual Training",
     benefits: [
       "Between 17-40 years of age",
       "10 - 12 weeks programme",
@@ -1263,7 +1276,7 @@ export const physicalCourseData = [
     image: GraphicDesignIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Physical Training",
+    classType: "Live Virtual Training",
     benefits: [
       "Between 17-40 years of age",
       "10 - 12 weeks programme",
@@ -1287,108 +1300,108 @@ export const physicalCourseData = [
   },
 
   {
-    topic: "Product Design (UI/UX)",
+    topic: "Motion Design",
+    duration: "16 weeks",
+    classTime: "2-3 times a week",
+    price: "₦100,000",
+    availability: false,
+    image: MotionDesignIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Data Analysis",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦50,000",
+    availability: false,
+    image: DataAnalysisIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Technical Writing",
+    duration: "2 weeks",
+    classTime: "2-3 times a week",
+    price: "₦50,000",
+    availability: true,
+    image: TechnicalWritingIllustration,
+    description:
+      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
+    classType: "Live Virtual Training",
+    benefits: [
+      "Between 17-40 years of age",
+      "10 - 12 weeks programme",
+      "Access to a laptop or desktop",
+      "No previous Cybersecurity experience required",
+      "Certificate",
+    ],
+    installment: "70% on Admission, 30% after one month",
+    curriculum: [
+      "Firewalls",
+      "Antivirus software",
+      "Intrusion detection systems",
+      "VPNs",
+      "Password managers",
+      "Encryption tools",
+      "SIEM tools",
+      "Penetration testing tools",
+      "MFA",
+      "Incident response tools",
+    ],
+  },
+
+  {
+    topic: "Frontend Coding",
     duration: "2 weeks",
     classTime: "2-3 times a week",
     price: "₦100,000",
     availability: true,
-    image: ProductDesignIllustration,
-    description:
-      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Live Virtual Training",
-    benefits: [
-      "Between 17-40 years of age",
-      "10 - 12 weeks programme",
-      "Access to a laptop or desktop",
-      "No previous Cybersecurity experience required",
-      "Certificate",
-    ],
-    installment: "70% on Admission, 30% after one month",
-    curriculum: [
-      "Firewalls",
-      "Antivirus software",
-      "Intrusion detection systems",
-      "VPNs",
-      "Password managers",
-      "Encryption tools",
-      "SIEM tools",
-      "Penetration testing tools",
-      "MFA",
-      "Incident response tools",
-    ],
-  },
-
-  {
-    topic: "Cybersecurity",
-    duration: "2 weeks",
-    classTime: "2-3 times a week",
-    price: "₦250,000",
-    availability: false,
-    image: CybersecurityIllustration,
-    description:
-      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Live Virtual Training",
-    benefits: [
-      "Between 17-40 years of age",
-      "10 - 12 weeks programme",
-      "Access to a laptop or desktop",
-      "No previous Cybersecurity experience required",
-      "Certificate",
-    ],
-    installment: "70% on Admission, 30% after one month",
-    curriculum: [
-      "Firewalls",
-      "Antivirus software",
-      "Intrusion detection systems",
-      "VPNs",
-      "Password managers",
-      "Encryption tools",
-      "SIEM tools",
-      "Penetration testing tools",
-      "MFA",
-      "Incident response tools",
-    ],
-  },
-
-  {
-    topic: "Product Management",
-    duration: "2 weeks",
-    classTime: "2-3 times a week",
-    price: "₦60,000",
-    availability: true,
-    image: ProductManagementIllustration,
-    description:
-      "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
-    classType: "Live Virtual Training",
-    benefits: [
-      "Between 17-40 years of age",
-      "10 - 12 weeks programme",
-      "Access to a laptop or desktop",
-      "No previous Cybersecurity experience required",
-      "Certificate",
-    ],
-    installment: "70% on Admission, 30% after one month",
-    curriculum: [
-      "Firewalls",
-      "Antivirus software",
-      "Intrusion detection systems",
-      "VPNs",
-      "Password managers",
-      "Encryption tools",
-      "SIEM tools",
-      "Penetration testing tools",
-      "MFA",
-      "Incident response tools",
-    ],
-  },
-
-  {
-    topic: "Graphic Design",
-    duration: "12 weeks",
-    classTime: "2-3 times a week",
-    price: "₦60,000",
-    availability: true,
-    image: GraphicDesignIllustration,
+    image: FrontendIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
     classType: "Live Virtual Training",

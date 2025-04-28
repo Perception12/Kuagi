@@ -55,7 +55,7 @@ const Page = () => {
                   <Image
                     src={item.image}
                     alt="past event"
-                    className="object-cover max-w[500px]"
+                    className="object-cover max-w[500px] w-full"
                   />
                   <div className="absolute bottom-0 flex items-center justify-center bg-white p-4 w-fit h-fit max-w-[450px] ">
                     <p className="text-center">{item.description}</p>
