@@ -188,31 +188,11 @@
   font-style: italic;
 }
 
-
-.perspective {
-  perspective: 1200px; /* Increase depth for smoother curvature */
-}
-
-.curved-container {
-  display: flex;
-  transform-style: preserve-3d;
-}
-
-.curved-item {
-  transform: rotateY(var(--rotateY, 30deg)) translateZ(-250px); /* Move elements forward */
-  transition: transform 0.8s ease-in-out; /* Slower, smoother animation */
-}
-
-.curved-container .curved-item:nth-child(1) {
-  --rotateY: 30deg; /* Increase angle for better curvature */
-}
-
-.curved-container .curved-item:nth-child(2) {
-  --rotateY: 0deg; /* Center image remains flat */
-}
-
-.curved-container .curved-item:nth-child(3) {
-  --rotateY: -30deg;
+.ellipse {
+  width: 100%; /* Adjust width as needed */
+  height: 2rem; /* Adjust height as needed */
+  background-color: white;
+  border-radius:100%; /* Horizontal radius, Vertical radius */
 }
 
 @media (min-width: 1024px) {
