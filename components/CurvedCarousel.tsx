@@ -9,10 +9,10 @@ const images = [Image1, Image2, Image3];
 
 export default function CurvedCarousel() {
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 mx-auto items-center justify-center">
 
       {images.map((image, index) => (
-        <Image src={image} key={index} alt="slider" className="object-cover" />
+        <Image src={image} key={index} alt="slider" className="object-fill" />
       ))}
 
     </div>
