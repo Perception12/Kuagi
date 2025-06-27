@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/admin/AdminSidebar";
 import "@/app/globals.css";
+import AdminHeader from "@/components/admin/AdminHeader";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,8 +25,11 @@ export default function RootLayout({
       <body className={`${inter.variable} w-full`}>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarTrigger />
-          <main>{children}</main>
+
+          <main className="w-full">
+            <AdminHeader />
+            {children}
+          </main>
         </SidebarProvider>
       </body>
     </html>
