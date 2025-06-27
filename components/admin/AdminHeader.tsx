@@ -7,7 +7,7 @@ import { SearchForm } from "./SearchForm";
 
 const AdminHeader = () => {
   return (
-    <header className="flex h-(--header-height) shrink-0 items-center gap-2 py-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
+    <header className="flex sticky top-0 h-(--header-height) shrink-0 items-center gap-2 py-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height) bg-white z-10">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger className="-ml-1" />
         <Separator
@@ -19,12 +19,12 @@ const AdminHeader = () => {
           <SearchForm className="w-full sm:ml-auto sm:w-auto" />
           <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
             <a href="/admin/notifications">
-              <BellDot className="h-5 w-5" />
+              <BellDot className="!h-5 !w-5" />
             </a>
           </Button>
           <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
             <a href="/admin/notifications">
-              <Settings className="h-5 w-5" />
+              <Settings className="!h-5 !w-5" />
             </a>
           </Button>
         </div>
