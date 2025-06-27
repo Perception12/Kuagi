@@ -13,7 +13,7 @@ import {
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import ListItem from "../components/ListItem";
+import ListItem from "../../components/ListItem";
 import { menus } from "@/data";
 import { useRouter, usePathname } from "next/navigation";
 

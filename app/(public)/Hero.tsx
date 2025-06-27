@@ -1,5 +1,5 @@
 import Image from "next/image";
-import HeroOptions from "../components/HeroOptions";
+import HeroOptions from "../../components/HeroOptions";
 import { heroOptionsData, heroData } from "@/data";
 import React, { SetStateAction, Dispatch } from "react";
 
