@@ -76,7 +76,6 @@ export const heroColumns: ColumnDef<hero>[] = [
     cell: ({ getValue }) => {
       const value = getValue() as string | StaticImageData;
       if (!value) return null;
-      // If value is a string, use it as src. If it's an object, it's likely StaticImageData.
       return (
         <Image
           src={typeof value === "string" ? value : value}
@@ -102,7 +101,7 @@ export const heroColumns: ColumnDef<hero>[] = [
   {
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
-    size: 120, // Set your desired width in px
+    size: 120,
     cell: ({ row }) => <Action<hero> row={row} />,
   },
 ];
@@ -115,7 +114,6 @@ export const whoWeAreColumns: ColumnDef<whoWeAre>[] = [
     cell: ({ getValue }) => {
       const value = getValue() as string | StaticImageData;
       if (!value) return null;
-      // If value is a string, use it as src. If it's an object, it's likely StaticImageData.
       return (
         <Image
           src={typeof value === "string" ? value : value}
@@ -139,7 +137,7 @@ export const whoWeAreColumns: ColumnDef<whoWeAre>[] = [
   },
   {
     id: "actions",
-    size: 120, // Set your desired width in px
+    size: 120,
     header: () => <div className="text-right">Actions</div>,
     cell: ({ row }) => <Action<hero> row={row} />,
   },
@@ -153,7 +151,6 @@ export const successColumns: ColumnDef<success>[] = [
     cell: ({ getValue }) => {
       const value = getValue() as string | StaticImageData;
       if (!value) return null;
-      // If value is a string, use it as src. If it's an object, it's likely StaticImageData.
       return (
         <div className="flex items-center justify-center bg-lightblue rounded-full p-2 w-fit ">
           <Image
@@ -180,7 +177,7 @@ export const successColumns: ColumnDef<success>[] = [
   {
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
-    size: 120, // Set your desired width in px
+    size: 120,
     cell: ({ row }) => <Action<success> row={row} />,
   },
 ];
@@ -193,7 +190,6 @@ export const partnersColumns: ColumnDef<partners>[] = [
     cell: ({ getValue }) => {
       const value = getValue() as string | StaticImageData;
       if (!value) return null;
-      // If value is a string, use it as src. If it's an object, it's likely StaticImageData.
       return (
         <Image
           src={typeof value === "string" ? value : value}
@@ -213,7 +209,7 @@ export const partnersColumns: ColumnDef<partners>[] = [
   {
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
-    size: 120, // Set your desired width in px
+    size: 120,
     cell: ({ row }) => <Action<partners> row={row} />,
   },
 ];
@@ -248,7 +244,6 @@ export const testimonialsColumns: ColumnDef<testimonials>[] = [
     cell: ({ getValue }) => {
       const value = getValue() as string | StaticImageData;
       if (!value) return null;
-      // If value is a string, use it as src. If it's an object, it's likely StaticImageData.
       return (
         <Image
           src={typeof value === "string" ? value : value}
