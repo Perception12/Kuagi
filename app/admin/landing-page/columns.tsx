@@ -2,8 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import Image, { StaticImageData } from "next/image";
-import { Pen, Trash2 } from "lucide-react";
-import type { Row } from "@tanstack/react-table";
+import Action from "@/components/admin/Action";
 
 type image_t = string | StaticImageData;
 
@@ -48,25 +47,7 @@ export type faq = {
   answers: string;
 };
 
-const Action = <T extends { id: string }>({ row }: { row: Row<T> }) => {
-  return (
-    <div className="flex gap-4 text-right justify-end">
-      <button
-        className="py-2 text-primary cursor-pointer"
-        onClick={() => console.log(`Edit ${row.original.id}`)}
-      >
-        <Pen className="inline mr-1" />
-      </button>
 
-      <button
-        className="py-2 text-primary cursor-pointer"
-        onClick={() => console.log(`Delete ${row.original.id}`)}
-      >
-        <Trash2 className="inline mr-1" />
-      </button>
-    </div>
-  );
-};
 
 export const heroColumns: ColumnDef<hero>[] = [
   {

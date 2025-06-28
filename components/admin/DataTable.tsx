@@ -37,9 +37,16 @@ export function DataTable<TData, TValue>({
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
+              {headerGroup.headers.map((header, headerIdx, arr) => {
                 return (
-                  <TableHead key={header.id} className="bg-lightblue">
+                  <TableHead
+                    key={header.id}
+                    className={[
+                      "bg-lightblue",
+                      headerIdx === 0 ? "pl-6" : "",
+                      headerIdx === arr.length - 1 ? "pr-6" : "",
+                    ].join(" ")}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -58,9 +65,16 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                
               >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                {row.getVisibleCells().map((cell, cellIdx, arr) => (
+                  <TableCell
+                    key={cell.id}
+                    className={[
+                      cellIdx === 0 ? "pl-6" : "",
+                      cellIdx === arr.length - 1 ? "pr-6" : "",
+                    ].join(" ")}
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}

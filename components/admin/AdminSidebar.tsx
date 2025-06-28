@@ -1,3 +1,4 @@
+"use client";
 import {
   Calendar,
   Home,
@@ -25,12 +26,13 @@ import {
 } from "@/components/ui/sidebar";
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // Menu items.
 const appItems = [
   {
     title: "Dashboard",
-    url: "#",
+    url: "/admin",
     icon: Home,
   },
 ];
@@ -38,17 +40,17 @@ const appItems = [
 const pageItems = [
   {
     title: "Landing Page",
-    url: "#",
+    url: "/admin/landing-page",
     icon: ImagePlus,
   },
   {
     title: "Events",
-    url: "#",
+    url: "/admin/events",
     icon: Calendar,
   },
   {
     title: "Women4Tech",
-    url: "#",
+    url: "/admin/women4tech",
     icon: Venus,
   },
 ];
@@ -56,12 +58,12 @@ const pageItems = [
 const hubItems = [
   {
     title: "Business Hub",
-    url: "#",
+    url: "/admin/business-hub",
     icon: BriefcaseBusiness,
   },
   {
     title: "Innovatif Hub",
-    url: "#",
+    url: "/admin/innovatif-hub",
     icon: Boxes,
   },
 ];
@@ -69,12 +71,12 @@ const hubItems = [
 const plansItems = [
   {
     title: "Co-working Space",
-    url: "#",
+    url: "/admin/co-working-space",
     icon: Network,
   },
   {
     title: "Courses",
-    url: "#",
+    url: "/admin/courses",
     icon: SquareUserRound,
   },
 ];
@@ -93,6 +95,7 @@ const footerItems = [
 ];
 
 export function AppSidebar() {
+  const router = useRouter();
   return (
     <Sidebar>
       <SidebarHeader>
@@ -102,7 +105,11 @@ export function AppSidebar() {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <Image src={Logo} alt="logo" className="max-w-[120px] cursor-pointer" />
+              <Image
+                src={Logo}
+                alt="logo"
+                className="max-w-[120px] cursor-pointer"
+              />
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -115,11 +122,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {appItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    onClick={() => router.push(item.url)}
+                    asChild
+                  >
+                    <div className="flex gap-2 items-center" >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -133,11 +143,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {pageItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    onClick={() => router.push(item.url)}
+                    asChild
+                  >
+                    <div className="flex gap-2 items-center" >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -151,11 +164,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {hubItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    onClick={() => router.push(item.url)}
+                    asChild
+                  >
+                    <div className="flex gap-2 items-center" >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -169,11 +185,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {plansItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    onClick={() => router.push(item.url)}
+                    asChild
+                  >
+                    <div className="flex gap-2 items-center" >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -186,11 +205,11 @@ export function AppSidebar() {
         <SidebarMenu>
           {footerItems.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
+              <SidebarMenuButton onClick={() => router.push(item.url)} asChild>
+                <div className="flex gap-2 items-center" >
                   <item.icon />
                   <span>{item.title}</span>
-                </a>
+                </div>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

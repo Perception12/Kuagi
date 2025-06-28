@@ -1176,7 +1176,7 @@ export const physicalCourseData = [
     duration: "2 weeks",
     classTime: "2-3 times a week",
     price: "₦100,000",
-    availability: true,
+    availability: false,
     image: ProductDesignIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
@@ -1208,7 +1208,7 @@ export const physicalCourseData = [
     duration: "2 weeks",
     classTime: "2-3 times a week",
     price: "₦250,000",
-    availability: false,
+    availability: true,
     image: CybersecurityIllustration,
     description:
       "The Cybersecurity Mastery program offers an extensive 12-week training curriculum tailored for individuals passionate about cybersecurity. Participants will achieve proficiency in cybersecurity principles, delving into advanced techniques and strategic frameworks. ",
