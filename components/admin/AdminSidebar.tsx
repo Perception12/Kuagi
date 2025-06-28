@@ -103,7 +103,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              className="data-[slot=sidebar-menu-button]:!p-1.5 cursor-pointer"
             >
               <Image
                 src={Logo}
@@ -123,10 +123,11 @@ export function AppSidebar() {
               {appItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
+                    className="cursor-pointer"
                     onClick={() => router.push(item.url)}
                     asChild
                   >
-                    <div className="flex gap-2 items-center" >
+                    <div className="flex gap-2 items-center">
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
@@ -144,10 +145,11 @@ export function AppSidebar() {
               {pageItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
+                    className="cursor-pointer"
                     onClick={() => router.push(item.url)}
                     asChild
                   >
-                    <div className="flex gap-2 items-center" >
+                    <div className="flex gap-2 items-center">
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
@@ -165,10 +167,11 @@ export function AppSidebar() {
               {hubItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
+                    className="cursor-pointer"
                     onClick={() => router.push(item.url)}
                     asChild
                   >
-                    <div className="flex gap-2 items-center" >
+                    <div className="flex gap-2 items-center">
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
@@ -186,10 +189,11 @@ export function AppSidebar() {
               {plansItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
+                    className="cursor-pointer"
                     onClick={() => router.push(item.url)}
                     asChild
                   >
-                    <div className="flex gap-2 items-center" >
+                    <div className="flex gap-2 items-center">
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
@@ -205,8 +209,12 @@ export function AppSidebar() {
         <SidebarMenu>
           {footerItems.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton onClick={() => router.push(item.url)} asChild>
-                <div className="flex gap-2 items-center" >
+              <SidebarMenuButton
+                onClick={() => router.push(item.url)}
+                className="cursor-pointer"
+                asChild
+              >
+                <div className="flex gap-2 items-center">
                   <item.icon />
                   <span>{item.title}</span>
                 </div>
