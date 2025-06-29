@@ -1,7 +1,7 @@
 import SubHeading from "@/components/SubHeading";
 import React from "react";
 import Image from "next/image";
-import "../globals.css";
+import "@/app/globals.css";
 
 import { programData } from "@/data";
 import Reachout from "@/components/Reachout";
