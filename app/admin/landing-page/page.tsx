@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  heroData,
   successData,
   partners_data,
   testimonial_data,
@@ -24,18 +23,21 @@ import { DataTable } from "@/components/admin/DataTable";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import whoWeAreImage from "@/assets/who_we_are.png";
+import { SuccessStoriesDialog } from "@/components/admin/SuccessStoriesDialog";
+import { PartnersDialog } from "@/components/admin/PartnersDialog";
+import { TestimonialsDialog } from "@/components/admin/TestimonialsDialog";
+import { FAQDialog } from "@/components/admin/FAQDialog";
 
 async function getHeroData(): Promise<hero[]> {
   // Simulate fetching data from an API or database
-  const data: hero[] = [];
-  heroData.forEach((item, idx) =>
-    data.push({
-      id: `hero-${idx + 1}`,
-      image: item.image,
-      title: item.heading,
-      description: item.subheading,
-    })
-  );
+  const data: hero[] = [
+    {
+      id: `hero-1`,
+      image: whoWeAreImage,
+      title: "Co-Creative Space",
+      description: "A Co-working space for you and your team",
+    },
+  ];
 
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -175,19 +177,14 @@ export default async function page() {
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Success Stories</h1>
         <DataTable columns={successColumns} data={fetchedSuccessData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+
+        <SuccessStoriesDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Our Partners</h1>
         <DataTable columns={partnersColumns} data={fetchedPartnersData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <PartnersDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
@@ -196,19 +193,14 @@ export default async function page() {
           columns={testimonialsColumns}
           data={fetchedTestimonialsData}
         />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+
+        <TestimonialsDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">FAQ</h1>
         <DataTable columns={faqColumns} data={fetchedFAQData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <FAQDialog />
       </div>
     </div>
   );

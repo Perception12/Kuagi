@@ -3,6 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import Image, { StaticImageData } from "next/image";
 import Action from "@/components/admin/Action";
+import { EditHeroDialog } from "@/components/admin/EditHeroDialog";
 
 type image_t = string | StaticImageData;
 
@@ -47,8 +48,6 @@ export type faq = {
   answers: string;
 };
 
-
-
 export const heroColumns: ColumnDef<hero>[] = [
   {
     accessorKey: "image",
@@ -83,7 +82,12 @@ export const heroColumns: ColumnDef<hero>[] = [
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
     size: 120,
-    cell: ({ row }) => <Action<hero> row={row} />,
+    cell: ({ row }) => (
+      <Action<hero>
+        row={row}
+        editDialog={<EditHeroDialog type="landing-page" name="Landing Page Hero" />}
+      />
+    ),
   },
 ];
 
@@ -120,7 +124,7 @@ export const whoWeAreColumns: ColumnDef<whoWeAre>[] = [
     id: "actions",
     size: 120,
     header: () => <div className="text-right">Actions</div>,
-    cell: ({ row }) => <Action<hero> row={row} />,
+    cell: ({ row }) => <Action<hero> row={row} editDialog={<EditHeroDialog type="who-we-are" name="Who We Are" />} />,
   },
 ];
 
