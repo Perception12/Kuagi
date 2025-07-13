@@ -20,13 +20,13 @@ import {
   faqColumns,
 } from "./columns";
 import { DataTable } from "@/components/admin/DataTable";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import whoWeAreImage from "@/assets/who_we_are.png";
 import { SuccessStoriesDialog } from "@/components/admin/SuccessStoriesDialog";
 import { PartnersDialog } from "@/components/admin/PartnersDialog";
 import { TestimonialsDialog } from "@/components/admin/TestimonialsDialog";
 import { FAQDialog } from "@/components/admin/FAQDialog";
+import { HeroDialog } from "@/components/admin/HeroDialog";
+import { WhoWeAreDialog } from "@/components/admin/WhoWeAreDialog";
 
 async function getHeroData(): Promise<hero[]> {
   // Simulate fetching data from an API or database
@@ -159,19 +159,13 @@ export default async function page() {
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Hero Section</h1>
         <DataTable columns={heroColumns} data={fetchedHeroData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <HeroDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Who We Are</h1>
         <DataTable columns={whoWeAreColumns} data={whoWeAreData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <WhoWeAreDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">

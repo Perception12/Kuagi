@@ -4,6 +4,10 @@ import { ColumnDef } from "@tanstack/react-table";
 import Image, { StaticImageData } from "next/image";
 import Action from "@/components/admin/Action";
 import { EditHeroDialog } from "@/components/admin/EditHeroDialog";
+import { SuccessEditDialog } from "@/components/admin/SuccessEditDialog";
+import { PartnersEditDialog } from "@/components/admin/PartnersEditDialog";
+import { TestimonialsEditDialog } from "@/components/admin/TestimonialsEditDialog";
+import { FAQEditDialog } from "@/components/admin/FAQEditDialog";
 
 type image_t = string | StaticImageData;
 
@@ -163,7 +167,7 @@ export const successColumns: ColumnDef<success>[] = [
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
     size: 120,
-    cell: ({ row }) => <Action<success> row={row} />,
+    cell: ({ row }) => <Action<success> row={row} key={row.id} editDialog={<SuccessEditDialog/> } />,
   },
 ];
 
@@ -195,7 +199,7 @@ export const partnersColumns: ColumnDef<partners>[] = [
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
     size: 120,
-    cell: ({ row }) => <Action<partners> row={row} />,
+    cell: ({ row }) => <Action<partners> row={row} editDialog={<PartnersEditDialog key={row.id} />} />,
   },
 ];
 
@@ -261,7 +265,7 @@ export const testimonialsColumns: ColumnDef<testimonials>[] = [
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
     size: 120,
-    cell: ({ row }) => <Action<testimonials> row={row} />,
+    cell: ({ row }) => <Action<testimonials> row={row} editDialog={<TestimonialsEditDialog key={row.id} />} />,
   },
 ];
 
@@ -304,6 +308,6 @@ export const faqColumns: ColumnDef<faq>[] = [
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
     size: 120,
-    cell: ({ row }) => <Action<faq> row={row} />,
+    cell: ({ row }) => <Action<faq> row={row} editDialog={<FAQEditDialog key={row.id} />} />,
   },
 ];
