@@ -12,43 +12,51 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Pen} from "lucide-react";
+import { Plus } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 
 
-export function EditHeroDialog({type, name}: { type: string, name: string }) {
+export function EventDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild className="self-end">
-         <Pen className="inline mr-1" />
+        <Button variant="outline">
+          {" "}
+          <Plus className="inline" /> Add
+        </Button>
       </DialogTrigger>
       <form>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>{`Edit ${name}`}</DialogTitle>
+            <DialogTitle>Add New Event</DialogTitle>
             <DialogDescription>
-              {`Edit ${name} section. Click save when you're done.`}
+              Add a new event. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="hero-image">Image</Label>
-              <Input id="hero-image" type="file" name="image" />
+              <Label htmlFor="event-title">Title</Label>
+              <Input id="event-title" placeholder="Enter title..." name="event-title" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="hero-title">Title</Label>
-              <Input id="hero-title" placeholder="Enter title" name="hero-title" />
+              <Label htmlFor="event-image">Image</Label>
+              <Input id="event-image" type="file" name="image" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="partner-desc">Description</Label>
-              <Input id="hero-description" placeholder="Enter description..." name="hero-description" />
+              <Label htmlFor="event-date">Date</Label>
+              <Textarea id="event-date" placeholder="Enter date" name="event-date" />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="event-description">Description</Label>
+              <Input id="event-description" placeholder="Enter description..." name="event-description" />
             </div>
           </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" onClick={() => console.log(type)}>Save changes</Button>
+            <Button type="submit">Save changes</Button>
           </DialogFooter>
         </DialogContent>
       </form>

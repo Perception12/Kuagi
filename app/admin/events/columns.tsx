@@ -4,6 +4,7 @@ import Action from "@/components/admin/Action";
 import { ColumnDef } from "@tanstack/react-table";
 import Image, { StaticImageData } from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { EventEditDialog } from "@/components/admin/EventEditDialog";
 
 type image_t = string | StaticImageData;
 
@@ -95,6 +96,6 @@ export const eventColumns: ColumnDef<event>[] = [
     id: "actions",
     header: () => <div className="text-right">Actions</div>,
     size: 120,
-    cell: ({ row }) => <Action<event> row={row} />,
+    cell: ({ row }) => <Action<event> row={row} editDialog={<EventEditDialog key={row.id} />} />,
   },
 ];
