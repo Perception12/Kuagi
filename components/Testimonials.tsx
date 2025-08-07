@@ -102,39 +102,75 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   testimony,
 }) => {
   return (
-    <div className="flex overflow-x-hidden items-center justify-center gap-2 w-full p-8">
-      <div className="relative flex-1 w-full aspect-video">
-        <iframe
-          src={link}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="absolute top-0 left-0 w-full h-full rounded-lg"
-        ></iframe>
+    <>
+      {/* Desktop view */}
+      <div className="hidden md:flex overflow-x-hidden items-center justify-center gap-2 w-full p-8">
+        <div className="relative flex-1 w-full aspect-video">
+          <iframe
+            src={link}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute top-0 left-0 w-full h-full rounded-lg"
+          ></iframe>
+        </div>
+
+        <div className="  flex-1 flex flex-col lg:flex-row gap-4 md:p-8 md:px-16 items-center justify-center">
+          <div className="rounded-3xl">
+            <Image
+              src={profile}
+              alt={name}
+              className="w-24 rounded-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col gap-4 justify-around items-center lg:items-start max-w-[500px]">
+            <p className="text-sm md:text-base text-center lg:text-start">
+              {testimony}
+            </p>
+
+            <h2 className="text-base md:text-2xl font-semibold">{name}</h2>
+
+            <p>{role}</p>
+          </div>
+        </div>
       </div>
 
-      <div className="  flex-1 flex flex-col lg:flex-row gap-4 md:p-8 md:px-16 items-center justify-center">
-        <div className="rounded-3xl">
-          <Image
-            src={profile}
-            alt={name}
-            className="w-24 rounded-full object-cover"
-          />
-        </div>
-        <div className="flex flex-col gap-4 justify-around items-center lg:items-start max-w-[500px]">
-          <p className="text-sm md:text-base text-center lg:text-start">
-            {testimony}
-          </p>
-  
-          <h2 className="text-base md:text-2xl font-semibold">
-            {name}
-          </h2>
+      {/* Mobile view */}
+      <div className="flex md:hidden overflow-x-hidden items-center justify-center gap-2 w-full p-8">
+        <div className="flex flex-col lg:flex-row gap-4 md:p-8 md:px-16 items-center justify-center">
+          <div className="rounded-3xl">
+            <Image
+              src={profile}
+              alt={name}
+              className="w-24 rounded-full object-cover"
+            />
+          </div>
+          {link && (
+            <div className="relative flex-1 w-full aspect-video">
+              <iframe
+                src={link}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+              ></iframe>
+            </div>
+          )}
 
-          <p>{role}</p>
+          <div className="flex flex-col gap-4 justify-around items-center lg:items-start max-w-[500px]">
+            <p className="text-sm md:text-base text-center lg:text-start">
+              {testimony}
+            </p>
+
+            <h2 className="text-base md:text-2xl font-semibold">{name}</h2>
+
+            <p>{role}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
