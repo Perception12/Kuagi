@@ -84,6 +84,7 @@ export const heroOptionsData = [
     icon: ChairIcon,
     title: "Co-Working Space",
     icon_width: 22.5,
+    link: 'co-working-space',
     optionNumber: 1,
   },
   {
@@ -107,16 +108,16 @@ export const menus = [
     name: "Kuagi Acad",
     link: "#",
     components: [
-      {
-        title: "Program Options",
-        href: "/programs",
-        description: "Explore Program Options",
-      },
-      {
-        title: "Price Plans",
-        href: "/price",
-        description: "Explore Price Plans",
-      },
+      // {
+      //   title: "Program Options",
+      //   href: "/programs",
+      //   description: "Explore Program Options",
+      // },
+      // {
+      //   title: "Price Plans",
+      //   href: "/price",
+      //   description: "Explore Price Plans",
+      // },
       {
         title: "Online Courses",
         href: "/courses/online",
