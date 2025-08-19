@@ -22,7 +22,7 @@ const Nav: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full mx-auto h-20 flex items-center">
+    <nav className="w-full mx-auto h-20 flex items-center sticky top-0 z-50 shadow-sm bg-white opacity-90">
       {/* Mobile Nav */}
       <div className="container mx-auto py-3 flex justify-between items-center px-8 lg:px-16">
         <Sheet>

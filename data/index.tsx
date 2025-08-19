@@ -140,7 +140,7 @@ export const menus = [
   },
   {
     name: "Contact us",
-    link: "#",
+    link: "/#contact-us",
   },
 ];
 
@@ -292,15 +292,15 @@ export const footerData = {
       items: [
         {
           text: "Physical Class",
-          link: "/",
+          link: "/courses/physical",
         },
         {
           text: "Online Class",
-          link: "/",
+          link: "/courses/online",
         },
         {
           text: "Kuagi Business Hub",
-          link: "/business-hum",
+          link: "/business-hub",
         },
         {
           text: "Kuagi Innovatif Hub",
