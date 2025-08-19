@@ -10,15 +10,19 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/authcontext"
 import { toast } from "sonner"
+import { apiRequest } from "@/lib/api"
+import { AUTH } from "@/lib/api_routes"
+import { useState } from "react"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [loading, setLoading] = useState(false)
+
   const router = useRouter()
   const { login } = useAuth();
 
@@ -26,12 +30,14 @@ export function LoginForm({
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
       
+      formData.append("device_name", "webclient");
       try {
-        const res = await axios.post("https://api.kuagi.ng/sanctum/token", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        setLoading(true)
+        const res = await apiRequest({
+          url: AUTH.login(),
+          data: formData,
+          isFormData: true,
+        })
 
         const user_info = {
           id: res.data.user.id,
@@ -43,10 +49,12 @@ export function LoginForm({
         login({ userData: user_info, token: res.data.token });
         
         toast.success("Login successful!")
+        setLoading(false)
         router.push("/admin");
       } catch (error) {
+        setLoading(false)
         toast.error("Login failed. Please check your credentials.");
-        console.error("Signup failed:", error);
+        console.error("Login failed:", error);
       }
     };
 
@@ -85,13 +93,13 @@ export function LoginForm({
                   </div>
                   <Input id="password" name="password" type="password" required />
                 </div>
-                <Button type="submit" className="w-full">
+                <Button disabled={loading} type="submit" className="w-full">
                   Login
                 </Button>
               </div>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
+                <a onClick={() => router.push('/auth/signup')} className="cursor-pointer underline underline-offset-4">
                   Sign up
                 </a>
               </div>

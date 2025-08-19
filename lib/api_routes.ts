@@ -1,7 +1,7 @@
 const BASE_URL = "https://api.kuagi.ng";
 
 export const AUTH = {
-    login : () => `${BASE_URL}/api/sanctum/token`,
+    login : () => `${BASE_URL}/sanctum/token`,
     register : () => `${BASE_URL}/api/register`,
     logout : () => `${BASE_URL}/sanctum/logout`,
     user: () =>  `${BASE_URL}/api/user`,
@@ -125,4 +125,8 @@ export const SERVICES = {
     create: () => `${BASE_URL}/api/services`,
     update: (id: string) => `${BASE_URL}/api/services/${id}`,
     delete: (id: string) => `${BASE_URL}/api/services/${id}`,
+}
+
+export const TOKEN = {
+    get: () => `${BASE_URL}/sanctum/csrf-cookie`,
 }

@@ -12,29 +12,38 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { Label } from "@/components/ui/label";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import { apiRequest } from "@/lib/api";
+import { AUTH } from "@/lib/api_routes";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    
+
     try {
-      await axios.post("https://api.kuagi.ng/register", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      setLoading(true);
+      await apiRequest({
+        url: AUTH.register(),
+        method: "post",
+        data: formData,
+        isFormData: true,
       });
 
-      router.push("/admin/dashboard"); // Redirect after successful signup
+      router.push("/auth/login"); // Redirect after successful signup
+      toast.success("Signup successful!");
+      setLoading(false);
     } catch (error) {
+      setLoading(false)
+      toast.error("Signup failed. Please check your details.");
       console.error("Signup failed:", error);
     }
   };
@@ -74,7 +83,12 @@ export function SignupForm({
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
                   </div>
-                  <Input id="password" name="password" type="password" required />
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    required
+                  />
                 </div>
                 <div className="grid gap-3">
                   <div className="flex items-center">
@@ -82,15 +96,23 @@ export function SignupForm({
                       Confirm Password
                     </Label>
                   </div>
-                  <Input id="password_confirmation" name="password_confirmation" type="password" required />
+                  <Input
+                    id="password_confirmation"
+                    name="password_confirmation"
+                    type="password"
+                    required
+                  />
                 </div>
-                <Button type="submit" className="w-full">
+                <Button disabled={loading} type="submit" className="w-full">
                   Sign Up
                 </Button>
               </div>
               <div className="text-center text-sm flex items-center justify-center gap-2">
                 Already have an account?
-                <p onClick={() => router.push('/auth/login')} className="underline underline-offset-4 cursor-pointer">
+                <p
+                  onClick={() => router.push("/auth/login")}
+                  className="underline underline-offset-4 cursor-pointer"
+                >
                   Log in
                 </p>
               </div>

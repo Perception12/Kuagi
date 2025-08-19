@@ -13,41 +13,45 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/authcontext";
-import axios from "axios";
+import { apiRequest } from "@/lib/api";
+import { GENERAL_INFO } from "@/lib/api_routes";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export function WhoWeAreDialog() {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false); // 1. Dialog open state
 
   const { token } = useAuth();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-
-    formData.append("page", "who-we-are");
-    try {
-      setLoading(true);
-      await axios.post("https://api.kuagi.ng/api/info", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      toast.success("Who we are added successfully");
-    } catch (error) {
-      setLoading(false);
-      console.error("Error uploading:", error);
-      toast.error("Failed to upload who we are section");
-    }
-  };
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      formData.append("page", "who-we-are");
+      try {
+        setLoading(true);
+        await apiRequest({
+          url: GENERAL_INFO.create(),
+          data: formData,
+          token,
+          isFormData: true,
+        });
+        toast.success("Hero added successfully");
+        setOpen(false); // 3. Close dialog on success
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        setLoading(false);
+        toast.error("Failed to add hero");
+      }
+    };
+  
+    useEffect(() => {
+      if (open) setLoading(false);
+    }, [open]); // Reset loading state when dialog opens
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
         <Button variant="outline">
           {" "}

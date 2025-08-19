@@ -1,22 +1,37 @@
+"use client";
 import React from "react";
 import { Button } from "./ui/button";
 import CTALeft from "@/assets/cta_left.png";
 import CTARight from "@/assets/cta_right.png";
 import Image from "next/image";
 import SubHeading from "./SubHeading";
-
+import { useRouter } from "next/navigation";
 const ClassCTA = () => {
+  const router = useRouter();
+
   return (
     <div className="mt-20 mx-5 rounded-3xl bg-primary p-8 py-24 text-white relative overflow-hidden max-h-[400px] flex items-center justify-center lg:px-24">
       <div className="relative w-full items-center  gap-6 justify-center flex flex-col z-10">
-        <SubHeading className="text-white text-4xl lg:!text-5xl bricolage-grotesque-bold">Explore Our Classes</SubHeading>
+        <SubHeading className="text-white text-4xl lg:!text-5xl bricolage-grotesque-bold">
+          Explore Our Classes
+        </SubHeading>
         <p className="max-w-[485px] text-center">
           Stay ahead in the rapidly evolving tech landscape, and open the doors
           to exciting career opportunities.
         </p>
         <div className="flex gap-6 md:gap-12 items-center justify-center">
-        <Button className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal">Physical Classes</Button>
-        <Button className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal">Online Classes</Button>
+          <Button
+            onClick={() => router.push("/courses/online")}
+            className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal"
+          >
+            Physical Classes
+          </Button>
+          <Button
+            onClick={() => router.push("/courses/physical")}
+            className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal"
+          >
+            Online Classes
+          </Button>
         </div>
       </div>
 
@@ -25,7 +40,11 @@ const ClassCTA = () => {
       </div>
 
       <div className="absolute z-1 bottom-0 right-0">
-        <Image src={CTARight} alt="cta image right" className="opacity-50 lg:opacity-100" />
+        <Image
+          src={CTARight}
+          alt="cta image right"
+          className="opacity-50 lg:opacity-100"
+        />
       </div>
     </div>
   );

@@ -21,9 +21,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAuth } from "@/context/authcontext";
-import axios from "axios";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { apiRequest } from "@/lib/api";
+import { SUCCESS_STORIES } from "@/lib/api_routes";
 
 const storySelect = [
   {
@@ -50,6 +51,7 @@ const storySelect = [
 
 export function SuccessStoriesDialog() {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false); // Dialog open state
   const [caption, setCaption] = useState("");
   const [count, setCount] = useState("");
   const [icon, setIcon] = useState("");
@@ -67,23 +69,33 @@ export function SuccessStoriesDialog() {
 
     try {
       setLoading(true);
-      await axios.post("https://api.kuagi.ng/api/success-stories", data, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await apiRequest({
+        url: SUCCESS_STORIES.create(),
+        data,
+        token,
+        isFormData: false,
+      })
 
       toast.success("Success story added successfully");
+      setOpen(false); // Close dialog on success
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      console.error("Error saving:", error);
       toast.error("Failed to save success story");
     }
   };
 
+  useEffect(() => {
+    if (open) {
+      setLoading(false);
+      setCaption("");
+      setCount("");
+      setIcon("");
+    }
+  }, [open]); // Reset state when dialog opens
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
         <Button variant="outline">
           {" "}

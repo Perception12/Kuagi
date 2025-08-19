@@ -347,7 +347,7 @@ export const footerData = {
 
   contact: {
     header: "Contact Us",
-    address: "No 28 Muritala Muhammed,Sango Road, Ilorin,Kwara State, Nigeria.",
+    address: "28 Muritala Mohammed Rd, Beside Omolola Hospital Opp. GSS Ilorin, Kwara State",
     phone: "+234 816 073 0725",
     email: "Kuagiresources@gmail.com",
     socials: [

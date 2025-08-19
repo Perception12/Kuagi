@@ -13,13 +13,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/authcontext";
-import axios from "axios";
+import { apiRequest } from "@/lib/api";
+import { OUR_PARTNERS } from "@/lib/api_routes";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export function PartnersDialog() {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false); // 1. Dialog open state
 
   const { token } = useAuth();
 
@@ -31,23 +33,31 @@ export function PartnersDialog() {
     formData.append("page", "partners");
     try {
       setLoading(true);
-      await axios.post("https://api.kuagi.ng/api/partners", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
+
+      await apiRequest({
+        url: OUR_PARTNERS.create(),
+        data: formData,
+        token,
+        isFormData: true,
       });
 
       toast.success("Partner added successfully");
+      setOpen(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      console.error("Error uploading:", error);
       toast.error("Failed to add partner");
     }
   };
 
+  useEffect(() => {
+    if (open) setLoading(false);
+  }, [open]); // Reset loading state when dialog opens
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
+      {" "}
+      {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
         <Button variant="outline">
           {" "}

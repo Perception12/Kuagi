@@ -14,40 +14,44 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
 import { useAuth } from "@/context/authcontext";
-import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { GENERAL_INFO } from "@/lib/api_routes";
+import { apiRequest } from "@/lib/api";
 
 export function HeroDialog() {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false); // 1. Dialog open state
 
   const { token } = useAuth();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const formData = new FormData(event.currentTarget);
-    
     formData.append("page", "landing-page");
     try {
       setLoading(true);
-      await axios.post("https://api.kuagi.ng/api/info", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Authorization": `Bearer ${token}`,
-        },
+      await apiRequest({
+        url: GENERAL_INFO.create(),
+        data: formData,
+        token,
+        isFormData: true,
       });
-
       toast.success("Hero added successfully");
+      setOpen(false); // 3. Close dialog on success
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      console.error("Error adding hero:", error);
       toast.error("Failed to add hero");
     }
   };
 
+  useEffect(() => {
+    if (open) setLoading(false);
+  }, [open]); // Reset loading state when dialog opens
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
         <Button variant="outline">
           {" "}
