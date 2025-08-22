@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import SubHeading from "./SubHeading";
 import ScrollReveal from "./ScrollReveal";
 import WhoWeAre from "@/assets/who_we_are.png";
+import { MembershipForm } from "./MembershipForm";
 
 const AboutUs = ({}) => {
   return (
@@ -26,11 +26,11 @@ const AboutUs = ({}) => {
             professional ICT training, and modern coworking space, Kuagi
             Resources is the ultimate launchpad for startups and business owners
             with a strong focus on building MVP solutions, fostering
-            empowerment, and nurturing incubation opportunities.
+            empowerment, and nurturing incubation opportunities.
           </ScrollReveal>
 
           <ScrollReveal>
-            <Button className="w-fit">Become a Kuagite</Button>
+            <MembershipForm />
           </ScrollReveal>
         </div>
       </div>
