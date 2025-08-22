@@ -16,6 +16,7 @@ import Link from "next/link";
 import ListItem from "../../components/ListItem";
 import { menus } from "@/data";
 import { useRouter, usePathname } from "next/navigation";
+import { PartnershipForm } from "@/components/PartnershipForm";
 
 const Nav: React.FC = () => {
   const navigator = useRouter();
@@ -93,7 +94,7 @@ const Nav: React.FC = () => {
             )}
           </NavigationMenuList>
         </NavigationMenu>
-        <Button onClick={() => {}}>Partner with us</Button>
+        <PartnershipForm />
       </div>
     </nav>
   );
