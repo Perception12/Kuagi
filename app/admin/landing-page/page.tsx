@@ -1,5 +1,5 @@
 import React from "react";
-import { successData, partners_data, testimonial_data, FAQData } from "@/data";
+import { successData, testimonial_data } from "@/data";
 import {
   hero,
   heroColumns,
