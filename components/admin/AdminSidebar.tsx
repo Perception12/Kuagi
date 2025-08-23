@@ -27,6 +27,7 @@ import {
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/authcontext";
 
 // Menu items.
 const appItems = [
@@ -96,6 +97,7 @@ const footerItems = [
 
 export function AppSidebar() {
   const router = useRouter();
+  const { logout } = useAuth();
   return (
     <Sidebar>
       <SidebarHeader>
@@ -210,7 +212,9 @@ export function AppSidebar() {
           {footerItems.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
-                onClick={() => router.push(item.url)}
+                onClick={() =>
+                  item.title == "Logout" ? logout() : router.push(item.url)
+                }
                 className="cursor-pointer"
                 asChild
               >
