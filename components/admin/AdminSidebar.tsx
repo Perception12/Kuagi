@@ -110,7 +110,7 @@ export function AppSidebar() {
               <Image
                 src={Logo}
                 alt="logo"
-                className="max-w-[120px] cursor-pointer"
+                className="max-w-[100px] cursor-pointer"
               />
             </SidebarMenuButton>
           </SidebarMenuItem>
