@@ -559,7 +559,7 @@ export const priceHeroData = [
   },
   {
     icon: CoffeeIcon,
-    description: "Cofee/Tea for productibvity",
+    description: "Cofee/Tea for productivity",
   },
   {
     icon: PowerIcon,
@@ -567,7 +567,7 @@ export const priceHeroData = [
   },
   {
     icon: BookIcon,
-    description: "Access to Library & Comunity",
+    description: "Access to Library & Community",
   },
 ];
 

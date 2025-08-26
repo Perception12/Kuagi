@@ -21,13 +21,13 @@ const ClassCTA = () => {
         </p>
         <div className="flex gap-6 md:gap-12 items-center justify-center">
           <Button
-            onClick={() => router.push("/courses/online")}
+            onClick={() => router.push("/courses/physical")}
             className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal"
           >
             Physical Classes
           </Button>
           <Button
-            onClick={() => router.push("/courses/physical")}
+            onClick={() => router.push("/courses/online")}
             className="text-primary bg-white hover:text-white hover:border hover:border-white bricolage-grotesque-normal"
           >
             Online Classes

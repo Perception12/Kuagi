@@ -15,7 +15,7 @@ import {
   faqColumns,
 } from "./columns";
 import { DataTable } from "@/components/admin/DataTable";
-import whoWeAreImage from "@/assets/who_we_are.png";
+// import whoWeAreImage from "@/assets/who_we_are.png";
 import { SuccessStoriesDialog } from "@/components/admin/SuccessStoriesDialog";
 import { PartnersDialog } from "@/components/admin/PartnersDialog";
 import { TestimonialsDialog } from "@/components/admin/TestimonialsDialog";
@@ -32,7 +32,7 @@ import {
 } from "@/lib/api_routes";
 import { StaticImageData } from "next/image";
 
-async function getHeroData(): Promise<hero[]> {
+async function getGeneralInfo(): Promise<[hero[], whoWeAre[]]> {
   try {
     const response = await apiRequest({
       url: GENERAL_INFO.all(),
@@ -44,21 +44,34 @@ async function getHeroData(): Promise<hero[]> {
       image_url: string;
       heading: string;
       subheading: string;
+      page: string;
     };
 
-    // Map API response to hero[]
-    const data = Array.isArray(response.data)
-      ? response.data.map((item: HeroApiResponseItem) => ({
-          id: item.id?.toString() || item.heading,
+    if (!Array.isArray(response.data)) {
+      return [[], []];
+    }
+
+    const landingPageFilter: HeroApiResponseItem[] = response.data.filter((item: HeroApiResponseItem) => item.page === "landing-page");
+    const whoWeAreFilter: HeroApiResponseItem[] = response.data.filter((item: HeroApiResponseItem) => item.page === "who-we-are");
+
+    const landingPageData: hero[] =  landingPageFilter.map((item: HeroApiResponseItem) => ({
+          id: item.id !== undefined ? String(item.id) : item.heading,
           image: item.image_url,
           title: item.heading,
           description: item.subheading,
         }))
-      : [];
-    return data;
+
+    const whoWeAreData: whoWeAre[] =  whoWeAreFilter.map((item: HeroApiResponseItem) => ({
+          id: item.id !== undefined ? String(item.id) : item.heading,
+          image: item.image_url,
+          title: item.heading,
+          description: item.subheading,
+        }))
+ 
+    return [landingPageData, whoWeAreData];
   } catch (error) {
     console.error("Failed to fetch hero data", error);
-    return [];
+    return [[], []];
   }
 }
 
@@ -115,7 +128,7 @@ async function getPartnersData(): Promise<partners[]> {
       name: string;
     };
 
-    console.log("Partners data:", response.data);
+
     const data = Array.isArray(response.data.data)
       ? response.data.data.map((item: PartnersApiResponseItem) => ({
           id: item.id?.toString() || item.name,
@@ -151,33 +164,33 @@ async function getTestimonialsData(): Promise<testimonials[]> {
   });
 }
 
-const maxDescriptionLength = 60;
+// const maxDescriptionLength = 60;
 
-async function getWhoWeAreData(): Promise<whoWeAre[]> {
-  // Simulate fetching data for "Who We Are" section
-  const fullDescription =
-    "We are dedicated to empowering innovation and driving entrepreneurial growth. Offering cutting-edge tech solutions, professional ICT training, and modern coworking space, Kuagi Resources is the ultimate launchpad for startups and business owners with a strong focus on building MVP solutions, fostering empowerment, and nurturing incubation opportunities.";
+// async function getWhoWeAreData(): Promise<whoWeAre[]> {
+//   // Simulate fetching data for "Who We Are" section
+//   const fullDescription =
+//     "We are dedicated to empowering innovation and driving entrepreneurial growth. Offering cutting-edge tech solutions, professional ICT training, and modern coworking space, Kuagi Resources is the ultimate launchpad for startups and business owners with a strong focus on building MVP solutions, fostering empowerment, and nurturing incubation opportunities.";
 
-  const clippedDescription =
-    fullDescription.length > maxDescriptionLength
-      ? fullDescription.slice(0, maxDescriptionLength) + "..."
-      : fullDescription;
+//   const clippedDescription =
+//     fullDescription.length > maxDescriptionLength
+//       ? fullDescription.slice(0, maxDescriptionLength) + "..."
+//       : fullDescription;
 
-  const data: whoWeAre[] = [
-    {
-      id: "1",
-      image: whoWeAreImage,
-      title: "Who We Are",
-      description: clippedDescription,
-    },
-  ];
+//   const data: whoWeAre[] = [
+//     {
+//       id: "1",
+//       image: whoWeAreImage,
+//       title: "Who We Are",
+//       description: clippedDescription,
+//     },
+//   ];
 
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 1000);
-  });
-}
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(data);
+//     }, 1000);
+//   });
+// }
 
 async function getFAQData(): Promise<faq[]> {
   try {
@@ -208,8 +221,8 @@ async function getFAQData(): Promise<faq[]> {
 }
 
 export default async function page() {
-  const fetchedHeroData = await getHeroData();
-  const whoWeAreData = await getWhoWeAreData();
+  const [fetchedHeroData, whoWeAreData] = await getGeneralInfo();
+
   const fetchedSuccessData = await getSuccessData();
   const fetchedPartnersData = await getPartnersData();
   const fetchedTestimonialsData = await getTestimonialsData();

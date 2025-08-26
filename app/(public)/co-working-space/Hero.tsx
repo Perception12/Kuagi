@@ -7,7 +7,7 @@ import { priceHeroData } from "@/data";
 
 const Hero = () => {
   return (
-    <section className="relative bg-lightblue pb-32 pt-8 md:py-32 flex flex-col md:h-[calc(90vh-5rem)]">
+    <section className="relative bg-lightblue pb-32 pt-8 md:py-16 flex flex-col md:h-[calc(90vh-5rem)]">
       {/* Content */}
       <div className="relative container mx-auto flex flex-start justify-between p-8 md:px-16">
         <div className="flex flex-col items-start gap-6 flex-2">
@@ -30,8 +30,8 @@ const Hero = () => {
       </div>
 
       {/* Page Options - Positioned to Overlap Image and Background */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-3/5">
-        <div className="flex flex-col lg:flex-row items-center justify-between bg-lightgrey w-full rounded-3xl shadow-sm gap-6 p-4">
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-4/5">
+        <div className="flex flex-col lg:flex-row items-center justify-between bg-white w-full rounded-3xl shadow-sm gap-6 p-4">
           {/* Options */}
           {priceHeroData.map((data, index) => (
             <div
