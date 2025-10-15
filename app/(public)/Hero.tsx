@@ -2,11 +2,8 @@ import Image from "next/image";
 import HeroOptions from "../../components/HeroOptions";
 import { heroOptionsData, heroData } from "@/data";
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-// import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import dynamic from "next/dynamic";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
@@ -66,8 +63,7 @@ const Hero: React.FC = () => {
               <Image
                 alt="background"
                 src={data.image}
-                layout="fill"
-                objectFit="cover"
+                fill
                 className="object-cover"
               />
 

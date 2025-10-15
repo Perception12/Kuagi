@@ -10,7 +10,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Hero from "./Hero";
 
 const Page = () => {
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [animateCard] = useState({ y: 0, opacity: 1 });
   return (
     <div>
       <Hero />

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { AuthProvider } from "@/context/authcontext";
 import { Toaster } from "@/components/ui/sonner"
 

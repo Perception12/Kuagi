@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useState } from "react";
 import { Card } from "./ui/card";
-import { motion, useSpring, useAnimation, inView } from "framer-motion";
+import { motion, useSpring, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface SuccessCardProps {
