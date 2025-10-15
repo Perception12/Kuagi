@@ -1,61 +1,102 @@
 import Image from "next/image";
 import HeroOptions from "../../components/HeroOptions";
 import { heroOptionsData, heroData } from "@/data";
-import React, { SetStateAction, Dispatch } from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+// import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-interface HeroProps {
-  section: number;
-  setSection: Dispatch<SetStateAction<number>>;
-}
+const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
-const Hero: React.FC<HeroProps> = ({ section}) => {
-  return (
-    <section className="relative bg-muted py-32 flex flex-col items-center justify-center h-[calc(90vh-5rem)]">
-      {/* Background Image and Overlay */}
-      <div className="absolute inset-0">
-        <Image
-          alt="background"
-          src={heroData[section - 1].image}
-          layout="fill"
-          objectFit="cover"
-          className="object-fill"
-        />
+const Hero: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const router = useRouter();
 
-        <div className="absolute inset-0 bg-primary opacity-75"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 container p-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center">
-          <div className="flex flex-col items-center gap-6 text-center">
-            <p className="text-white lg:text-xl">
-              {heroData[section - 1].subheading}
-            </p>
-
-            <h1 className="mb-6 text-3xl font-bold text-white lg:text-6xl bricolage-grotesque-bold">
-              {heroData[section - 1].heading}
-            </h1>
-          </div>
+  const handleSlideClick = () => {
+    const currentOption = heroOptionsData[currentSlide];
+    if (currentOption?.link) {
+      router.push(`/${currentOption.link}`);
+    }
+  };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dotsClass: "slick-dots custom-dots",
+    // arrows: true,
+    customPaging: function (i: number) {
+      return (
+        <div className="focus:outline-none">
+          <HeroOptions
+            key={i}
+            icon={heroOptionsData[i].icon}
+            title={heroOptionsData[i].title}
+            link={heroOptionsData[i]?.link}
+            icon_width={heroOptionsData[i].icon_width}
+            isActive={currentSlide === i}
+          />
         </div>
+      );
+    },
+    appendDots: (dots: React.ReactNode) => (
+      <div className="">
+        <ul className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-4 lg:px-20 gap-1 md:gap-4  list-none m-0 p-0">
+          {dots}
+        </ul>
       </div>
+    ),
+    beforeChange: (oldIndex: number, newIndex: number) => {
+      setCurrentSlide(newIndex);
+    },
+  };
+
+  return (
+    <section className="px-8 h-[calc(90vh-5rem)] w-full">
+      <Slider {...settings} className="relative w-full h-full inset-0">
+        {heroData.map((data, index) => (
+          <div key={index} className="w-full h-[calc(90vh-8rem)] min-h-full flex relative flex-col items-center justify-center ">
+            {/* Background Image and Overlay */}
+            <div className="absolute inset-0 w-full ">
+              <Image
+                alt="background"
+                src={data.image}
+                layout="fill"
+                objectFit="cover"
+                className="object-cover"
+              />
+
+              <div className="absolute inset-0 bg-primary opacity-75"></div>
+            </div>
+
+            {/* Content */}
+            <div 
+              className="absolute inset-0 z-10 container w-full slider-content cursor-pointer"
+              onClick={handleSlideClick}
+            >
+              <div className="mx-auto flex max-w-5xl flex-col items-center">
+                <div className="flex flex-col items-center gap-6 text-center">
+                  <p className="text-white lg:text-xl">
+                    {data.subheading}
+                  </p>
+
+                  <h1 className="mb-6 text-3xl font-bold text-white lg:text-6xl bricolage-grotesque-bold">
+                    {data.heading}
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </Slider>
 
       {/* Page Options - Positioned to Overlap Image and Background */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full lg:w-fit">
-        <div className="flex items-center justify-center bg-white rounded-3xl shadow-sm py-6 px-4 lg:px-20 gap-8 lg:gap-16">
-          {heroOptionsData.map((option, index) => (
-            <HeroOptions
-              key={index}
-              icon={option.icon}
-              title={option.title}
-              link={option?.link}
-              icon_width={option.icon_width}
-              isActive={section == option.optionNumber}
-              // optionNumber={option.optionNumber}
-              // setSection={setSection}
-            />
-          ))}
-        </div>
-      </div>
+      {/* This section is now handled by customPaging in react-slick */}
     </section>
   );
 };

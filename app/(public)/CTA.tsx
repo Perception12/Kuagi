@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 const CTA = () => {
   return (
-    <div className="mt-40 mb-20 relative bg-cta w-full flex items-center justify-center text-white lg:px-24 h-[400px]">
+    <div className="mt-16 mb-20 relative bg-cta w-full flex items-center justify-center text-white lg:px-24 h-[400px]">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src={NetImage}

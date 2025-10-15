@@ -12,7 +12,7 @@ import CTA from "../CTA";
 
 const CoWorkingSpace = () => {
   return (
-    <section className="mt-20 w-full">
+    <section className=" w-full">
       <AboutUs />
 
       <ScrollReveal>
@@ -38,14 +38,15 @@ const CoWorkingSpace = () => {
       <ScrollReveal>
         <EventSection />
       </ScrollReveal>
+      
+      <ScrollReveal>
+        <CTA />
+      </ScrollReveal>
 
       <ScrollReveal>
         <Reachout />
       </ScrollReveal>
 
-      <ScrollReveal>
-        <CTA />
-      </ScrollReveal>
     </section>
   );
 };

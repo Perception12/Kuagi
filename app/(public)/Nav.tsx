@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -21,12 +21,13 @@ import { PartnershipForm } from "@/components/PartnershipForm";
 const Nav: React.FC = () => {
   const navigator = useRouter();
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="w-full mx-auto h-20 flex items-center sticky top-0 z-50 shadow-sm bg-white opacity-90">
       {/* Mobile Nav */}
       <div className="container mx-auto py-3 flex justify-between items-center px-8 lg:px-16">
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
               <MenuIcon className="h-6 w-6" />
@@ -34,7 +35,7 @@ const Nav: React.FC = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="p-6">
-            <div onClick={() => navigator.push("/")} className="cursor-pointer">
+            <div onClick={() => { navigator.push("/"); setIsOpen(false); }} className="cursor-pointer">
               <Image src={Logo} alt="logo" className="max-w-[140px]" />
             </div>
 
@@ -45,6 +46,7 @@ const Nav: React.FC = () => {
                     <Link
                       href={item.href}
                       key={index}
+                      onClick={() => setIsOpen(false)}
                       className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100"
                     >
                       {item.title}
@@ -54,6 +56,7 @@ const Nav: React.FC = () => {
                   <Link
                     key={index}
                     href={menu.link}
+                    onClick={() => setIsOpen(false)}
                     className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors "
                     prefetch={false}
                   >

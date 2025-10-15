@@ -7,10 +7,10 @@ import { useState } from "react";
 // import EventsPage from "./sections/EventsPage";
 
 export default function Home() {
-  const [section, setSection] = useState<number>(1);
+  // const [section, setSection] = useState<number>(1);
   return (
     <div>
-      <Hero section={section} setSection={setSection} />
+      <Hero />
 
       <CoWorkingSpace />
       {/* {section == 1 && <CoWorkingSpace />}

@@ -28,7 +28,7 @@ const HeroOptions: React.FC<HeroOptionsProps> = ({
 
   return (
     <div
-      className="flex flex-col items-center justify-center cursor-pointer"
+      className="flex flex-col items-center justify-center cursor-pointer "
       onClick={() => link && navigator.push(link)}
     >
       <div className="flex gap-2 items-center justify-center">
@@ -38,7 +38,7 @@ const HeroOptions: React.FC<HeroOptionsProps> = ({
           width={icon_width}
           className="hidden md:flex"
         />
-        <p className="text-sm md:text-base">{title}</p>
+        <p className="text-sm sm:text-base whitespace-nowrap">{title}</p>
       </div>
 
       <div

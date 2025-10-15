@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Testimonial = () => {
   return (
-    <section className="w-full bg-lightblue my-40">
+    <section className="w-full bg-lightblue my-16">
       <div className="container mx-auto lg:px-16 flex items-center justify-center">
         <div className="flex-1 hidden lg:flex items-center justify-center">
           <Image src={TestimonialImage} alt="testimonial" />

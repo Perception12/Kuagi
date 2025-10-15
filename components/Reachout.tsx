@@ -54,7 +54,7 @@ const Reachout = () => {
   };
 
   return (
-    <section id="contact-us" className="my-40 flex flex-col gap-6 w-full">
+    <section id="contact-us" className="my-16 flex flex-col gap-6 w-full">
       <SubHeading>Reach out to Kuagi Resources Today!</SubHeading>
 
       <div className=" bg-lightblue ">
@@ -125,7 +125,7 @@ const Reachout = () => {
               <Image
                 src={locationData.image}
                 alt="location image"
-                className="w-full object-cover lg:h-[500px]"
+                className="w-full object-cover lg:h-[400px]"
               />
             </div>
           </div>

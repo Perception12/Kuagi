@@ -61,6 +61,8 @@ import Women4TechImage4 from "@/assets/women4Tech4.png";
 import Women4TechImage5 from "@/assets/women4Tech5.png";
 import Women4TechImage6 from "@/assets/women4Tech6.png";
 
+const currentYear = new Date().getFullYear();
+
 export const heroData = [
   {
     image: Hero1,
@@ -181,37 +183,37 @@ It's a nice place to be.",
 export const successData = [
   {
     icon: IconLaptop,
-    numbers: "150+",
+    numbers: 150,
     description: "Job Created",
     className: "lg:col-start-4 lg:col-span-2",
   },
   {
     icon: IconAward,
-    numbers: "87",
+    numbers: 87,
     description: "Project Awarded",
     className: "lg:col-start-2 lg:col-end-4",
   },
   {
     icon: IconBusiness,
-    numbers: "1379",
+    numbers: 1379,
     description: "Startups & Business Empowered",
     className: "lg:col-start-6 lg:col-end-8",
   },
   {
     icon: IconTrained,
-    numbers: "169",
+    numbers: 169,
     description: "Hub Subscribers",
     className: "lg:col-start-2 lg:col-end-4",
   },
   {
     icon: IconWeb,
-    numbers: "4239",
+    numbers: 4239,
     description: "Access to Skill Empowerment",
     className: "lg:col-start-6 lg:col-end-8",
   },
   {
     icon: IconStudents,
-    numbers: "467+",
+    numbers: 467,
     description: "Students Trained",
     className: "lg:col-start-4 lg:col-span-2",
   },
@@ -278,7 +280,7 @@ export const selectData = [
 
 export const locationData = {
   maplink:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4680.611636668824!2d4.583387075688324!3d8.509639996900965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10364da3007db973%3A0x815b55986b8ba110!2s28%20Sango%20Rd%2C%20Oko%20Erin%20240102%2C%20Kwara%2C%20Nigeria!5e1!3m2!1sen!2sus!4v1742404141228!5m2!1sen!2sus",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0003513204756!2d4.570798475259664!3d8.499345091542411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10364de23113f269%3A0x467d7374a9b52640!2sKuagi%20Resources!5e0!3m2!1sen!2sng!4v1760486044577!5m2!1sen!2sng",
   image: LocationImage,
 };
 
@@ -344,7 +346,7 @@ export const footerData = {
       ],
     },
   ],
-
+  
   contact: {
     header: "Contact Us",
     address: "28 Muritala Mohammed Rd, Beside Omolola Hospital Opp. GSS Ilorin, Kwara State",
@@ -388,8 +390,8 @@ export const footerData = {
       link: "/",
     },
   ],
-
-  copyright: "© 2024 Kuagi. All rights reserved.",
+  
+  copyright: `© ${currentYear} Kuagi. All rights reserved.`,
 };
 
 export const women4TechData = [

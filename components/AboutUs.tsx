@@ -7,14 +7,14 @@ import { MembershipForm } from "./MembershipForm";
 
 const AboutUs = ({}) => {
   return (
-    <div className="w-full my-40 bg-lightgrey flex items-center justify-center">
+    <div className="w-full my-12 bg-lightgrey flex items-center justify-center">
       <div className="container flex p-8 md:p-16 gap-8 flex-col lg:flex-row items-center">
         <div className="flex-1 flex">
           <ScrollReveal>
             <Image
               src={WhoWeAre}
               alt="who we are Image"
-              className="object-cover w-full rounded-2xl"
+              className="object-cover w-100 h-64 rounded-2xl"
             />
           </ScrollReveal>
         </div>

@@ -2,7 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["api.kuagi.ng"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.kuagi.ng',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
 

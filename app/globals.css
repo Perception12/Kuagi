@@ -1,5 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Serif+Text:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'slick-carousel/slick/slick.css';
+
+@import 'slick-carousel/slick/slick-theme.css';
 
 @import "tailwindcss";
 
@@ -139,6 +142,10 @@
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    overflow-x: hidden;
+  }
+  html {
+    overflow-x: hidden;
   }
 }
 
@@ -243,3 +250,178 @@
       }
 
     }
+
+/* slick stylings */
+
+.slick-slider {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  
+}
+
+.slick-slider button{
+ z-index: 1 ;
+}
+
+.slick-list {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  width: 100% !important;
+}
+
+.slick-track {
+  width: 100% !important;
+  display: flex !important;
+}
+
+.slick-slide {
+  width: 100% !important;
+  flex-shrink: 0 !important;
+}
+.custom-dots { width: 100% !important; }
+@media (min-width: 640px) {
+  .custom-dots { width: auto !important; }
+}
+.slick-dots {
+  /* position: absolute; */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-60%);
+  z-index: 20;
+}
+
+
+.slick-dots li {
+  width: auto !important;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: var(--secondary) !important;
+  opacity: 0 !important;
+  transition: opacity .2s ease; /* smooth fade */
+}
+
+/* Show arrows on small screens (mobile and iPad) */
+@media (max-width: 1023px) {
+  .slick-prev:before, .slick-next:before {
+    opacity: 1 !important;
+  }
+}
+
+.slider-content {
+  border: 4px solid transparent;
+  width: 100% !important;
+  height: 100%;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: rgba(36, 145, 223, 0.4) 0px 8px 32px -8px,
+      rgba(36, 145, 223, 0.3) 0px 4px 16px -4px;
+}
+
+/* Override container max-width on large screens for full width */
+@media (min-width: 1024px) {
+  .slider-content.container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  .slider-content .mx-auto {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .slider-content .max-w-5xl {
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+
+.slick-slider:hover .slider-content {
+  border: 4px solid rgba(249, 249, 249, 0.8) !important;
+}
+
+/* Show hover border effect on small screens */
+@media (max-width: 1023px) {
+  .slider-content {
+    border: 4px solid rgba(249, 249, 249, 0.8) !important;
+  }
+}
+
+
+/* Show arrows when hovering the whole slider */
+.slick-slider:hover .slick-prev:before,
+.slick-slider:hover .slick-next:before {
+  opacity: 1 !important;
+}
+/* END OF REACT-SLICK STYLES */
+
+
+/* Our past events Card container styles */
+.pscard-container {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; */
+}
+.pscard-list {
+  width: 500px;
+  /* height: 700px; */
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pscard-list:hover {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.pscard-img-wrapper {
+  width: 100%;
+  height: 460px;
+  position: relative;
+}
+.pscard-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+.pscard-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Show content and box-shadow on small screens (mobile and iPad) */
+@media (max-width: 1023px) {
+  .pscard-content {
+    opacity: 1 !important;
+  }
+  
+  .pscard-list {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2) !important;
+    width: 400px;
+  }
+}
+
+/* End of our past events container styles */

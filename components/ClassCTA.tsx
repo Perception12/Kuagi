@@ -10,7 +10,7 @@ const ClassCTA = () => {
   const router = useRouter();
 
   return (
-    <div className="mt-20 mx-5 rounded-3xl bg-primary p-8 py-24 text-white relative overflow-hidden max-h-[400px] flex items-center justify-center lg:px-24">
+    <div className="mt-16 mx-5 rounded-3xl bg-primary p-8 py-24 text-white relative overflow-hidden max-h-[400px] flex items-center justify-center lg:px-24">
       <div className="relative w-full items-center  gap-6 justify-center flex flex-col z-10">
         <SubHeading className="text-white text-4xl lg:!text-5xl bricolage-grotesque-bold">
           Explore Our Classes
