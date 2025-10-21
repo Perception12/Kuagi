@@ -23,7 +23,7 @@ const page = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto ">
           {onlineCourseData.map((data, index) => (
             <ScrollReveal key={index}>
               <DataCard data={data} courseType="online" />

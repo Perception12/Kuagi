@@ -423,3 +423,14 @@
 }
 
 /* End of our past events container styles */
+
+/* Calender scrollbar */
+/* Added scrollbar hiding styles for calendar */
+.calendar-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.calendar-scroll::-webkit-scrollbar {
+  display: none;
+}

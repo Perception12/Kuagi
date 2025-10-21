@@ -12,7 +12,7 @@ const DataCard: React.FC<{ data: CourseData; courseType: string }> = ({
   const navigator = useRouter();
 
   return (
-    <div className="flex flex-col gap-8 p-8 border border-darkergrey lg:w-[380px] rounded-3xl">
+    <div className="flex flex-col gap-8 p-8 border border-darkergrey lg:w-[380px] rounded-3xl transition transform hover:scale-105 duration-300 hover:shadow-xl ">
       {/* Image */}
       <div className="relative flex items-center justify-center">
         <Image

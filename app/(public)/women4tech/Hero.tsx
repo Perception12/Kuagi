@@ -7,7 +7,7 @@ import SubHeading from "@/components/SubHeading";
 
 const Hero = () => {
   return (
-    <section className="relative bg-lightblue lg:mx-16 pb-32 pt-8 md:py-32 flex flex-col md:h-[calc(100vh-5rem)]">
+    <section className="relative bg-lightblue lg:mx-32 pb-32 pt-8 md:py-32 flex flex-col md:h-[calc(100vh-5rem)]">
       {/* Content */}
       <div className="relative container  flex items-center justify-center h-full p-8 md:px-16">
         <div className="flex flex-col items-start gap-6 lg:gap-12 flex-1">

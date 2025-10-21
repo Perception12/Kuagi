@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2500,
     dotsClass: "slick-dots custom-dots",
     // arrows: true,
     customPaging: function (i: number) {

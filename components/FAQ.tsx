@@ -23,7 +23,7 @@ const FAQ = () => {
             value={item.question}
             className={`bg-lightblue border-none rounded-3xl px-8 py-4 w-full shadow-xs`}
           >
-            <AccordionTrigger className="">{item.question}</AccordionTrigger>
+            <AccordionTrigger className="font-bold">{item.question}</AccordionTrigger>
             <AccordionContent>{item.answer}</AccordionContent>
           </AccordionItem>
         ))}

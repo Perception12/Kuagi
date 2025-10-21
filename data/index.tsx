@@ -333,7 +333,7 @@ export const footerData = {
         },
         {
           text: "Hub & Co-Working Space",
-          link: "/",
+          link: "/co-working-space",
         },
         {
           text: "Partnership & Collaboration",
@@ -341,7 +341,7 @@ export const footerData = {
         },
         {
           text: "Tech Training",
-          link: "/",
+          link: "/courses/online",
         },
       ],
     },

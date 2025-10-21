@@ -1,9 +1,10 @@
 import React from "react";
-import InnovatifCard from "./InnovatifCard";
-import { innovativeSolutions } from "@/data";
 import SubHeading from "@/components/SubHeading";
 import { workingProcess } from "@/data";
 import ScrollReveal from "@/components/ScrollReveal";
+import Workprocess from "@/assets/working-process.png";
+import Image from "next/image";
+
 
 const WorkingProcess = () => {
   return (
@@ -14,10 +15,23 @@ const WorkingProcess = () => {
 
       <div className="flex w-full flex-col md:flex-row gap-8">
         <div className="flex-1">
-          <InnovatifCard
-            title={innovativeSolutions.name}
-            services={innovativeSolutions.services}
-          />
+        <div className="flex flex-col max-w-[450px] relative  border rounded-2xl overflow-hidden">
+<Image src={Workprocess} alt="" className="w-full h-auto" />
+<div className="absolute flex flex-col justify-center items-center gap-12 top-0 bottom-0 left-0 right-0 inset-x-4  bg-primary/70 rounded-xl p-4 text-white text-center">
+  <h1 className="text-bold text-lg">Reasons to Choose Us</h1>
+  <p className="flex flex-col justify-center items-center gap-4">
+  <span> 
+  We establish a reputation for reliability and dependability, by delivering consistent, high quality services and solutions.
+  </span>
+<span>
+We provide innovative solutions that address our client’s unique challenges and help them stay ahead of the competition.
+</span>
+<span>
+By fostering a culture of collaboration and teamwork, we can work closely with client to understand their needs, co-create solutions, and achieve shared goals.
+</span>
+  </p>
+</div>
+        </div>
         </div>
 
         <div className="flex-2 grid md:grid-cols-2 gap-8">

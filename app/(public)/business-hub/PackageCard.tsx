@@ -25,7 +25,7 @@ const PackageCard: React.FC<{ data: SeminarData }> = ({ data }) => {
         onClick={() => navigator.push(`/business-hub/${data.name}`)}
         className="mt-auto"
       >
-        Learn More
+        Enroll
       </Button>
     </div>
   );

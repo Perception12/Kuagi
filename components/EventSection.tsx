@@ -3,6 +3,7 @@ import SubHeading from "./SubHeading";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import EventImage from "@/assets/event_img.png";
+import Link from "next/link";
 
 const EventSection = () => {
   return (
@@ -26,7 +27,9 @@ const EventSection = () => {
           </p>
 
           <Button className="w-1/2 bg-white text-bold text-primary border border-primary hover:text-white">
+          <Link href='./our-events'>
             View more
+          </Link>
           </Button>
         </div>
       </div>
