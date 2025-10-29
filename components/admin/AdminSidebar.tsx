@@ -1,7 +1,7 @@
 "use client";
 import {
   Calendar,
-  Home,
+  LayoutDashboard,
   ImagePlus,
   Venus,
   Network,
@@ -18,7 +18,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -26,7 +25,7 @@ import {
 } from "@/components/ui/sidebar";
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/context/authcontext";
 
 // Menu items.
@@ -34,42 +33,23 @@ const appItems = [
   {
     title: "Dashboard",
     url: "/admin",
-    icon: Home,
+    icon: LayoutDashboard,
   },
-];
-
-const pageItems = [
   {
     title: "Landing Page",
     url: "/admin/landing-page",
     icon: ImagePlus,
   },
   {
-    title: "Events",
-    url: "/admin/events",
-    icon: Calendar,
-  },
-  {
     title: "Women4Tech",
     url: "/admin/women4tech",
     icon: Venus,
   },
-];
-
-const hubItems = [
   {
-    title: "Business Hub",
-    url: "/admin/business-hub",
-    icon: BriefcaseBusiness,
+    title: "Events",
+    url: "/admin/events",
+    icon: Calendar,
   },
-  {
-    title: "Innovatif Hub",
-    url: "/admin/innovatif-hub",
-    icon: Boxes,
-  },
-];
-
-const plansItems = [
   {
     title: "Co-working Space",
     url: "/admin/co-working-space",
@@ -80,7 +60,21 @@ const plansItems = [
     url: "/admin/courses",
     icon: SquareUserRound,
   },
+  {
+    title: "Business Hub",
+    url: "/admin/business-hub",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Innovatif Hub",
+    url: "/admin/innovatif-hub",
+    icon: Boxes,
+  },
+  
+  
 ];
+
+
 
 const footerItems = [
   {
@@ -97,6 +91,7 @@ const footerItems = [
 
 export function AppSidebar() {
   const router = useRouter();
+  const pathname = usePathname();
   const { logout } = useAuth();
   return (
     <Sidebar>
@@ -110,7 +105,7 @@ export function AppSidebar() {
               <Image
                 src={Logo}
                 alt="logo"
-                className="max-w-[100px] cursor-pointer"
+                className="h-32 cursor-pointer"
               />
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -119,96 +114,36 @@ export function AppSidebar() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {appItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="cursor-pointer"
-                    onClick={() => router.push(item.url)}
-                    asChild
-                  >
-                    <div className="flex gap-2 items-center">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </div>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Pages</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {pageItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="cursor-pointer"
-                    onClick={() => router.push(item.url)}
-                    asChild
-                  >
-                    <div className="flex gap-2 items-center">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </div>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Hubs</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {hubItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="cursor-pointer"
-                    onClick={() => router.push(item.url)}
-                    asChild
-                  >
-                    <div className="flex gap-2 items-center">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </div>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Plans</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {plansItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="cursor-pointer"
-                    onClick={() => router.push(item.url)}
-                    asChild
-                  >
-                    <div className="flex gap-2 items-center">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </div>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+            <SidebarMenu
+            className="gap-4"
+            >
+              {appItems.map((item) => {
+                const isActive = pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      className={`cursor-pointer ${isActive ? 'text-black opacity-100 border-l-4 border-primary' : 'opacity-50 hover:opacity-75'}`}
+                      onClick={() => router.push(item.url)}
+                      asChild
+                    >
+                      <div className="flex gap-4 ml-6 items-center text-xl">
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </div>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter>
-        <SidebarMenu>
+        <SidebarMenu
+        className="gap-4 opacity-50"
+        >
           {footerItems.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
@@ -218,7 +153,7 @@ export function AppSidebar() {
                 className="cursor-pointer"
                 asChild
               >
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-4  ml-6 items-center text-xl">
                   <item.icon />
                   <span>{item.title}</span>
                 </div>

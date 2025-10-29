@@ -1,14 +1,15 @@
 import React from "react";
 import { LayoutDashboard } from "lucide-react";
+import Boxcard from "@/components/admin/Boxcard";
 import OverviewCard from "@/components/admin/OverviewCard";
 import { UserRoundPlus, Calendar, Code, BriefcaseBusiness } from "lucide-react";
 
 const page = () => {
   return (
     <div className="flex flex-col gap-8 p-6">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
+      <h1 className="text-3xl font-bold mx-8">Dashboard</h1>
 
-      <div className="flex gap-8 p-4 bg-primary text-white rounded-md items-center">
+      <div className="flex mx-8 gap-8 p-4 bg-primary text-white rounded-md items-center">
         <LayoutDashboard className="w-12 h-12" />
         <p>
           You can efficiently manage your co-working space, monitor bookings,
@@ -18,35 +19,35 @@ const page = () => {
         </p>
       </div>
 
-      <div className=" flex gap-4 w-full">
+      <div className="flex flex-col gap-4 w-full">
         <OverviewCard
-          description="Total Partners"
+          description="Partners"
           value={20}
           Icon={UserRoundPlus}
           btn_text="Download CSV"
         />
         <OverviewCard
-          description="Total Members"
+          description="Members"
           value={30}
           Icon={UserRoundPlus}
           btn_text="Download CSV"
         />
       </div>
 
-      <div className="flex gap-4 w-full">
-        <OverviewCard
-          description="Total Courses"
-          value={50}
+      <div className="flex flex-wrap gap-4 w-full">
+        <Boxcard
+          description="Courses"
+          value={12}
           Icon={Code}
         />
-        <OverviewCard
-          description="Total Events"
-          value={1000}
+        <Boxcard
+          description="Events"
+          value={9}
           Icon={Calendar}
         />
-        <OverviewCard
-          description="Total Projects"
-          value={1000}
+        <Boxcard
+          description="Projects"
+          value={7}
           Icon={BriefcaseBusiness}
         />
       </div>

@@ -22,18 +22,21 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
   btn_text,
 }) => {
   return (
-    <Card className="shadow-none w-full max-w-[250px]">
+    <Card className="shadow-md w-[90%] mx-auto flex flex-row item-center justify-between">
       <CardHeader>
-        <CardDescription className="flex items-center justify-between">
+        <CardDescription className="flex items-center gap-3">
+        
+          {Icon && <Icon style={{ color: "#5ECBA2" }} className="w-16 h-16 text-primary p-3  bg-[#DDF5EF] rounded-full" />}
+          <div className="flex flex-col text-black">
           {description}
-          {Icon && <Icon className="w-5 h-5 text-primary" />}
-        </CardDescription>
         <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
           {value}
         </CardTitle>
+          </div>
+        </CardDescription>
       </CardHeader>
       {btn_text && (
-        <CardFooter className="flex-col items-start gap-2 text-sm">
+        <CardFooter className="">
           <Button size={"sm"} className="w-full">
             {btn_text}
           </Button>
