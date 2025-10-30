@@ -1,48 +1,47 @@
 import React from "react";
-
-import { DataTable } from "@/components/admin/DataTable";
-import {
-  hero,
-  heroColumns,
-} from "./columns";
-
-import img_women4tech from "@/assets/women4Tech1.png";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-
-async function getHeroData(): Promise<hero[]> {
-  // Simulate fetching data from an API or database
-  const data: hero[] = [
-    {
-      id: "hero-1",
-      image: img_women4tech,
-      title: "Her Ideas, Our Future",
-      description:
-        "Championing a movement where women don’t just participate in technology .....",
-    },
-  ];
-
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 1000);
-  });
-}
-
-
-export default async function page() {
-  const fetchedHeroData = await getHeroData();
-
+import Boxcard from "@/components/admin/Boxcard";
+import { Image, FileQuestion } from "lucide-react";
+import { PiPackageLight } from 'react-icons/pi';
+import { LuWorkflow } from 'react-icons/lu';
+import { AiOutlineProject } from 'react-icons/ai';
+const page = () => {
   return (
-    <div className="flex flex-col gap-8 p-6 bg-lightblue h-full">
-      <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Hero Section</h1>
-        <DataTable columns={heroColumns} data={fetchedHeroData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+    <div className="relative bg-lightblue h-full w-full">
+      <div className="absolute bg-white rounded-2xl m-16 flex flex-col  gap-8 p-6">
+
+      <h1 className="text-3xl font-bold mx-16 leading-loose">Innovative Hub</h1>
+
+      <div className="flex flex-wrap justify-center items-center gap-12 w-full">
+        <Boxcard
+          description="Hero Section"
+          Icon={Image}
+          href="/admin/innovatif-hub/data"
+        />
+        <Boxcard
+          description="ICT Solution"
+          Icon={PiPackageLight}
+          href="/admin/innovatif-hub/data"
+        />
+        <Boxcard
+          description="Our Services"
+          Icon={LuWorkflow}
+          href="/admin/innovatif-hub/data"
+        />
+        <Boxcard
+        description="Projects"
+        Icon={AiOutlineProject}
+        href="/admin/innovatif-hub/data"
+      />
+      
+    <Boxcard
+      description="FAQs"
+      Icon={FileQuestion}
+      href="/admin/innovatif-hub/data"
+    />
+      </div>
       </div>
     </div>
   );
-}
+};
+
+export default page;

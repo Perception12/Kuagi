@@ -54,6 +54,11 @@ export type faq = {
 
 export const heroColumns: ColumnDef<hero>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "image",
     header: "Image",
     size: 100,

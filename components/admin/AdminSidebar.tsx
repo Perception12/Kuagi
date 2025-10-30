@@ -119,7 +119,10 @@ export function AppSidebar() {
             className="gap-4"
             >
               {appItems.map((item) => {
-                const isActive = pathname === item.url;
+                const isRoot = item.url === "/admin";
+                const isActive = isRoot
+                  ? pathname === item.url
+                  : pathname === item.url || pathname.startsWith(`${item.url}/`);
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton

@@ -53,7 +53,7 @@ export function HeroDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline">
+        <Button variant="outline" className="bg-primary text-white">
           {" "}
           <Plus className="inline" /> Add
         </Button>
