@@ -106,7 +106,6 @@ export function BusinessCalenderDialog() {
                 className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               />
             </div>
-
             <div className="grid gap-3">
               <Label htmlFor="calender-title">Day of Week</Label>
               <div className="w-full border border-input rounded-md px-3 py-2 text-sm bg-muted text-foreground">

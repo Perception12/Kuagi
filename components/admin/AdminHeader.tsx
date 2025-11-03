@@ -21,7 +21,7 @@ const AdminHeader = () => {
         <h1 className="text-sm font-bold lg:text-3xl">Welcome Back!</h1>
         </div>
           <SearchForm className="" />
-        <div className="lg:mr-16 flex items-center gap-2 ">
+        <div className="lg:mr-16 mr-2 flex items-center gap-2 ">
           <Button variant="ghost" asChild size="sm" className="sm:flex">
             <a href="/admin/notifications">
               <BellDot className="!h-5 !w-5 text-black opacity-100 " strokeWidth={3} />

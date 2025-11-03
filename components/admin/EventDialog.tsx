@@ -13,7 +13,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
 
 
 
@@ -21,7 +20,7 @@ export function EventDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline">
+        <Button variant="outline" className="bg-primary text-white">
           {" "}
           <Plus className="inline" /> Add
         </Button>
@@ -44,8 +43,22 @@ export function EventDialog() {
               <Input id="event-image" type="file" name="image" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="event-date">Date</Label>
-              <Textarea id="event-date" placeholder="Enter date" name="event-date" />
+              <Label htmlFor="event-title">Type</Label>
+              <select name="title" id="event-title">
+                <option>Upcoming</option>
+                <option>Past</option>
+              </select>
+            </div>
+            
+            <div className="grid gap-3">
+              <Label htmlFor="calender-title">Date</Label>
+              <Input
+                id="event-date"
+                type="date"
+                name="date"
+                className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+            
             </div>
             <div className="grid gap-3">
               <Label htmlFor="event-description">Description</Label>

@@ -34,21 +34,24 @@ const page = () => {
         />
       </div>
 
-      <div className="flex flex-wrap gap-4 w-full">
+      <div className="flex justify-center lg:justify-start lg:mx-12 flex-wrap gap-4 w-full">
         <Boxcard
           description="Courses"
           value={12}
           Icon={Code}
+          href="/admin/course/data"
         />
         <Boxcard
           description="Events"
           value={9}
           Icon={Calendar}
+          href="/admin/events/data"
         />
         <Boxcard
           description="Projects"
           value={7}
           Icon={BriefcaseBusiness}
+          href="/admin/innovatif-hub/data"
         />
       </div>
     </div>

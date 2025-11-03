@@ -22,6 +22,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import Logo from "@/assets/logo.png";
 import Image from "next/image";
@@ -93,6 +94,7 @@ export function AppSidebar() {
   const router = useRouter();
   const pathname = usePathname();
   const { logout } = useAuth();
+  const { isMobile, setOpenMobile } = useSidebar();
   return (
     <Sidebar>
       <SidebarHeader>
@@ -127,7 +129,10 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       className={`cursor-pointer ${isActive ? 'text-black opacity-100 border-l-4 border-primary' : 'opacity-50 hover:opacity-75'}`}
-                      onClick={() => router.push(item.url)}
+                      onClick={() => {
+                        router.push(item.url);
+                        if (isMobile) setOpenMobile(false);
+                      }}
                       asChild
                     >
                       <div className="flex gap-4 ml-6 items-center text-xl">

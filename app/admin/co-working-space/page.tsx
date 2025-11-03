@@ -7,9 +7,9 @@ import { GiExplosiveMeeting } from 'react-icons/gi';
 const page = () => {
   return (
     <div className="bg-lightblue min-h-[calc(100vh-6rem)] w-full py-16">
-      <div className="bg-white rounded-2xl mx-16 mb-16 flex flex-col  gap-8 p-6">
+      <div className="bg-white rounded-2xl mx-4 lg:mx-16 mb-16 flex flex-col  gap-8 p-6">
 
-      <h1 className="text-xl lg:text-3xl font-bold mx-16 leading-relaxed">Co-Working Space</h1>
+      <h1 className="text-xl lg:text-3xl font-bold mx-4 lg:mx-16 leading-relaxed">Co-Working Space</h1>
 
       <div className="flex flex-wrap justify-center lg:justify-start lg:ml-16 items-center gap-12 w-full">
         <Boxcard
