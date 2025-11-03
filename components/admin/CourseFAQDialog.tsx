@@ -20,7 +20,7 @@ import { apiRequest } from "@/lib/api";
 import { FAQS } from "@/lib/api_routes";
 import { useAuth } from "@/context/authcontext";
 
-export function FAQDialog() {
+export function CourseFAQDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
 
@@ -36,7 +36,7 @@ export function FAQDialog() {
     const data = {
       question,
       answer,
-      type: "landing-page",
+      type: "course",
     };
 
     try {
@@ -81,19 +81,19 @@ export function FAQDialog() {
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="faq-question">Question</Label>
+              <Label htmlFor="coursefaq-question">Question</Label>
               <Input
-                id="faq-question"
+                id="coursefaq-question"
                 placeholder="Enter question"
-                name="faq-question"
+                name="coursefaq-question"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="faq-answer">Answer</Label>
+              <Label htmlFor="coursefaq-answer">Answer</Label>
               <Textarea
-                id="faq-answer"
+                id="coursefaq-answer"
                 placeholder="Enter Answer..."
-                name="faq-answer"
+                name="coursefaq-answer"
               />
             </div>
           </div>

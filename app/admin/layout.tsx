@@ -16,29 +16,29 @@ export default function RootLayout({
   const router = useRouter();
   const { isAuthenticated, loading } = useAuth();
 
-  useEffect(() => {
-    if (!loading && !isAuthenticated) {
-      router.push("/auth/login");
-    }
-  }, [isAuthenticated, router, loading]);
+  // useEffect(() => {
+  //   if (!loading && !isAuthenticated) {
+  //     router.push("/auth/login");
+  //   }
+  // }, [isAuthenticated, router, loading]);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <Spinner />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex items-center justify-center h-screen">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
-  if (!isAuthenticated) {
-    return null;
-  }
+  // if (!isAuthenticated) {
+  //   return null;
+  // }
 
   return (
     <SidebarProvider>
       <AppSidebar />
 
-      <main className="w-full">
+      <main className="w-full bg-lightblue min-h-screen">
         <AdminHeader />
         {children}
       </main>

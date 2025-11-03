@@ -97,7 +97,7 @@ export function SuccessStoriesDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline">
+        <Button variant="outline" className="bg-primary text-white">
           {" "}
           <Plus className="inline" /> Add
         </Button>

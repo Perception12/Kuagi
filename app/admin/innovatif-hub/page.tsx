@@ -6,12 +6,12 @@ import { LuWorkflow } from 'react-icons/lu';
 import { AiOutlineProject } from 'react-icons/ai';
 const page = () => {
   return (
-    <div className="relative bg-lightblue h-full w-full">
-      <div className="absolute bg-white rounded-2xl m-16 flex flex-col  gap-8 p-6">
+    <div className="bg-lightblue min-h-[calc(100vh-6rem)] w-full py-16">
+      <div className="bg-white rounded-2xl mx-16 mb-16 flex flex-col  gap-8 p-6">
 
-      <h1 className="text-3xl font-bold mx-16 leading-loose">Innovative Hub</h1>
+      <h1 className="text-xl lg:text-3xl font-bold mx-16 leading-loose">Innovative Hub</h1>
 
-      <div className="flex flex-wrap justify-center items-center gap-12 w-full">
+      <div className="flex flex-wrap justify-center lg:justify-start lg:ml-16 items-center gap-12 w-full">
         <Boxcard
           description="Hero Section"
           Icon={Image}

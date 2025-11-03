@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import img_women4tech from "@/assets/women4Tech1.png";
 import WomenMission from "@/assets/women_mission.png"
+import { WHeroDialog } from "@/components/admin/WHeroDialogue";
+import { MissionDialog } from "@/components/admin/MissionDialog";
+import { OneOfUsDialog } from "@/components/admin/OneOfUsDialog";
 
 async function getHeroData(): Promise<hero[]> {
   // Simulate fetching data from an API or database
@@ -66,30 +69,20 @@ export default async function page() {
   return (
     <div className="flex flex-col gap-8 p-6 bg-lightblue h-full">
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Hero Section</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Hero Section</h1>
         <DataTable columns={heroColumns} data={fetchedHeroData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <WHeroDialog/>
       </div>
-
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Our Mission</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Our Mission</h1>
         <DataTable columns={missionColumns} data={fetchedMissionData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <MissionDialog/>
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">One of Us Says</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">One of Us Says</h1>
         <DataTable columns={oneOfUsColumns} data={fetchedOneOfUsData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <OneOfUsDialog/>
       </div>
     </div>
   );

@@ -13,14 +13,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
+import { useAuth } from "@/context/authcontext";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { GENERAL_INFO } from "@/lib/api_routes";
 import { apiRequest } from "@/lib/api";
-import { FAQS } from "@/lib/api_routes";
-import { useAuth } from "@/context/authcontext";
 
-export function FAQDialog() {
+export function VirtualSpaceDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
 
@@ -29,32 +28,21 @@ export function FAQDialog() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-
-    const question = formData.get("faq-question");
-    const answer = formData.get("faq-answer");
-
-    const data = {
-      question,
-      answer,
-      type: "landing-page",
-    };
-
+    formData.append("page", "co-working-space");
     try {
       setLoading(true);
-
       await apiRequest({
-        url: FAQS.create(),
-        data,
+        url: GENERAL_INFO.create(),
+        data: formData,
         token,
         isFormData: true,
       });
-
-      toast.success("faq added successfully");
-      setOpen(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      toast.success("Virtual Office added successfully");
+      setOpen(false); // 3. Close dialog on success
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to add faq");
+      toast.error("Failed to Virtual Office");
     }
   };
 
@@ -63,7 +51,7 @@ export function FAQDialog() {
   }, [open]); // Reset loading state when dialog opens
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
         <Button variant="outline" className="bg-primary text-white">
           {" "}
@@ -73,27 +61,43 @@ export function FAQDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <DialogHeader>
-            <DialogTitle>Add New FAQ</DialogTitle>
+            <DialogTitle>Add New Virtual Office Price</DialogTitle>
             <DialogDescription>
-              Add a new frequently asked questions. Click save when you&apos;re
+              Add a new VirtualOffice Price to your Co-Working-space page. Click save when you&apos;re
               done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="faq-question">Question</Label>
+              <Label htmlFor="virtualspace-plan">Plan</Label>
+              <select id="virtualspace-plan" name="virtualspace-plan">
+    <option value="Standard">Standard plan</option>
+    <option value="Super">Super plan</option>
+    <option value="premium">Premium plan</option>
+  </select>
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="virtualspace-dailyprice">Daily Price</Label>
               <Input
-                id="faq-question"
-                placeholder="Enter question"
-                name="faq-question"
+                id="virtualspace-dailyprice"
+                placeholder="Enter Dailyprice..."
+                name="virtualspace-dailyprice"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="faq-answer">Answer</Label>
-              <Textarea
-                id="faq-answer"
-                placeholder="Enter Answer..."
-                name="faq-answer"
+              <Label htmlFor="virtualspace-weeklyprice">Weekly Price</Label>
+              <Input
+                id="virtualspace-weeklyprice"
+                placeholder="Enter Weekly Price..."
+                name="virtualspace-weeklyprice"
+              />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="virtualspace-weeklyprice">Monthly Price</Label>
+              <Input
+                id="virtualspace-monthlyprice"
+                placeholder="Enter Monthly Price..."
+                name="virtualspace-monthlyprice"
               />
             </div>
           </div>
@@ -101,7 +105,7 @@ export function FAQDialog() {
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button disabled={loading} type="submit">
+            <Button type="submit" disabled={loading}>
               Save changes
             </Button>
           </DialogFooter>

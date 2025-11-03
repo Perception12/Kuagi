@@ -20,7 +20,7 @@ import { apiRequest } from "@/lib/api";
 import { FAQS } from "@/lib/api_routes";
 import { useAuth } from "@/context/authcontext";
 
-export function FAQDialog() {
+export function BusinessPackagesDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
 
@@ -30,13 +30,13 @@ export function FAQDialog() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    const question = formData.get("faq-question");
-    const answer = formData.get("faq-answer");
+    const title = formData.get("faq-title");
+    const description = formData.get("faq-description");
 
     const data = {
-      question,
-      answer,
-      type: "landing-page",
+      title,
+      description,
+      type: "course",
     };
 
     try {
@@ -49,12 +49,12 @@ export function FAQDialog() {
         isFormData: true,
       });
 
-      toast.success("faq added successfully");
+      toast.success("Package added successfully");
       setOpen(false);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to add faq");
+      toast.error("Failed to add Package");
     }
   };
 
@@ -73,27 +73,27 @@ export function FAQDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <DialogHeader>
-            <DialogTitle>Add New FAQ</DialogTitle>
+            <DialogTitle>Add New Package</DialogTitle>
             <DialogDescription>
-              Add a new frequently asked questions. Click save when you&apos;re
+              Add a new Business Package. Click save when you&apos;re
               done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="faq-question">Question</Label>
+              <Label htmlFor="businesspackage-title">Title</Label>
               <Input
-                id="faq-question"
-                placeholder="Enter question"
-                name="faq-question"
+                id="businesspackage-title"
+                placeholder="Enter title"
+                name="businesspackage-title"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="faq-answer">Answer</Label>
+              <Label htmlFor="businesspackage-description">Description</Label>
               <Textarea
-                id="faq-answer"
+                id="businesspackage-description"
                 placeholder="Enter Answer..."
-                name="faq-answer"
+                name="businesspackage-description"
               />
             </div>
           </div>

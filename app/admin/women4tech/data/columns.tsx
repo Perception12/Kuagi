@@ -29,6 +29,11 @@ export type oneOfUs = {
 
 export const heroColumns: ColumnDef<hero>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "image",
     header: "Image",
     size: 100,
@@ -91,6 +96,11 @@ export const heroColumns: ColumnDef<hero>[] = [
 
 export const missionColumns: ColumnDef<mission>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "image",
     header: "Image",
     size: 100,
@@ -152,6 +162,11 @@ export const missionColumns: ColumnDef<mission>[] = [
 ];
 
 export const oneOfUsColumns: ColumnDef<oneOfUs>[] = [
+  {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
   {
     accessorKey: "name",
     header: "Name",

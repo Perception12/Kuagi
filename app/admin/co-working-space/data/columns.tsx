@@ -12,6 +12,11 @@ export type price_plan = {
 
 export const pricePlanColumns: ColumnDef<price_plan>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "plan",
     header: "Plan",
     size: 150,

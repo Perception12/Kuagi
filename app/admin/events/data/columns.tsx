@@ -19,6 +19,11 @@ export type event = {
 
 export const eventColumns: ColumnDef<event>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "title",
     header: "Title",
     size: 200,

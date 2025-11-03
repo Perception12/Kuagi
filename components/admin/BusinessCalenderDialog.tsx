@@ -20,9 +20,25 @@ import { apiRequest } from "@/lib/api";
 import { FAQS } from "@/lib/api_routes";
 import { useAuth } from "@/context/authcontext";
 
-export function FAQDialog() {
+export function BusinessCalenderDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
+
+  const [date, setDate] = useState("")
+  const [day, setDay] = useState("")
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedDate = e.target.value
+    setDate(selectedDate)
+
+    if (selectedDate) {
+      const dateObj = new Date(selectedDate + "T00:00:00")
+      const dayName = dateObj.toLocaleDateString("en-US", { weekday: "long" })
+      setDay(dayName)
+    } else {
+      setDay("")
+    }
+  }
 
   const { token } = useAuth();
 
@@ -30,13 +46,13 @@ export function FAQDialog() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    const question = formData.get("faq-question");
-    const answer = formData.get("faq-answer");
+    const title = formData.get("faq-title");
+    const description = formData.get("faq-description");
 
     const data = {
-      question,
-      answer,
-      type: "landing-page",
+      title,
+      description,
+      type: "course",
     };
 
     try {
@@ -49,12 +65,12 @@ export function FAQDialog() {
         isFormData: true,
       });
 
-      toast.success("faq added successfully");
+      toast.success("Calender added successfully");
       setOpen(false);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to add faq");
+      toast.error("Failed to add Calender");
     }
   };
 
@@ -73,27 +89,56 @@ export function FAQDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <DialogHeader>
-            <DialogTitle>Add New FAQ</DialogTitle>
+            <DialogTitle>Add Calender Details</DialogTitle>
             <DialogDescription>
-              Add a new frequently asked questions. Click save when you&apos;re
+              Add a new Calender Details. Click save when you&apos;re
               done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="faq-question">Question</Label>
+          <div className="grid gap-3">
+              <Label htmlFor="calender-title">Date</Label>
               <Input
-                id="faq-question"
-                placeholder="Enter question"
-                name="faq-question"
+                id="date"
+                type="date"
+                name="date"
+                onChange={handleDateChange}
+                className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               />
             </div>
+
             <div className="grid gap-3">
-              <Label htmlFor="faq-answer">Answer</Label>
-              <Textarea
-                id="faq-answer"
-                placeholder="Enter Answer..."
-                name="faq-answer"
+              <Label htmlFor="calender-title">Day of Week</Label>
+              <div className="w-full border border-input rounded-md px-3 py-2 text-sm bg-muted text-foreground">
+              {day || "Select a date"}
+              </div>
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="calender-title">Time</Label>
+              <Input
+                id="time"
+                type="time"
+                name="time"
+                className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="calender-description">Topic</Label>
+              <Input
+                id="calender-topic"
+                placeholder="Enter Topic"
+                name="calender-topic"
+              />
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="calender-description">Venue</Label>
+              <Input
+                id="calender-venue"
+                placeholder="Enter Venue"
+                name="calender-venue"
               />
             </div>
           </div>

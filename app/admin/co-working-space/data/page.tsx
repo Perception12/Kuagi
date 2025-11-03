@@ -2,6 +2,9 @@ import { DataTable } from "@/components/admin/DataTable";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { pricePlanColumns, price_plan } from "./columns";
+import { SharedSpaceDialog } from "@/components/admin/SharedSpaceDialog";
+import { VirtualSpaceDialog } from "@/components/admin/VirtualOfficeDialog";
+import { MeetUpDialog } from "@/components/admin/MeetupDialog";
 
 async function getSharedSpacePlan(): Promise<price_plan[]> {
   // Simulate fetching data from an API or database
@@ -113,28 +116,19 @@ export default async function page() {
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Price Plan (Shared Space)</h1>
         <DataTable columns={pricePlanColumns} data={fetchedSharedSpacePlan} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <SharedSpaceDialog/>
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Price Plan (Virtual Office)</h1>
         <DataTable columns={pricePlanColumns} data={fetchedVirtualOfficePlan} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <VirtualSpaceDialog/>
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Price Plan (Meet Up)</h1>
         <DataTable columns={pricePlanColumns} data={fetchedMeetUpPlan} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <MeetUpDialog/>
       </div>
     </div>
   );

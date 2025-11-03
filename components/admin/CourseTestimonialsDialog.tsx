@@ -17,10 +17,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { apiRequest } from "@/lib/api";
-import { FAQS } from "@/lib/api_routes";
+import { TESTIMONIALS } from "@/lib/api_routes";
 import { useAuth } from "@/context/authcontext";
 
-export function FAQDialog() {
+export function CourseTestimonialsDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
 
@@ -28,33 +28,25 @@ export function FAQDialog() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const formData = new FormData(event.currentTarget);
-
-    const question = formData.get("faq-question");
-    const answer = formData.get("faq-answer");
-
-    const data = {
-      question,
-      answer,
-      type: "landing-page",
-    };
 
     try {
       setLoading(true);
 
       await apiRequest({
-        url: FAQS.create(),
-        data,
+        url: TESTIMONIALS.create(),
+        data: formData,
         token,
         isFormData: true,
       });
 
-      toast.success("faq added successfully");
+      toast.success("testimonial added successfully");
       setOpen(false);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to add faq");
+      toast.error("Failed to add testimonial");
     }
   };
 
@@ -73,27 +65,38 @@ export function FAQDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <DialogHeader>
-            <DialogTitle>Add New FAQ</DialogTitle>
+            <DialogTitle>Add Testimonial</DialogTitle>
             <DialogDescription>
-              Add a new frequently asked questions. Click save when you&apos;re
-              done.
+              Add a new testimonial. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="faq-question">Question</Label>
+              <Label htmlFor="youtube-url">Youtube Preview URL</Label>
               <Input
-                id="faq-question"
-                placeholder="Enter question"
-                name="faq-question"
+                id="youtube-url"
+                placeholder="Enter youtube link"
+                name="youtube-url"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="faq-answer">Answer</Label>
+              <Label htmlFor="testimonial-name">Name</Label>
+              <Input
+                id="testimonial-name"
+                placeholder="Enter name of the commenter"
+                name="testimonial-name"
+              />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="testimonial-image">Image</Label>
+              <Input id="testimonial-image" type="file" name="image" />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="testimonial-comment">Comment</Label>
               <Textarea
-                id="faq-answer"
-                placeholder="Enter Answer..."
-                name="faq-answer"
+                id="testimonial-comment"
+                placeholder="Enter comment..."
+                name="testimonial-comment"
               />
             </div>
           </div>

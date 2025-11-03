@@ -59,7 +59,7 @@ export function PartnersDialog() {
       {" "}
       {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline">
+        <Button variant="outline" className="bg-primary text-white">
           {" "}
           <Plus className="inline" /> Add
         </Button>

@@ -19,6 +19,12 @@ export type packages = {
   description: string[];
 };
 
+export type faq = {
+  id: string;
+  questions: string;
+  answers: string
+}
+
 export type calendar = {
   id: string;
   day:
@@ -35,6 +41,11 @@ export type calendar = {
 };
 
 export const heroColumns: ColumnDef<hero>[] = [
+  {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
   {
     accessorKey: "image",
     header: "Image",
@@ -98,6 +109,11 @@ export const heroColumns: ColumnDef<hero>[] = [
 
 export const packagesColumns: ColumnDef<packages>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "title",
     header: "Title",
     size: 200,
@@ -143,6 +159,11 @@ export const packagesColumns: ColumnDef<packages>[] = [
 
 export const calendarColumns: ColumnDef<calendar>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "day",
     header: "Day",
     size: 100,
@@ -186,3 +207,55 @@ export const calendarColumns: ColumnDef<calendar>[] = [
     cell: ({ row }) => <Action<calendar> row={row} />,
   },
 ];
+
+
+export const faqColumns: ColumnDef<faq>[] = [
+  {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
+    accessorKey: "questions",
+    header: "Questions",
+    size: 300,
+    cell: ({ getValue }) => {
+      const value = getValue() as string;
+      if (!value) return null;
+      return (
+        <span
+          title={value}
+          className="block max-w-[300px] whitespace-normal break-words"
+        >
+          {value}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: "answers",
+    header: "Answers",
+    size: 300,
+    cell: ({ getValue }) => {
+      const value = getValue() as string;
+      if (!value) return null;
+      return (
+        <span
+          title={value}
+          className="block max-w-[300px] whitespace-normal break-words"
+        >
+          {value}
+        </span>
+      );
+    },
+  },
+  {
+    id: "actions",
+    header: () => <div className="text-right">Actions</div>,
+    size: 120,
+    cell: ({ row }) => <Action<faq> row={row} 
+    // editDialog={<FAQEditDialog key={row.id} />} 
+    />,
+  },
+];
+

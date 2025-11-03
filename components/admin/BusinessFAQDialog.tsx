@@ -20,7 +20,7 @@ import { apiRequest } from "@/lib/api";
 import { FAQS } from "@/lib/api_routes";
 import { useAuth } from "@/context/authcontext";
 
-export function FAQDialog() {
+export function BusinessFAQDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
 
@@ -30,13 +30,13 @@ export function FAQDialog() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    const question = formData.get("faq-question");
-    const answer = formData.get("faq-answer");
+    const question = formData.get("businessfaq-question");
+    const answer = formData.get("businessfaq-answer");
 
     const data = {
       question,
       answer,
-      type: "landing-page",
+      type: "business-hub",
     };
 
     try {
@@ -49,12 +49,12 @@ export function FAQDialog() {
         isFormData: true,
       });
 
-      toast.success("faq added successfully");
+      toast.success("businessfaq added successfully");
       setOpen(false);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to add faq");
+      toast.error("Failed to add businessfaq");
     }
   };
 
@@ -81,19 +81,19 @@ export function FAQDialog() {
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="faq-question">Question</Label>
+              <Label htmlFor="businessfaq-question">Question</Label>
               <Input
-                id="faq-question"
+                id="businessfaq-question"
                 placeholder="Enter question"
-                name="faq-question"
+                name="businessfaq-question"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="faq-answer">Answer</Label>
+              <Label htmlFor="businessfaq-answer">Answer</Label>
               <Textarea
-                id="faq-answer"
+                id="businessfaq-answer"
                 placeholder="Enter Answer..."
-                name="faq-answer"
+                name="businessfaq-answer"
               />
             </div>
           </div>

@@ -4,6 +4,8 @@ import { DataTable } from "@/components/admin/DataTable";
 import {
   calendar,
   calendarColumns,
+  faq,
+  faqColumns,
   hero,
   heroColumns,
   packages,
@@ -13,6 +15,17 @@ import {
 import img_women4tech from "@/assets/women4Tech1.png";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { BusinessHeroDialog } from "@/components/admin/BusinessHero";
+import { BusinessPackagesDialog } from "@/components/admin/BusinessPackagesDialog";
+import { BusinessCalenderDialog } from "@/components/admin/BusinessCalenderDialog";
+import { apiRequest } from "@/lib/api";
+import {
+  FAQS,
+  GENERAL_INFO,
+  OUR_PARTNERS,
+  SUCCESS_STORIES,
+} from "@/lib/api_routes";
+import { BusinessFAQDialog } from "@/components/admin/BusinessFAQDialog";
 
 async function getHeroData(): Promise<hero[]> {
   // Simulate fetching data from an API or database
@@ -85,37 +98,63 @@ async function getCalendarData(): Promise<calendar[]> {
   });
 }
 
+async function getFAQData(): Promise<faq[]> {
+  try {
+    const response = await apiRequest({
+      url: FAQS.all(),
+      method: "get",
+    });
+
+    type FAQApiResponseItem = {
+      id?: string | number;
+      question: string;
+      answer: string;
+    };
+
+    const data = Array.isArray(response.data.data)
+      ? response.data.data.map((item: FAQApiResponseItem) => ({
+          id: item.id?.toString() || item.question,
+          questions: item.question,
+          answers: item.answer,
+        }))
+      : [];
+
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch hero data", error);
+    return [];
+  }
+}
+
 export default async function page() {
   const fetchedHeroData = await getHeroData();
   const fetchedPackagesData = await getPackagesData();
   const fetchedCalendarData = await getCalendarData();
+  const fetchedFAQData = await getFAQData();
   return (
     <div className="flex flex-col gap-8 p-6 bg-lightblue h-full">
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Hero Section</h1>
         <DataTable columns={heroColumns} data={fetchedHeroData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <BusinessHeroDialog/>
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Seminar Packages</h1>
         <DataTable columns={packagesColumns} data={fetchedPackagesData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <BusinessPackagesDialog/>
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
         <h1 className="text-2xl font-bold">Our Calendar</h1>
         <DataTable columns={calendarColumns} data={fetchedCalendarData} />
-        <Button className="w-fit ml-auto px-4 rounded-md" size={"sm"}>
-          {" "}
-          <Plus className="text-white inline" /> Add
-        </Button>
+        <BusinessCalenderDialog/>
+      </div>
+
+      <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
+        <h1 className="text-2xl font-bold">FAQ</h1>
+        <DataTable columns={faqColumns} data={fetchedFAQData} />
+        <BusinessFAQDialog/>
       </div>
     </div>
   );

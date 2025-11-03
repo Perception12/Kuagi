@@ -102,6 +102,11 @@ export const heroColumns: ColumnDef<hero>[] = [
 
 export const whoWeAreColumns: ColumnDef<whoWeAre>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "image",
     header: "Image",
     size: 100,
@@ -138,6 +143,11 @@ export const whoWeAreColumns: ColumnDef<whoWeAre>[] = [
 ];
 
 export const successColumns: ColumnDef<success>[] = [
+  {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
   {
     accessorKey: "image",
     header: "Image",
@@ -178,6 +188,11 @@ export const successColumns: ColumnDef<success>[] = [
 
 export const partnersColumns: ColumnDef<partners>[] = [
   {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
+  {
     accessorKey: "image",
     header: "Image",
     size: 100,
@@ -209,6 +224,11 @@ export const partnersColumns: ColumnDef<partners>[] = [
 ];
 
 export const testimonialsColumns: ColumnDef<testimonials>[] = [
+  {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
   {
     accessorKey: "youtube_preview_url",
     header: "YouTube Preview URL",
@@ -275,6 +295,11 @@ export const testimonialsColumns: ColumnDef<testimonials>[] = [
 ];
 
 export const faqColumns: ColumnDef<faq>[] = [
+  {
+    accessorKey: "S/N",
+    header: "S/N",
+    size: 50,
+  },
   {
     accessorKey: "questions",
     header: "Questions",

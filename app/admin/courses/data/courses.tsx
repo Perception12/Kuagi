@@ -4,6 +4,7 @@ import { Combobox } from "@/components/admin/Combobox";
 import { useState } from "react";
 import OnlineCourse from "./online-course";
 import PhysicalCourse from "./physical-course";
+import { CoursesDialog } from "@/components/admin/CoursesDialog";
 
 const courseType = [
   {
@@ -27,6 +28,7 @@ const Courses = () => {
       />
 
       {selectedCourseType === "online course" ? <OnlineCourse /> : <PhysicalCourse />}
+      <CoursesDialog/>
     </div>
   );
 };

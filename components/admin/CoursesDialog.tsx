@@ -13,14 +13,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
+import { useAuth } from "@/context/authcontext";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { GENERAL_INFO } from "@/lib/api_routes";
 import { apiRequest } from "@/lib/api";
-import { TESTIMONIALS } from "@/lib/api_routes";
-import { useAuth } from "@/context/authcontext";
 
-export function TestimonialsDialog() {
+export function CoursesDialog() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false); // 1. Dialog open state
 
@@ -28,25 +27,22 @@ export function TestimonialsDialog() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const formData = new FormData(event.currentTarget);
-
+    formData.append("page", "courses");
     try {
       setLoading(true);
-
       await apiRequest({
-        url: TESTIMONIALS.create(),
+        url: GENERAL_INFO.create(),
         data: formData,
         token,
         isFormData: true,
       });
-
-      toast.success("testimonial added successfully");
-      setOpen(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      toast.success("Course added successfully");
+      setOpen(false); // 3. Close dialog on success
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to add testimonial");
+      toast.error("Failed to add Course");
     }
   };
 
@@ -55,7 +51,7 @@ export function TestimonialsDialog() {
   }, [open]); // Reset loading state when dialog opens
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
         <Button variant="outline" className="bg-primary text-white">
           {" "}
@@ -65,46 +61,56 @@ export function TestimonialsDialog() {
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <DialogHeader>
-            <DialogTitle>Add Testimonial</DialogTitle>
+            <DialogTitle>Add New Course</DialogTitle>
             <DialogDescription>
-              Add a new testimonial. Click save when you&apos;re done.
+              Add a new Course to your Course page. Click save when you&apos;re
+              done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="youtube-url">Youtube Preview URL</Label>
+              <Label htmlFor="course-image">Image and Course name</Label>
+              <Input id="course-image" type="file" name="image" />
+              <Input type="text" id="course-name" placeholder="Course name"  />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="course-duration">Duration</Label>
               <Input
-                id="youtube-url"
-                placeholder="Enter youtube link"
-                name="youtube-url"
+                id="course-duration"
+                placeholder="Enter Course duration..."
+                name="course-duration"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="testimonial-name">Name</Label>
+              <Label htmlFor="course-frequency">Frequency</Label>
               <Input
-                id="testimonial-name"
-                placeholder="Enter name of the commenter"
-                name="testimonial-name"
+                id="course-frequencyn"
+                placeholder="Enter Course Frequency..."
+                name="course-frequency"
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="testimonial-image">Image</Label>
-              <Input id="testimonial-image" type="file" name="image" />
+              <Label htmlFor="course-price">Price</Label>
+              <Input
+                id="course-price"
+                placeholder="Enter Course Frequency..."
+                name="course-price"
+                type="number"
+              />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="testimonial-comment">Comment</Label>
-              <Textarea
-                id="testimonial-comment"
-                placeholder="Enter comment..."
-                name="testimonial-comment"
-              />
+              <Label htmlFor="course-availability">Status</Label>
+              <select id="course-availability" name="course-availability">
+                <option value="available">Available</option>
+                <option value="unavailable">Unavailable</option>
+              </select>
             </div>
           </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button disabled={loading} type="submit">
+            <Button type="submit" disabled={loading}>
               Save changes
             </Button>
           </DialogFooter>

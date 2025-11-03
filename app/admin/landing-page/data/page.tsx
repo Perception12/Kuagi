@@ -231,41 +231,39 @@ export default async function page() {
   return (
     <div className="flex flex-col gap-8 p-6 bg-lightblue h-full">
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Hero Section</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Hero Section</h1>
         <DataTable columns={heroColumns} data={fetchedHeroData} />
         <HeroDialog />
       </div>
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Who We Are</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Who We Are</h1>
         <DataTable columns={whoWeAreColumns} data={whoWeAreData} />
         <WhoWeAreDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Success Stories</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Success Stories</h1>
         <DataTable columns={successColumns} data={fetchedSuccessData} />
-
         <SuccessStoriesDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Our Partners</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Our Partners</h1>
         <DataTable columns={partnersColumns} data={fetchedPartnersData} />
         <PartnersDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">Testimonials</h1>
+        <h1 className="text-3xl font-bold opacity-80 mb-8">Testimonials</h1>
         <DataTable
           columns={testimonialsColumns}
           data={fetchedTestimonialsData}
         />
-
         <TestimonialsDialog />
       </div>
 
       <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-        <h1 className="text-2xl font-bold">FAQ</h1>
+        <h1 className="text-3xl font-bold opacity-80">FAQ</h1>
         <DataTable columns={faqColumns} data={fetchedFAQData} />
         <FAQDialog />
       </div>
