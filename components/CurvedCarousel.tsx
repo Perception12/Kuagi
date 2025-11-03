@@ -16,7 +16,7 @@ const seamlessImages = [...images, ...images];
 export default function CurvedCarousel() {
   return (
     <Slider 
-      width="25%"
+      width="30%"
       duration={150}
       pauseOnHover={false}
       blurBorders={false}
