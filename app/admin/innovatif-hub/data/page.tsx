@@ -11,8 +11,6 @@ import {
 } from "./columns";
 
 import img_women4tech from "@/assets/women4Tech1.png";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { apiRequest } from "@/lib/api";
 import { FAQS } from "@/lib/api_routes";
 import { InnovativeFAQDialog } from "@/components/admin/InnovatifFAQDialog";

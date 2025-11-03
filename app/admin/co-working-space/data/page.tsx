@@ -1,6 +1,4 @@
 import { DataTable } from "@/components/admin/DataTable";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { pricePlanColumns, price_plan } from "./columns";
 import { SharedSpaceDialog } from "@/components/admin/SharedSpaceDialog";
 import { VirtualSpaceDialog } from "@/components/admin/VirtualOfficeDialog";

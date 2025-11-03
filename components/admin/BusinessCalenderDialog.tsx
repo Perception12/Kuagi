@@ -13,7 +13,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { apiRequest } from "@/lib/api";
@@ -102,6 +101,7 @@ export function BusinessCalenderDialog() {
                 id="date"
                 type="date"
                 name="date"
+                value={date}
                 onChange={handleDateChange}
                 className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
               />

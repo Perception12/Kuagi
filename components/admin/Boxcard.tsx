@@ -17,7 +17,6 @@ const Boxcard: React.FC<OverviewCardProps> = ({
   description,
   value,
   Icon,
-  btn_text,
   href,
 }) => {
   const content = (

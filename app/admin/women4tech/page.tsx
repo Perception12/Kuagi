@@ -1,6 +1,6 @@
 import React from "react";
 import Boxcard from "@/components/admin/Boxcard";
-import { MessageCircle, Image, BookImage, Handshake, Antenna } from "lucide-react";
+import { MessageCircle, Image, BookImage, Antenna } from "lucide-react";
 
 const page = () => {
   return (

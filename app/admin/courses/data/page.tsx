@@ -7,9 +7,7 @@ import { about, AboutColumns, faq, faqColumns, testimonials, testimonialsColumns
 import { apiRequest } from "@/lib/api";
 import {
   FAQS,
-  GENERAL_INFO,
-  OUR_PARTNERS,
-  SUCCESS_STORIES,
+
 } from "@/lib/api_routes";
 import { CourseAboutDialog } from "@/components/admin/CourseAboutDialog";
 import { CourseTestimonialsDialog } from "@/components/admin/CourseTestimonialsDialog";

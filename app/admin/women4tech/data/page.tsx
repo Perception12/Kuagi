@@ -1,8 +1,6 @@
 import React from "react";
 import { hero, heroColumns, mission, missionColumns, oneOfUs, oneOfUsColumns } from "./columns";
 import { DataTable } from "@/components/admin/DataTable";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import img_women4tech from "@/assets/women4Tech1.png";
 import WomenMission from "@/assets/women_mission.png"
 import { WHeroDialog } from "@/components/admin/WHeroDialogue";

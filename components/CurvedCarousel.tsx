@@ -11,19 +11,19 @@ import Slider from "react-infinite-logo-slider";
 
 const images = [Image1, Image2, Image3, Image4, Image5];
 
-
+const seamlessImages = [...images, ...images];
 
 export default function CurvedCarousel() {
   return (
     <Slider 
-      width="30%"
-      duration={40}
+      width="25%"
+      duration={150}
       pauseOnHover={false}
       blurBorders={false}
       blurBorderColor={'#fff'}>
 
 
-      {images.map((image, index) => (
+      {seamlessImages.map((image, index) => (
       <Slider.Slide key={index}>
         <Image src={image} alt="slider" width={400} height={300} className="object-cover rounded-lg" />
       </Slider.Slide>
