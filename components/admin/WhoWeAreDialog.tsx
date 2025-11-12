@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,90 +13,98 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAuth } from "@/context/authcontext";
-import { apiRequest } from "@/lib/api";
-import { GENERAL_INFO } from "@/lib/api_routes";
 import { Plus } from "lucide-react";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useRef, useState } from "react";
+import { useAuth } from "@/context/authcontext";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function WhoWeAreDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      const formData = new FormData(event.currentTarget);
-      formData.append("page", "who-we-are");
-      try {
-        setLoading(true);
-        await apiRequest({
-          url: GENERAL_INFO.create(),
-          data: formData,
-          token,
-          isFormData: true,
-        });
-        toast.success("Hero added successfully");
-        setOpen(false); // 3. Close dialog on success
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (error) {
-        setLoading(false);
-        toast.error("Failed to add hero");
-      }
-    };
-  
-    useEffect(() => {
-      if (open) setLoading(false);
-    }, [open]); // Reset loading state when dialog opens
+  // ✅ UseApiCrud hook for cleaner API handling
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/general-info",
+    token,
+    onSuccess: () => setOpen(false),
+  });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline"
-        className="bg-primary text-white">
-          {" "}
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)}
+        >
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(
+              formRef as React.RefObject<HTMLFormElement>,
+              e,
+              "POST",
+              "About section added successfully 🎉"
+            )
+          }
+          encType="multipart/form-data"
+          className="flex flex-col gap-6"
+        >
           <DialogHeader>
             <DialogTitle>Add New About</DialogTitle>
             <DialogDescription>
-              Add a new about to your landing page. Click save when you&apos;re
-              done.
+              Add a new “Who We Are” section to your landing page. Click save when you’re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
+            {/* Image upload */}
             <div className="grid gap-3">
               <Label htmlFor="about-image">Image</Label>
               <Input id="about-image" type="file" name="image" />
             </div>
+
+            {/* Title */}
             <div className="grid gap-3">
               <Label htmlFor="about-title">Title</Label>
               <Input
                 id="about-title"
                 placeholder="Enter title..."
                 name="heading"
+                required
               />
             </div>
+
+            {/* Description */}
             <div className="grid gap-3">
-              <Label htmlFor="about-figure">Description</Label>
+              <Label htmlFor="about-description">Description</Label>
               <Input
-                id="about-figure"
+                id="about-description"
                 placeholder="Enter description..."
                 name="subheading"
+                required
               />
             </div>
+
+            {/* Hidden input for API field */}
+            <input type="hidden" name="page" value="who-we-are" />
           </div>
+
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

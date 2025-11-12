@@ -13,100 +13,110 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/authcontext";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { GENERAL_INFO } from "@/lib/api_routes";
-import { apiRequest } from "@/lib/api";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function VirtualSpaceDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    formData.append("page", "co-working-space");
-    try {
-      setLoading(true);
-      await apiRequest({
-        url: GENERAL_INFO.create(),
-        data: formData,
-        token,
-        isFormData: true,
-      });
-      toast.success("Virtual Office added successfully");
-      setOpen(false); // 3. Close dialog on success
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to Virtual Office");
-    }
-  };
-
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+  // ✅ useApiCrud for handling create, toast, and loading state
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/virtual-offices",
+    token,
+    onSuccess: () => {
+      setOpen(false);
+    },
+  });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline" className="bg-primary text-white">
-          {" "}
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)} // Explicitly open
+        >
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(
+              formRef as React.RefObject<HTMLFormElement>,
+              e,
+              "POST",
+              "Virtual Office added successfully 🎉"
+            )
+          }
+          encType="multipart/form-data"
+        >
           <DialogHeader>
             <DialogTitle>Add New Virtual Office Price</DialogTitle>
             <DialogDescription>
-              Add a new VirtualOffice Price to your Co-Working-space page. Click save when you&apos;re
-              done.
+              Add a new Virtual Office Price to your Co-Working-space page. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
+
             <div className="grid gap-3">
               <Label htmlFor="virtualspace-plan">Plan</Label>
-              <select id="virtualspace-plan" name="virtualspace-plan">
-    <option value="Standard">Standard plan</option>
-    <option value="Super">Super plan</option>
-    <option value="premium">Premium plan</option>
-  </select>
+              <select
+                id="virtualspace-plan"
+                name="plan"
+                className="border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                required
+              >
+                <option value="Standard">Standard plan</option>
+                <option value="Super">Super plan</option>
+                <option value="Premium">Premium plan</option>
+              </select>
             </div>
+
             <div className="grid gap-3">
               <Label htmlFor="virtualspace-dailyprice">Daily Price</Label>
               <Input
                 id="virtualspace-dailyprice"
-                placeholder="Enter Dailyprice..."
-                name="virtualspace-dailyprice"
+                placeholder="Enter Daily price..."
+                name="daily_price"
+                required
               />
             </div>
+
             <div className="grid gap-3">
               <Label htmlFor="virtualspace-weeklyprice">Weekly Price</Label>
               <Input
                 id="virtualspace-weeklyprice"
                 placeholder="Enter Weekly Price..."
-                name="virtualspace-weeklyprice"
+                name="weekly_price"
+                required
               />
             </div>
+
             <div className="grid gap-3">
-              <Label htmlFor="virtualspace-weeklyprice">Monthly Price</Label>
+              <Label htmlFor="virtualspace-monthlyprice">Monthly Price</Label>
               <Input
                 id="virtualspace-monthlyprice"
                 placeholder="Enter Monthly Price..."
-                name="virtualspace-monthlyprice"
+                name="monthly_price"
+                required
               />
             </div>
           </div>
+
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

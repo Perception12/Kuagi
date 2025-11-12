@@ -13,100 +13,120 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/authcontext";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { GENERAL_INFO } from "@/lib/api_routes";
-import { apiRequest } from "@/lib/api";
+import { useApiCrud } from "@/hooks/useApiCrud";
+
 
 export function SharedSpaceDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    formData.append("page", "co-working-space");
-    try {
-      setLoading(true);
-      await apiRequest({
-        url: GENERAL_INFO.create(),
-        data: formData,
-        token,
-        isFormData: true,
-      });
-      toast.success("SharedSpace added successfully");
-      setOpen(false); // 3. Close dialog on success
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to SharedSpace");
-    }
-  };
-
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+  // 🧩 useApiCrud: Handles submit, validation, toast, etc.
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/workspace-plans",
+    token,
+    onSuccess: () => {
+      setOpen(false);
+    },
+  });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline" className="bg-primary text-white">
-          {" "}
-          <Plus className="inline" /> Add
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)}
+        >
+          <Plus className="inline mr-2" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          encType="multipart/form-data"
+          onSubmit={(e) => {
+            handleSubmit(
+              formRef as React.RefObject<HTMLFormElement>,
+              e,
+              "POST",
+              "Shared space price added successfully 🎉"
+            );
+          }}
+        >
           <DialogHeader>
-            <DialogTitle>Add New SharedSpace Price</DialogTitle>
+            <DialogTitle>Add New Shared Space Price</DialogTitle>
             <DialogDescription>
-              Add a new SharedSpace price to your Co-Working-space page. Click save when you&apos;re
-              done.
+              Add a new shared space pricing plan to your Co-Working Space page. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
+            {/* Plan Selection */}
             <div className="grid gap-3">
               <Label htmlFor="sharedspace-plan">Plan</Label>
-              <select id="sharedspace-plan" name="virtualspace-plan">
-    <option value="Standard">Standard plan</option>
-    <option value="Super">Super plan</option>
-    <option value="premium">Premium plan</option>
-  </select>
+              <select
+                id="sharedspace-plan"
+                name="plan"
+                className="border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                required
+              >
+                <option value="">Select a plan</option>
+                <option value="Standard">Standard Plan</option>
+                <option value="Super">Super Plan</option>
+                <option value="Premium">Premium Plan</option>
+              </select>
             </div>
+
+            {/* Daily Price */}
             <div className="grid gap-3">
               <Label htmlFor="sharedspace-dailyprice">Daily Price</Label>
               <Input
                 id="sharedspace-dailyprice"
-                placeholder="Enter Dailyprice..."
-                name="sharedspace-dailyprice"
+                placeholder="Enter daily price..."
+                name="daily_price"
+                type="number"
+                required
               />
             </div>
+
+            {/* Weekly Price */}
             <div className="grid gap-3">
               <Label htmlFor="sharedspace-weeklyprice">Weekly Price</Label>
               <Input
                 id="sharedspace-weeklyprice"
-                placeholder="Enter Weekly Price..."
-                name="sharedspace-weeklyprice"
+                placeholder="Enter weekly price..."
+                name="weekly_price"
+                type="number"
+                required
               />
             </div>
+
+            {/* Monthly Price */}
             <div className="grid gap-3">
-              <Label htmlFor="sharedspace-weeklyprice">Monthly Price</Label>
+              <Label htmlFor="sharedspace-monthlyprice">Monthly Price</Label>
               <Input
                 id="sharedspace-monthlyprice"
-                placeholder="Enter Monthly Price..."
-                name="sharedspace-monthlyprice"
+                placeholder="Enter monthly price..."
+                name="monthly_price"
+                type="number"
+                required
               />
             </div>
           </div>
-          <DialogFooter>
+
+          <DialogFooter className="pt-4">
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" type="button">
+                Cancel
+              </Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

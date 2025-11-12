@@ -100,7 +100,11 @@ export const AboutColumns: ColumnDef<about>[] = [
     header: "Description",
     size: 300,
   },
-
+  {
+    accessorKey: "cover",
+    header: "Will cover",
+    size: 300,
+  },
   {
     id: "actions",
     header: () => <div className="text-right">Actions</div>,

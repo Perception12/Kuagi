@@ -13,105 +13,129 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/authcontext";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { GENERAL_INFO } from "@/lib/api_routes";
-import { apiRequest } from "@/lib/api";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function CoursesDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    formData.append("page", "courses");
-    try {
-      setLoading(true);
-      await apiRequest({
-        url: GENERAL_INFO.create(),
-        data: formData,
-        token,
-        isFormData: true,
-      });
-      toast.success("Course added successfully");
-      setOpen(false); // 3. Close dialog on success
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to add Course");
-    }
-  };
-
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+  // ✅ Use shared CRUD hook
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/courses",
+    token,
+    onSuccess: () => setOpen(false),
+  });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
         <Button variant="outline" className="bg-primary text-white">
-          {" "}
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(formRef as React.RefObject<HTMLFormElement>, e, "POST", "Course added successfully 🎉")
+          }
+          encType="multipart/form-data"
+          className="flex flex-col gap-6"
+        >
           <DialogHeader>
             <DialogTitle>Add New Course</DialogTitle>
             <DialogDescription>
-              Add a new Course to your Course page. Click save when you&apos;re
-              done.
+              Add a new course to your page. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
+            {/* Image + Title */}
             <div className="grid gap-3">
-              <Label htmlFor="course-image">Image and Course name</Label>
+              <Label htmlFor="course-image">Image</Label>
               <Input id="course-image" type="file" name="image" />
-              <Input type="text" id="course-name" placeholder="Course name"  />
+              <Label htmlFor="course-title">Course Title</Label>
+              <Input
+                id="course-title"
+                type="text"
+                name="title"
+                placeholder="Enter course title..."
+                required
+              />
             </div>
+
+            {/* Duration */}
             <div className="grid gap-3">
               <Label htmlFor="course-duration">Duration</Label>
               <Input
                 id="course-duration"
-                placeholder="Enter Course duration..."
-                name="course-duration"
+                placeholder="Enter course duration..."
+                name="duration"
+                required
               />
             </div>
+
+            {/* Frequency */}
             <div className="grid gap-3">
               <Label htmlFor="course-frequency">Frequency</Label>
               <Input
-                id="course-frequencyn"
-                placeholder="Enter Course Frequency..."
-                name="course-frequency"
+                id="course-frequency"
+                placeholder="Enter course frequency..."
+                name="frequency"
+                required
               />
             </div>
+
+            {/* Price */}
             <div className="grid gap-3">
               <Label htmlFor="course-price">Price</Label>
               <Input
                 id="course-price"
-                placeholder="Enter Course Frequency..."
-                name="course-price"
-                type="number"
+                placeholder="Enter course price..."
+                name="price"
+                required
               />
             </div>
+
+            {/* Status */}
             <div className="grid gap-3">
-              <Label htmlFor="course-availability">Status</Label>
-              <select id="course-availability" name="course-availability">
+              <Label htmlFor="course-status">Status</Label>
+              <select
+                id="course-status"
+                name="status"
+                className="border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                required
+              >
                 <option value="available">Available</option>
                 <option value="unavailable">Unavailable</option>
               </select>
             </div>
+
+            {/* Type */}
+            <div className="grid gap-3">
+              <Label htmlFor="course-type">Type</Label>
+              <select
+                id="course-type"
+                name="type"
+                className="border border-input rounded-md px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                required
+              >
+                <option value="online">Online</option>
+                <option value="physical">Physical</option>
+              </select>
+            </div>
           </div>
+
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

@@ -13,89 +13,114 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/authcontext";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { GENERAL_INFO } from "@/lib/api_routes";
-import { apiRequest } from "@/lib/api";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function OneOfUsDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    formData.append("page", "women4tech");
-    try {
-      setLoading(true);
-      await apiRequest({
-        url: GENERAL_INFO.create(),
-        data: formData,
-        token,
-        isFormData: true,
-      });
-      toast.success("Hero added successfully");
-      setOpen(false); // 3. Close dialog on success
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to add hero");
-    }
-  };
-
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+  // 🔥 useApiCrud simplifies API logic & toasts
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/comments",
+    token,
+    onSuccess: () => {
+      setOpen(false);
+    },
+  });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline" className="bg-primary text-white">
-          {" "}
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)}
+        >
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(
+              formRef as React.RefObject<HTMLFormElement>,
+              e,
+              "POST",
+              "Comment added successfully 🎉",
+           
+            )
+          }
+          encType="multipart/form-data"
+        >
           <DialogHeader>
-            <DialogTitle>Add New OneOfUs</DialogTitle>
+            <DialogTitle>Add New One Of Us</DialogTitle>
             <DialogDescription>
-              Add a new OneOfUs to your Women4tech page. Click save when you&apos;re
-              done.
+              Add a new OneOfUs to your Women4Tech page. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
-          <div className="grid gap-3">
+            {/* Name */}
+            <div className="grid gap-3">
               <Label htmlFor="oneOfUs-name">Name</Label>
               <Input
                 id="oneOfUs-name"
                 placeholder="Enter name..."
-                name="heading"
+                name="author_name"
+                required
               />
             </div>
+
+            {/* Image */}
             <div className="grid gap-3">
               <Label htmlFor="oneOfUs-image">Image</Label>
-              <Input id="oneOfUs-image" type="file" name="image" />
+              <Input id="oneOfUs-image" type="file" name="author_image" required />
             </div>
-           
+
+            {/* Comment */}
             <div className="grid gap-3">
               <Label htmlFor="oneOfUs-comment">Comment</Label>
               <Input
                 id="oneOfUs-comment"
                 placeholder="Enter comment..."
-                name="subheading"
+                name="content"
+                required
+              />
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="oneOfUs-designation">Designation</Label>
+              <Input
+                id="oneOfUs-designation"
+                placeholder="Enter designation..."
+                name="author_designation"
+                required
+              />
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="oneOfUs-company">Company</Label>
+              <Input
+                id="oneOfUs-company"
+                placeholder="Enter company..."
+                name="author_company"
+                required
               />
             </div>
           </div>
+
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

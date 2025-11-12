@@ -12,87 +12,105 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAuth } from "@/context/authcontext";
-import { apiRequest } from "@/lib/api";
-import { OUR_PARTNERS } from "@/lib/api_routes";
 import { Plus } from "lucide-react";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useRef, useState } from "react";
+import { useAuth } from "@/context/authcontext";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function PartnersDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-
-    formData.append("page", "partners");
-    try {
-      setLoading(true);
-
-      await apiRequest({
-        url: OUR_PARTNERS.create(),
-        data: formData,
-        token,
-        isFormData: true,
-      });
-
-      toast.success("Partner added successfully");
+  // 🔥 useApiCrud handles POST request, validation & toast messages
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/our-partners",
+    token,
+    onSuccess: () => {
       setOpen(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to add partner");
-    }
-  };
-
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+    },
+  });
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      {" "}
-      {/* 2. Controlled dialog */}
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline" className="bg-primary text-white">
-          {" "}
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)}
+        >
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(
+              formRef as React.RefObject<HTMLFormElement>,
+              e,
+              "POST",
+              "Partner added successfully 🎉"
+            )
+          }
+          encType="multipart/form-data"
+        >
           <DialogHeader>
             <DialogTitle>Add New Partner</DialogTitle>
             <DialogDescription>
-              Add a new partner to your organization. Click save when
-              you&apos;re done.
+              Add a new partner. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
+            {/* Partner Image */}
             <div className="grid gap-3">
               <Label htmlFor="partner-image">Image</Label>
               <Input id="partner-image" type="file" name="image" />
             </div>
+
+            {/* Partner Name */}
             <div className="grid gap-3">
-              <Label htmlFor="partner-title">Description</Label>
+              <Label htmlFor="partner-name">Name</Label>
               <Input
-                id="partner-title"
-                placeholder="Enter description..."
+                id="partner-name"
+                placeholder="Enter partner name..."
                 name="name"
+                required
+              />
+            </div>
+
+            {/* Partner Description */}
+            <div className="grid gap-3">
+              <Label htmlFor="partner-company">Company</Label>
+              <Input
+                id="partner-company"
+                placeholder="Enter partner company..."
+                name="company"
+                required
+              />
+            </div>
+
+            {/* Optional Website / Link */}
+            <div className="grid gap-3">
+              <Label htmlFor="partner-website">Website (optional)</Label>
+              <Input
+                id="partner-website"
+                placeholder="https://example.com"
+                name="website_url"
+                type="url"
               />
             </div>
           </div>
+
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

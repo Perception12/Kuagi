@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,97 +13,127 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { apiRequest } from "@/lib/api";
-import { FAQS } from "@/lib/api_routes";
+import { Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/authcontext";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function CourseAboutDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const [items, setItems] = useState([""]);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-
-    const title = formData.get("faq-title");
-    const description = formData.get("faq-description");
-
-    const data = {
-      title,
-      description,
-      type: "course",
-    };
-
-    try {
-      setLoading(true);
-
-      await apiRequest({
-        url: FAQS.create(),
-        data,
-        token,
-        isFormData: true,
-      });
-
-      toast.success("About added successfully");
+  // ✅ useApiCrud handles submission, toast, and success state
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/general-info",
+    token,
+    onSuccess: () => {
       setOpen(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to add About");
-    }
+    },
+  });
+
+  // Add more items to what we will cover
+  const addItem = () => {
+    setItems([...items, ""]);
   };
 
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+  const handleChange = (index: number, value: string) => {
+    const newItems = [...items];
+    newItems[index] = value;
+    setItems(newItems);
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline" className="bg-primary text-white">
-          {" "}
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)} // ✅ Manually opens the dialog
+        >
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(
+              formRef as React.RefObject<HTMLFormElement>,
+              e,
+              "POST",
+              "About course added successfully 🎉"
+            )
+          }
+        >
           <DialogHeader>
             <DialogTitle>Add New About</DialogTitle>
             <DialogDescription>
-              Add a new About Course. Click save when you&apos;re
-              done.
+              Add new course information. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4">
+            {/* Hidden type for API */}
+            <input type="hidden" name="page" value="course" />
+
             <div className="grid gap-3">
               <Label htmlFor="courseabout-title">Title</Label>
               <Input
                 id="courseabout-title"
                 placeholder="Enter title"
-                name="courseabout-title"
+                name="subheading"
+                required
               />
             </div>
+
             <div className="grid gap-3">
               <Label htmlFor="courseabout-description">Description</Label>
               <Textarea
                 id="courseabout-description"
-                placeholder="Enter Answer..."
-                name="courseabout-description"
+                placeholder="Enter description..."
+                name="content"
+                required
               />
             </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="courseabout-description">What we will cover</Label>
+              {items.map((item, index) => (
+          <div key={index} className="mb-3">
+            <input
+              type="text"
+              value={item}
+              name="cover"
+              onChange={(e) => handleChange(index, e.target.value)}
+              placeholder={`Item ${index + 1}`}
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
           </div>
+        ))}
+
+        <button
+          type="button"
+          onClick={addItem}
+          className="w-full bg-primary text-white py-2 rounded mb-3 hover:text-black transition"
+        >
+          ➕ Add More
+        </button>
+
+          </div>
+          </div>
+
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button disabled={loading} type="submit">
-              Save changes
+
+            <Button type="submit" disabled={loading}>
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>

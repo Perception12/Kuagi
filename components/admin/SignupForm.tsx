@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { apiRequest } from "@/lib/api";
@@ -41,10 +40,23 @@ export function SignupForm({
       router.push("/auth/login"); // Redirect after successful signup
       toast.success("Signup successful!");
       setLoading(false);
-    } catch (error) {
-      setLoading(false)
-      toast.error("Signup failed. Please check your details.");
-      console.error("Signup failed:", error);
+    } catch (error: unknown) {
+      setLoading(false);
+      // Try to surface validation errors from API (e.g., 422 Unprocessable Entity)
+      const maybeAxios = error as { response?: { status?: number; data?: any } };
+      const status = maybeAxios?.response?.status;
+      const data = maybeAxios?.response?.data;
+
+      if (status === 422 && data) {
+        // Laravel-style validation: { message, errors: { field: [messages...] } }
+        const firstField = data?.errors ? Object.keys(data.errors)[0] : undefined;
+        const firstMessage = firstField ? data.errors[firstField]?.[0] : data?.message;
+        toast.error(firstMessage || "Validation failed. Please review your inputs.");
+      } else if (data?.message) {
+        toast.error(data.message);
+      } else {
+        toast.error("Signup failed. Please check your details.");
+      }
     }
   };
 
@@ -87,8 +99,10 @@ export function SignupForm({
                     id="password"
                     name="password"
                     type="password"
+                    minLength={8}
                     required
                   />
+                  <p className="text-xs text-muted-foreground">Password must be up to 8 characters.</p>
                 </div>
                 <div className="grid gap-3">
                   <div className="flex items-center">
@@ -100,8 +114,10 @@ export function SignupForm({
                     id="password_confirmation"
                     name="password_confirmation"
                     type="password"
+                    minLength={8}
                     required
                   />
+                  <p className="text-xs text-muted-foreground">Must match and be up to 8 characters.</p>
                 </div>
                 <Button disabled={loading} type="submit" className="w-full">
                   Sign Up

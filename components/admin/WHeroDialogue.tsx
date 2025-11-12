@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,88 +14,98 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/authcontext";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { GENERAL_INFO } from "@/lib/api_routes";
-import { apiRequest } from "@/lib/api";
+import { useApiCrud } from "@/hooks/useApiCrud";
 
 export function WHeroDialog() {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false); // 1. Dialog open state
-
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { token } = useAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    formData.append("page", "women4tech");
-    try {
-      setLoading(true);
-      await apiRequest({
-        url: GENERAL_INFO.create(),
-        data: formData,
-        token,
-        isFormData: true,
-      });
-      toast.success("Hero added successfully");
-      setOpen(false); // 3. Close dialog on success
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setLoading(false);
-      toast.error("Failed to add hero");
-    }
-  };
-
-  useEffect(() => {
-    if (open) setLoading(false);
-  }, [open]); // Reset loading state when dialog opens
+  // ✅ Centralized CRUD logic using useApiCrud (just like EventDialog)
+  const { handleSubmit, loading } = useApiCrud({
+    url: "/api/proxy/api/general-info",
+    token,
+    onSuccess: () => {
+      setOpen(false); // Close only after successful save
+    },
+  });
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}> {/* 2. Controlled dialog */}
+    <Dialog open={open} onOpenChange={setOpen}>
+      {/* Controlled Trigger */}
       <DialogTrigger asChild className="self-end">
-        <Button variant="outline" className="bg-primary text-white">
-          {" "}
+        <Button
+          type="button"
+          variant="outline"
+          className="bg-primary text-white"
+          onClick={() => setOpen(true)}
+        >
           <Plus className="inline" /> Add
         </Button>
       </DialogTrigger>
+
+      {/* Dialog Content */}
       <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form
+          ref={formRef}
+          onSubmit={(e) =>
+            handleSubmit(formRef as React.RefObject<HTMLFormElement>, e, "POST", "Hero added successfully 🎉")
+          }
+          className="flex flex-col gap-6"
+        >
           <DialogHeader>
             <DialogTitle>Add New Hero</DialogTitle>
             <DialogDescription>
-              Add a new hero to your Women4tech page. Click save when you&apos;re
-              done.
+              Add a new hero section to your Women4Tech page. Click save when
+              you’re done.
             </DialogDescription>
           </DialogHeader>
+
+          {/* Input Fields */}
           <div className="grid gap-4">
+            {/* Image Upload */}
             <div className="grid gap-3">
-              <Label htmlFor="whero-image">Image</Label>
-              <Input id="whero-image" type="file" name="image" />
+              <Label htmlFor="image">Image</Label>
+              <Input id="image" type="file" name="image_url" required />
             </div>
+
+            {/* Title */}
             <div className="grid gap-3">
-              <Label htmlFor="whero-title">Title</Label>
+              <Label htmlFor="heading">Title</Label>
               <Input
-                id="whero-title"
-                placeholder="Enter title..."
+                id="heading"
                 name="heading"
+                placeholder="Enter title..."
+                required
               />
             </div>
+
+            {/* Description */}
             <div className="grid gap-3">
-              <Label htmlFor="whero-description">Description</Label>
+              <Label htmlFor="subheading">Description</Label>
               <Input
-                id="whero-description"
-                placeholder="Enter description..."
+                id="subheading"
                 name="subheading"
+                placeholder="Enter description..."
+                required
               />
             </div>
+
+            {/* Hidden Page Field */}
+            <input type="hidden" name="page" value="women4tech" />
           </div>
+
+          {/* Footer Buttons */}
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
             </DialogClose>
             <Button type="submit" disabled={loading}>
-              Save changes
+              {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>
         </form>
