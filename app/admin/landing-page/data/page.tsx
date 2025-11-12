@@ -16,10 +16,7 @@ import {
   testimonials,
   faq,
 } from "./columns";
-import {
-  HeroDialog
-} from '@/components/admin/HeroDialog' ;
-
+import {  HeroDialog} from '@/components/admin/HeroDialog' ;
 import { WhoWeAreDialog } from "@/components/admin/WhoWeAreDialog";
 import { SuccessStoriesDialog } from "@/components/admin/SuccessStoriesDialog";
 import { PartnersDialog } from "@/components/admin/PartnersDialog";
@@ -35,39 +32,41 @@ import {
 } from "@/lib/api_routes";
 import { successData, testimonial_data } from "@/data";
 import { StaticImageData } from "next/image";
+import { useDynamicCrudWithApi } from "@/hooks/useDynamicCrudWithApi";
 
 export default function AdminPage() {
+  // const { token } = useAuth();
+  const { sections, handleSave, handleDelete, fetchAll, loading } =
+  useDynamicCrudWithApi({
+    // token,
+    routes: {
+      hero: GENERAL_INFO,
+      whoWeAre: GENERAL_INFO,
+      success: SUCCESS_STORIES,
+      partners: OUR_PARTNERS,
+      // testimonials: FAQS, // replace if you have a testimonials route
+      faq: FAQS,
+    },
+  });
+
+useEffect(() => {
+  fetchAll();
+}, []);
   const { token } = useAuth();
 
   // 🧩 HERO + WHO WE ARE
-  const {
-    data: generalData,
-    fetchData: fetchGeneral,
-    loading: loadingGeneral,
-  } = useApiCrud({ url: GENERAL_INFO.all(), token });
+  const generalApi = useApiCrud({ url: GENERAL_INFO.all(), token });
 
   // 🧩 SUCCESS STORIES
-  const {
-    data: successDataRaw,
-    fetchData: fetchSuccess,
-    loading: loadingSuccess,
-  } = useApiCrud({ url: SUCCESS_STORIES.all(), token });
+  const successApi = useApiCrud({ url: SUCCESS_STORIES.all(), token });
 
   // 🧩 PARTNERS
-  const {
-    data: partnersDataRaw,
-    fetchData: fetchPartners,
-    loading: loadingPartners,
-  } = useApiCrud({ url: OUR_PARTNERS.all(), token });
+  const partnersApi = useApiCrud({ url: OUR_PARTNERS.all(), token });
 
   // 🧩 FAQ
-  const {
-    data: faqDataRaw,
-    fetchData: fetchFaq,
-    loading: loadingFaq,
-  } = useApiCrud({ url: FAQS.all(), token });
+  const faqApi = useApiCrud({ url: FAQS.all(), token });
 
-  // 🧩 TESTIMONIALS (Static mock for now)
+  // 🧩 TESTIMONIALS (Static mock)
   const testimonialsData: testimonials[] = testimonial_data.map((item, idx) => ({
     id: `testimonial-${idx + 1}`,
     youtube_preview_url: item.youtube_embed_link,
@@ -78,17 +77,18 @@ export default function AdminPage() {
 
   // 🌀 Fetch all data on mount
   useEffect(() => {
-    fetchGeneral();
-    fetchSuccess();
-    fetchPartners();
-    fetchFaq();
-  }, [fetchGeneral, fetchSuccess, fetchPartners, fetchFaq]);
+    generalApi.fetchData();
+    successApi.fetchData();
+    partnersApi.fetchData();
+    faqApi.fetchData();
+  }, []);
 
   // 🧠 Transform General Info
+  const generalData = generalApi.data || [];
   const landingPageData: hero[] =
     generalData
-      ?.filter((item: any) => item.page === "landing-page")
-      ?.map((item: any) => ({
+      .filter((item: any) => item.page === "landing-page")
+      .map((item: any) => ({
         id: String(item.id || item.heading),
         image: item.image_url,
         title: item.heading,
@@ -97,15 +97,15 @@ export default function AdminPage() {
 
   const whoWeAreData: whoWeAre[] =
     generalData
-      ?.filter((item: any) => item.page === "who-we-are")
-      ?.map((item: any) => ({
+      .filter((item: any) => item.page === "who-we-are")
+      .map((item: any) => ({
         id: String(item.id || item.heading),
         image: item.image_url,
         title: item.heading,
         description: item.subheading,
       })) || [];
 
-  // 🧠 Transform Success Data
+  // 🧠 Transform Success Stories
   const iconMap: Record<string, StaticImageData> = {
     "Job Created": successData[0].icon,
     "Project Awarded": successData[1].icon,
@@ -116,7 +116,7 @@ export default function AdminPage() {
   };
 
   const successStoriesData: success[] =
-    successDataRaw?.data?.map((item: any) => ({
+    successApi.data?.data?.map((item: any) => ({
       id: String(item.id || item.caption),
       image: iconMap[item.icon] || item.icon,
       title: item.caption,
@@ -125,7 +125,7 @@ export default function AdminPage() {
 
   // 🧠 Transform Partners
   const partnersData: partners[] =
-    partnersDataRaw?.data?.map((item: any) => ({
+    partnersApi.data?.data?.map((item: any) => ({
       id: String(item.id || item.name),
       image: item.image_url,
       description: item.name,
@@ -133,7 +133,7 @@ export default function AdminPage() {
 
   // 🧠 Transform FAQs
   const faqData: faq[] =
-    faqDataRaw?.data?.map((item: any) => ({
+    faqApi.data?.data?.map((item: any) => ({
       id: String(item.id || item.question),
       questions: item.question,
       answers: item.answer,
@@ -141,74 +141,77 @@ export default function AdminPage() {
 
   return (
     <div className="flex flex-col gap-8 p-6 bg-lightblue h-full">
-      {/* HERO SECTION */}
       <SectionBlock
         title="Hero Section"
-        loading={loadingGeneral}
         columns={heroColumns}
         data={landingPageData}
+        loading={generalApi.loading}
         Dialog={HeroDialog}
+        onSuccess={generalApi.fetchData}
       />
 
-      {/* WHO WE ARE */}
       <SectionBlock
         title="Who We Are"
-        loading={loadingGeneral}
         columns={whoWeAreColumns}
         data={whoWeAreData}
+        loading={generalApi.loading}
         Dialog={WhoWeAreDialog}
+        onSuccess={generalApi.fetchData}
       />
 
-      {/* SUCCESS STORIES */}
       <SectionBlock
         title="Success Stories"
-        loading={loadingSuccess}
         columns={successColumns}
         data={successStoriesData}
+        loading={successApi.loading}
         Dialog={SuccessStoriesDialog}
+        onSuccess={successApi.fetchData}
       />
 
-      {/* PARTNERS */}
       <SectionBlock
         title="Our Partners"
-        loading={loadingPartners}
         columns={partnersColumns}
         data={partnersData}
+        loading={partnersApi.loading}
         Dialog={PartnersDialog}
+        onSuccess={partnersApi.fetchData}
       />
 
-      {/* TESTIMONIALS */}
       <SectionBlock
         title="Testimonials"
-        loading={false}
         columns={testimonialsColumns}
         data={testimonialsData}
+        loading={false}
         Dialog={TestimonialsDialog}
+        onSuccess={() => {}}
       />
 
-      {/* FAQ */}
       <SectionBlock
         title="FAQ"
-        loading={loadingFaq}
         columns={faqColumns}
         data={faqData}
+        loading={faqApi.loading}
         Dialog={FAQDialog}
+        onSuccess={faqApi.fetchData}
       />
     </div>
   );
 }
 
-// 🧩 Reusable section wrapper
-function SectionBlock({ title, columns, data, Dialog, loading }: any) {
+// 🧩 Section Wrapper
+function SectionBlock({ title, columns, data, Dialog, onSuccess, loading }: any) {
   return (
     <div className="flex flex-col gap-4 bg-white p-8 rounded-md shadow-sm">
-      <h1 className="text-3xl font-bold opacity-80 mb-8">{title}</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold opacity-80">{title}</h1>
+        <Dialog onSuccess={onSuccess} />
+      </div>
+
       {loading ? (
         <p className="text-gray-500">Loading...</p>
       ) : (
         <DataTable columns={columns} data={data || []} />
       )}
-      <Dialog />
     </div>
   );
 }

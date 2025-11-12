@@ -11,6 +11,12 @@ import { FAQEditDialog } from "@/components/admin/FAQEditDialog";
 
 type image_t = string | StaticImageData;
 
+interface CellContext {
+  row: { index: number; original: hero | success | partners | testimonials | faq}
+  getValue: () => any
+}
+
+
 export type hero = {
   id: string;
   image: image_t;
@@ -57,6 +63,9 @@ export const heroColumns: ColumnDef<hero>[] = [
     accessorKey: "S/N",
     header: "S/N",
     size: 50,
+    cell: ({ row }: CellContext) => {
+      return <div>{row.index + 1}</div>
+    },
   },
   {
     accessorKey: "image",
@@ -94,7 +103,10 @@ export const heroColumns: ColumnDef<hero>[] = [
     cell: ({ row }) => (
       <Action<hero>
         row={row}
-        editDialog={<EditHeroDialog type="landing-page" name="Landing Page Hero" />}
+        // editDialog=
+        // {<EditHeroDialog type="landing-page" name="Landing Page Hero" />
+          
+        // }
       />
     ),
   },
@@ -105,6 +117,9 @@ export const whoWeAreColumns: ColumnDef<whoWeAre>[] = [
     accessorKey: "S/N",
     header: "S/N",
     size: 50,
+    cell: ({ row }: CellContext) => {
+      return <div>{row.index + 1}</div>
+    },
   },
   {
     accessorKey: "image",
@@ -147,6 +162,9 @@ export const successColumns: ColumnDef<success>[] = [
     accessorKey: "S/N",
     header: "S/N",
     size: 50,
+    cell: ({ row }: CellContext) => {
+      return <div>{row.index + 1}</div>
+    },
   },
   {
     accessorKey: "image",
@@ -191,6 +209,9 @@ export const partnersColumns: ColumnDef<partners>[] = [
     accessorKey: "S/N",
     header: "S/N",
     size: 50,
+    cell: ({ row }: CellContext) => {
+      return <div>{row.index + 1}</div>
+    },
   },
   {
     accessorKey: "image",
@@ -228,6 +249,9 @@ export const testimonialsColumns: ColumnDef<testimonials>[] = [
     accessorKey: "S/N",
     header: "S/N",
     size: 50,
+    cell: ({ row }: CellContext) => {
+      return <div>{row.index + 1}</div>
+    },
   },
   {
     accessorKey: "youtube_preview_url",
@@ -299,6 +323,9 @@ export const faqColumns: ColumnDef<faq>[] = [
     accessorKey: "S/N",
     header: "S/N",
     size: 50,
+    cell: ({ row }: CellContext) => {
+      return <div>{row.index + 1}</div>
+    },
   },
   {
     accessorKey: "questions",
